@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-
+#import "CNJokeDisplay.h"
 @interface ViewController ()
 
 @end
@@ -16,6 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"First Controller";
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -26,4 +27,10 @@
 }
 
 
+- (IBAction)button:(id)sender {
+}
+- (IBAction)onButtonPressed:(id)sender {
+    CNJokeDisplay *secondController = [[CNJokeDisplay alloc] initWithNibName:nil bundle:nil];
+    [self.navigationController pushViewController:secondController animated:YES];
+}
 @end

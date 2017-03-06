@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewController : UIViewController
+- (IBAction)onButtonPressed:(id)sender;
 
-
+//- (IBAction)button:(id)sender;
 @end
 

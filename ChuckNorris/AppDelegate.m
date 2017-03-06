@@ -8,9 +8,9 @@
 
 #import "AppDelegate.h"
 #import "ViewController.h"
-
+#import "CNJokeDisplay.h"
 @interface AppDelegate ()
-
+@property (strong, nonatomic) UINavigationController *navigationController;
 @end
 
 @implementation AppDelegate
@@ -26,6 +26,10 @@
     self.window.rootViewController = navigationController;
     [self.window makeKeyAndVisible];
     
+    //MY CODE
+    self.rootViewController = [[ViewController alloc] initWithNibName:nil bundle:nil];
+    self.navigationController = [[UINavigationController alloc] initWithRootViewController:self.rootViewController];
+    [self.window addSubview:self.navigationController.view];
     return YES;
 }
 
