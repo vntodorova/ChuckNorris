@@ -10,7 +10,10 @@
 
 @interface ViewController : UIViewController
 - (IBAction)onButtonPressed:(id)sender;
-
-//- (IBAction)button:(id)sender;
+- (IBAction)getResults:(UIButton *)sender;
+- (IBAction)chooseCategory:(UIButton *)sender;
+@property (weak, nonatomic) IBOutlet UISearchBar *textField;
+@property(nonatomic , strong) NSString *chosenCategory;
+@property(nonatomic , strong) NSString *searchString;
 @end
 

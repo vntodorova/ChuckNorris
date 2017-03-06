@@ -33,4 +33,35 @@
     CNJokeDisplay *secondController = [[CNJokeDisplay alloc] initWithNibName:nil bundle:nil];
     [self.navigationController pushViewController:secondController animated:YES];
 }
+
+- (IBAction)getResults:(UIButton *)sender {
+    self.searchString = _textField.text;
+    NSLog(@"%@", self.searchString);
+    
+}
+
+- (IBAction)chooseCategory:(UIButton *)sender {
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Categories"
+                                                                   message:@"Choose category"
+                                                            preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    NSArray *categories = [NSArray arrayWithObjects:@"Explicit", @"Dev", @"Movie", @"Food", @"Celebrity", @"Science", @"Political", @"Sport", @"Religion", @"Animal", @"Music", @"History", @"Travel", @"Career", @"Money", @"Fashion",nil];
+    
+    for (NSString* currentCategory in categories) {
+        [alert addAction:[UIAlertAction actionWithTitle:currentCategory style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            self.chosenCategory = currentCategory;
+            NSLog(@"%@", _chosenCategory);
+            [self dismissViewControllerAnimated:YES completion:^{
+            }];
+        }]];
+    }
+    
+    [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+        [self dismissViewControllerAnimated:YES completion:^{
+        }];
+    }]];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+    
+}
 @end
