@@ -6,13 +6,18 @@
 //  Copyright © 2017 Veneta. All rights reserved.
 //
 
+#include <JSONModel/JSONModel.h>
+
 #import "CNJokeDisplay.h"
+#import "CNJokeReqeustResult.h"
 
 @implementation CNJokeDisplay
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"Second controller";
+        NSLog(@"------------------------------");
+    [self getCNJoke];
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -23,15 +28,15 @@
 }
 
 -(void) getCNJoke {
-    NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *defaultSession = [NSURLSession sharedSession];
-    NSURL * url = [NSURL URLWithString:@"http://api.icndb.com/jokes/random"];
+    NSURL * url = [NSURL URLWithString:@"https://api.chucknorris.io/jokes/random"];
     NSURLSessionDataTask * dataTask = [defaultSession dataTaskWithURL:url
                                                     completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                                                        if(error == nil)
-                                                        {
-                                                            NSString * text = [[NSString alloc] initWithData: data encoding: NSUTF8StringEncoding];
-                                                            NSLog(@"Data = %@",text);
+                                                        if(error == nil) {
+                                                            NSError *error;
+                                                            CNJoke *requestResult = [[CNJoke alloc] initWithData:data error:&error];
+                                                            
+                                                            NSLog(@"%@", requestResult.value);
                                                         }
                                                     }];
     [dataTask resume];

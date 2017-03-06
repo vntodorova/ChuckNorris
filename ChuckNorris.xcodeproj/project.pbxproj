@@ -7,9 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D3800501E6D87280063BD37 /* CNJoke.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D38004F1E6D87280063BD37 /* CNJoke.m */; };
 		1DEC6B4F1E68633600D1B223 /* CNJokeDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DEC6B4E1E68633600D1B223 /* CNJokeDisplay.m */; };
 		1DEC6B551E6864DF00D1B223 /* CNJokeDisplay.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DEC6B541E6864DF00D1B223 /* CNJokeDisplay.xib */; };
 		1DEC6B5B1E6D578100D1B223 /* iOSRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DEC6B5A1E6D578100D1B223 /* iOSRootViewController.m */; };
+		1DEC6B6F1E6D841700D1B223 /* AD14DA8D-C30C-39E8-A498-1035714193BD.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = 1DEC6B6B1E6D841700D1B223 /* AD14DA8D-C30C-39E8-A498-1035714193BD.bcsymbolmap */; };
+		1DEC6B701E6D841700D1B223 /* CEEFAF8D-1566-3F31-A3BC-C5CA298F090C.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = 1DEC6B6C1E6D841700D1B223 /* CEEFAF8D-1566-3F31-A3BC-C5CA298F090C.bcsymbolmap */; };
+		1DEC6B721E6D841700D1B223 /* JSONModel.framework.dSYM in Resources */ = {isa = PBXBuildFile; fileRef = 1DEC6B6E1E6D841700D1B223 /* JSONModel.framework.dSYM */; };
+		1DEC6B731E6D849100D1B223 /* JSONModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DEC6B6D1E6D841700D1B223 /* JSONModel.framework */; };
+		1DEC6B741E6D849100D1B223 /* JSONModel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1DEC6B6D1E6D841700D1B223 /* JSONModel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D05984B21E68394300F20240 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D05984B11E68394300F20240 /* ViewController.xib */; };
 		D0C3F7811E6838E6005AB2FC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C3F7801E6838E6005AB2FC /* main.m */; };
 		D0C3F7841E6838E6005AB2FC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C3F7831E6838E6005AB2FC /* AppDelegate.m */; };
@@ -18,12 +24,32 @@
 		D0C3F78F1E6838E6005AB2FC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0C3F78D1E6838E6005AB2FC /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		1DEC6B751E6D849100D1B223 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				1DEC6B741E6D849100D1B223 /* JSONModel.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		1D38004E1E6D87280063BD37 /* CNJoke.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CNJoke.h; sourceTree = "<group>"; };
+		1D38004F1E6D87280063BD37 /* CNJoke.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CNJoke.m; sourceTree = "<group>"; };
 		1DEC6B4D1E68633600D1B223 /* CNJokeDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CNJokeDisplay.h; sourceTree = "<group>"; };
 		1DEC6B4E1E68633600D1B223 /* CNJokeDisplay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CNJokeDisplay.m; sourceTree = "<group>"; };
 		1DEC6B541E6864DF00D1B223 /* CNJokeDisplay.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CNJokeDisplay.xib; sourceTree = "<group>"; };
 		1DEC6B591E6D578100D1B223 /* iOSRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iOSRootViewController.h; sourceTree = "<group>"; };
 		1DEC6B5A1E6D578100D1B223 /* iOSRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iOSRootViewController.m; sourceTree = "<group>"; };
+		1DEC6B6B1E6D841700D1B223 /* AD14DA8D-C30C-39E8-A498-1035714193BD.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "AD14DA8D-C30C-39E8-A498-1035714193BD.bcsymbolmap"; sourceTree = "<group>"; };
+		1DEC6B6C1E6D841700D1B223 /* CEEFAF8D-1566-3F31-A3BC-C5CA298F090C.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "CEEFAF8D-1566-3F31-A3BC-C5CA298F090C.bcsymbolmap"; sourceTree = "<group>"; };
+		1DEC6B6D1E6D841700D1B223 /* JSONModel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JSONModel.framework; sourceTree = "<group>"; };
+		1DEC6B6E1E6D841700D1B223 /* JSONModel.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = JSONModel.framework.dSYM; sourceTree = "<group>"; };
 		D05984B11E68394300F20240 /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
 		D0C3F77C1E6838E6005AB2FC /* ChuckNorris.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChuckNorris.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0C3F7801E6838E6005AB2FC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -41,12 +67,33 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DEC6B731E6D849100D1B223 /* JSONModel.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1DEC6B5F1E6D815E00D1B223 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1DEC6B6B1E6D841700D1B223 /* AD14DA8D-C30C-39E8-A498-1035714193BD.bcsymbolmap */,
+				1DEC6B6C1E6D841700D1B223 /* CEEFAF8D-1566-3F31-A3BC-C5CA298F090C.bcsymbolmap */,
+				1DEC6B6D1E6D841700D1B223 /* JSONModel.framework */,
+				1DEC6B6E1E6D841700D1B223 /* JSONModel.framework.dSYM */,
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
+		1DEC6B761E6D84B300D1B223 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1D38004E1E6D87280063BD37 /* CNJoke.h */,
+				1D38004F1E6D87280063BD37 /* CNJoke.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		D0C3F7731E6838E6005AB2FC = {
 			isa = PBXGroup;
 			children = (
@@ -72,10 +119,12 @@
 				1DEC6B4D1E68633600D1B223 /* CNJokeDisplay.h */,
 				1DEC6B4E1E68633600D1B223 /* CNJokeDisplay.m */,
 				1DEC6B541E6864DF00D1B223 /* CNJokeDisplay.xib */,
+				1DEC6B5F1E6D815E00D1B223 /* Frameworks */,
 				D0C3F7901E6838E6005AB2FC /* Info.plist */,
 				1DEC6B591E6D578100D1B223 /* iOSRootViewController.h */,
 				1DEC6B5A1E6D578100D1B223 /* iOSRootViewController.m */,
 				D0C3F78D1E6838E6005AB2FC /* LaunchScreen.storyboard */,
+				1DEC6B761E6D84B300D1B223 /* Models */,
 				D0C3F77F1E6838E6005AB2FC /* Supporting Files */,
 				D0C3F7851E6838E6005AB2FC /* ViewController.h */,
 				D0C3F7861E6838E6005AB2FC /* ViewController.m */,
@@ -102,6 +151,7 @@
 				D0C3F7781E6838E6005AB2FC /* Sources */,
 				D0C3F7791E6838E6005AB2FC /* Frameworks */,
 				D0C3F77A1E6838E6005AB2FC /* Resources */,
+				1DEC6B751E6D849100D1B223 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -151,9 +201,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0C3F78F1E6838E6005AB2FC /* LaunchScreen.storyboard in Resources */,
+				1DEC6B721E6D841700D1B223 /* JSONModel.framework.dSYM in Resources */,
 				D0C3F78C1E6838E6005AB2FC /* Assets.xcassets in Resources */,
+				1DEC6B701E6D841700D1B223 /* CEEFAF8D-1566-3F31-A3BC-C5CA298F090C.bcsymbolmap in Resources */,
 				1DEC6B551E6864DF00D1B223 /* CNJokeDisplay.xib in Resources */,
 				D05984B21E68394300F20240 /* ViewController.xib in Resources */,
+				1DEC6B6F1E6D841700D1B223 /* AD14DA8D-C30C-39E8-A498-1035714193BD.bcsymbolmap in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -169,6 +222,7 @@
 				D0C3F7841E6838E6005AB2FC /* AppDelegate.m in Sources */,
 				D0C3F7811E6838E6005AB2FC /* main.m in Sources */,
 				1DEC6B4F1E68633600D1B223 /* CNJokeDisplay.m in Sources */,
+				1D3800501E6D87280063BD37 /* CNJoke.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,6 +335,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ChuckNorris/Frameworks",
+				);
 				INFOPLIST_FILE = ChuckNorris/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = bg.nemetschek.ChuckNorris;
@@ -293,6 +351,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ChuckNorris/Frameworks",
+				);
 				INFOPLIST_FILE = ChuckNorris/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = bg.nemetschek.ChuckNorris;
