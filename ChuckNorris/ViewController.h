@@ -11,8 +11,11 @@
 @interface ViewController : UIViewController
 - (IBAction)getResults:(UIButton *)sender;
 - (IBAction)chooseCategory:(UIButton *)sender;
+
+
 @property (weak, nonatomic) IBOutlet UISearchBar *textField;
 @property(nonatomic , strong) NSString *chosenCategory;
 @property(nonatomic , strong) NSString *searchString;
+@property(nonatomic , strong) NSArray *allCategories;
 @end
 

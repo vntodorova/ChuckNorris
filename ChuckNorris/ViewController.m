@@ -17,7 +17,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"First Controller";
-    // Do any additional setup after loading the view, typically from a nib.
+    [self retrieveCategories];
+        // Do any additional setup after loading the view, typically from a nib.
 }
 
 
@@ -36,14 +37,27 @@
     [self.navigationController pushViewController:secondController animated:YES];
 }
 
+- (void)retrieveCategories{
+    NSURLSession *defaultSession = [NSURLSession sharedSession];
+    NSURL * url = [NSURL URLWithString:@"https://api.chucknorris.io/jokes/categories"];
+    NSURLSessionDataTask * dataTask = [defaultSession dataTaskWithURL:url
+                                                    completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                        if(error == nil) {
+                                                            NSError *error;
+                                                            id jsonObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+                                                            self.allCategories = (NSArray *) jsonObject;
+                                                            
+                                                        }
+                                                    }];
+    [dataTask resume];
+}
+
 - (IBAction)chooseCategory:(UIButton *)sender {
     UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Categories"
                                                                    message:@"Choose category"
                                                             preferredStyle:UIAlertControllerStyleActionSheet];
     
-    NSArray *categories = [NSArray arrayWithObjects:@"Explicit", @"Dev", @"Movie", @"Food", @"Celebrity", @"Science", @"Political", @"Sport", @"Religion", @"Animal", @"Music", @"History", @"Travel", @"Career", @"Money", @"Fashion",nil];
-    
-    for (NSString* currentCategory in categories) {
+    for (NSString* currentCategory in self.allCategories) {
         [alert addAction:[UIAlertAction actionWithTitle:currentCategory style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             self.chosenCategory = currentCategory;
             NSLog(@"%@", _chosenCategory);
