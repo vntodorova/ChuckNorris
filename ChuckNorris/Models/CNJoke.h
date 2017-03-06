@@ -11,7 +11,7 @@
 
 @interface CNJoke : JSONModel
 
-@property (nonatomic, strong) NSArray<NSString*> *category;
+@property (nonatomic, strong) NSArray<NSString*><Optional> *category;
 @property (nonatomic, strong) NSString *icon_url;
 @property (nonatomic, strong) NSString *id;
 @property (nonatomic, strong) NSString *url;
