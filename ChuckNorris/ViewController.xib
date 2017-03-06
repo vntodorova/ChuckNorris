@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -17,11 +17,11 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9up-tR-tts">
-                    <rect key="frame" x="114.5" y="135" width="146" height="35"/>
+                    <rect key="frame" x="134" y="135" width="146" height="35"/>
                     <fontDescription key="fontDescription" type="system" pointSize="19"/>
                     <state key="normal" title="Choose category"/>
                     <connections>
@@ -29,17 +29,17 @@
                     </connections>
                 </button>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Search" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ePQ-ZJ-fRf">
-                    <rect key="frame" x="47" y="254" width="281" height="28"/>
+                    <rect key="frame" x="47" y="254" width="320" height="28"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                 </textView>
                 <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="SLR-tS-sqQ">
-                    <rect key="frame" x="47" y="298" width="281" height="44"/>
+                    <rect key="frame" x="47" y="298" width="320" height="44"/>
                     <textInputTraits key="textInputTraits"/>
                 </searchBar>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w7g-25-NnQ">
-                    <rect key="frame" x="166.5" y="442" width="42" height="30"/>
+                    <rect key="frame" x="186" y="442" width="42" height="30"/>
                     <state key="normal" title="DONE"/>
                     <connections>
                         <action selector="getResults:" destination="-1" eventType="touchUpInside" id="PhH-t8-Q5A"/>
@@ -48,7 +48,7 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="9up-tR-tts" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="135" id="2fS-F0-px7"/>
+                <constraint firstItem="9up-tR-tts" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" priority="999" constant="135" id="2fS-F0-px7"/>
                 <constraint firstItem="9up-tR-tts" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="65" id="4hb-Qd-EpZ"/>
                 <constraint firstItem="ePQ-ZJ-fRf" firstAttribute="top" secondItem="9up-tR-tts" secondAttribute="bottom" constant="70" id="5My-Jo-q0Q"/>
                 <constraint firstItem="SLR-tS-sqQ" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Gz4-xL-ejL"/>
@@ -57,12 +57,12 @@
                 <constraint firstItem="ePQ-ZJ-fRf" firstAttribute="width" secondItem="SLR-tS-sqQ" secondAttribute="width" id="RfA-6k-yAR"/>
                 <constraint firstItem="w7g-25-NnQ" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Rsa-Vo-YdJ"/>
                 <constraint firstItem="SLR-tS-sqQ" firstAttribute="centerX" secondItem="ePQ-ZJ-fRf" secondAttribute="centerX" id="V5N-UG-mr4"/>
-                <constraint firstItem="ePQ-ZJ-fRf" firstAttribute="top" secondItem="9up-tR-tts" secondAttribute="bottom" constant="84" id="ahZ-jJ-vWQ"/>
+                <constraint firstItem="ePQ-ZJ-fRf" firstAttribute="top" secondItem="9up-tR-tts" secondAttribute="bottom" priority="999" constant="84" id="ahZ-jJ-vWQ"/>
                 <constraint firstItem="SLR-tS-sqQ" firstAttribute="top" secondItem="ePQ-ZJ-fRf" secondAttribute="bottom" constant="16" id="gfJ-Lf-1P7"/>
                 <constraint firstItem="SLR-tS-sqQ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="47" id="hjG-LO-Fdj"/>
-                <constraint firstItem="w7g-25-NnQ" firstAttribute="top" secondItem="SLR-tS-sqQ" secondAttribute="bottom" constant="100" id="ntq-DC-omJ"/>
-                <constraint firstItem="9up-tR-tts" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="pEB-Y8-Kym"/>
-                <constraint firstItem="SLR-tS-sqQ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="298" id="vNA-pr-yyp"/>
+                <constraint firstItem="w7g-25-NnQ" firstAttribute="top" secondItem="SLR-tS-sqQ" secondAttribute="bottom" priority="999" constant="100" id="ntq-DC-omJ"/>
+                <constraint firstItem="9up-tR-tts" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" priority="999" id="pEB-Y8-Kym"/>
+                <constraint firstItem="SLR-tS-sqQ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" priority="999" constant="298" id="vNA-pr-yyp"/>
             </constraints>
             <variation key="default">
                 <mask key="constraints">
@@ -71,21 +71,28 @@
             </variation>
             <variation key="heightClass=compact-widthClass=compact">
                 <mask key="constraints">
+                    <exclude reference="2fS-F0-px7"/>
                     <exclude reference="ahZ-jJ-vWQ"/>
                     <exclude reference="vNA-pr-yyp"/>
-                    <exclude reference="2fS-F0-px7"/>
                     <include reference="NLw-bp-Vg0"/>
                     <exclude reference="ntq-DC-omJ"/>
                 </mask>
             </variation>
-            <variation key="heightClass=regular-widthClass=compact">
+            <variation key="heightClass=compact-widthClass=regular">
                 <mask key="constraints">
-                    <exclude reference="5My-Jo-q0Q"/>
-                    <exclude reference="N5j-kT-Va7"/>
-                    <exclude reference="4hb-Qd-EpZ"/>
+                    <exclude reference="2fS-F0-px7"/>
+                    <exclude reference="ahZ-jJ-vWQ"/>
+                    <exclude reference="vNA-pr-yyp"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="26.5" y="51.5"/>
+            <variation key="heightClass=regular-widthClass=compact">
+                <mask key="constraints">
+                    <exclude reference="4hb-Qd-EpZ"/>
+                    <exclude reference="5My-Jo-q0Q"/>
+                    <exclude reference="N5j-kT-Va7"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="25" y="25"/>
         </view>
     </objects>
 </document>
