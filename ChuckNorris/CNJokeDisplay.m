@@ -9,7 +9,7 @@
 #include <JSONModel/JSONModel.h>
 
 #import "CNJokeDisplay.h"
-#import "CNJokeReqeustResult.h"
+#import "CNJoke.h"
 
 @implementation CNJokeDisplay
 
@@ -29,7 +29,7 @@
 
 -(void) getCNJoke {
     NSURLSession *defaultSession = [NSURLSession sharedSession];
-    NSURL * url = [NSURL URLWithString:@"https://api.chucknorris.io/jokes/random"];
+    NSURL * url = [NSURL URLWithString:@"https://api.chucknorris.io/jokes/random?category=animal"];
     NSURLSessionDataTask * dataTask = [defaultSession dataTaskWithURL:url
                                                     completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
                                                         if(error == nil) {
