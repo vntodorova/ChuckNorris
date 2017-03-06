@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CNJokeDisplay">
             <connections>
+                <outlet property="jokeField" destination="HDW-79-7vG" id="IYw-Fo-pat"/>
                 <outlet property="view" destination="iN0-l3-epB" id="EAN-1C-05L"/>
             </connections>
         </placeholder>
@@ -19,15 +20,20 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eet-WU-yRa">
-                    <rect key="frame" x="139" y="217" width="42" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="HDW-79-7vG">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="HDW-79-7vG" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="ctO-1w-ZLZ"/>
+                <constraint firstItem="HDW-79-7vG" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="jDL-RK-0Fw"/>
+                <constraint firstItem="HDW-79-7vG" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="rjA-aO-fP8"/>
+                <constraint firstItem="HDW-79-7vG" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="uOb-dI-KRe"/>
+            </constraints>
         </view>
     </objects>
 </document>

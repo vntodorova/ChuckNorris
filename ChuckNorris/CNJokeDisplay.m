@@ -11,6 +11,7 @@
 #import "CNJokeDisplay.h"
 #import "CNJoke.h"
 
+NSString *jokeValue;
 @implementation CNJokeDisplay
 
 - (void)viewDidLoad {
@@ -47,16 +48,17 @@
         [urlToApi appendString: self.category];
     }
     
-    NSLog(@"%@", urlToApi);
     NSURL * url = [NSURL URLWithString:urlToApi];
     NSURLSessionDataTask * dataTask = [defaultSession dataTaskWithURL:url
                                                     completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
                                                         if(error == nil) {
                                                             NSError *error;
                                                             CNJoke *requestResult = [[CNJoke alloc] initWithData:data error:&error];
-                                                            NSLog(@"%@", requestResult.value);
+//                                                            NSLog(@"%@", );
+                                                            jokeValue = requestResult.value;
                                                         }
                                                     }];
+    self.jokeField.text = jokeValue;
     [dataTask resume];
 }
 

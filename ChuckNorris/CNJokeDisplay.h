@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface CNJokeDisplay : UIViewController
+@property (weak, nonatomic) IBOutlet UITextView *jokeField;
+
 
 -(void)getCNJoke;
 
