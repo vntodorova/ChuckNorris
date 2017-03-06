@@ -27,17 +27,13 @@
 }
 
 
-- (IBAction)button:(id)sender {
-}
-- (IBAction)onButtonPressed:(id)sender {
-    CNJokeDisplay *secondController = [[CNJokeDisplay alloc] initWithNibName:nil bundle:nil];
-    [self.navigationController pushViewController:secondController animated:YES];
-}
-
 - (IBAction)getResults:(UIButton *)sender {
     self.searchString = _textField.text;
     NSLog(@"%@", self.searchString);
-    
+    CNJokeDisplay *secondController = [[CNJokeDisplay alloc] initWithNibName:nil bundle:nil];
+    secondController.category = self.chosenCategory;
+    secondController.searchedString = self.searchString;
+    [self.navigationController pushViewController:secondController animated:YES];
 }
 
 - (IBAction)chooseCategory:(UIButton *)sender {

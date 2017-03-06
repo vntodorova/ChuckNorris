@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewController : UIViewController
-- (IBAction)onButtonPressed:(id)sender;
 - (IBAction)getResults:(UIButton *)sender;
 - (IBAction)chooseCategory:(UIButton *)sender;
 @property (weak, nonatomic) IBOutlet UISearchBar *textField;

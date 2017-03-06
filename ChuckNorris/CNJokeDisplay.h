@@ -12,5 +12,8 @@
 
 -(void)getCNJoke;
 
+@property NSString *category;
+@property NSString *searchedString;
+
 @end
 
