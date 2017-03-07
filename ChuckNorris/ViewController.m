@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 #import "CNJokeDisplay.h"
-@interface ViewController ()
+@interface ViewController () <UISearchBarDelegate>
 
 @end
 
@@ -27,13 +27,19 @@
     // Dispose of any resources that can be recreated.
 }
 
-
-- (IBAction)getResults:(UIButton *)sender {
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+    [_textField resignFirstResponder];
     self.searchString = _textField.text;
     NSLog(@"%@", self.searchString);
     CNJokeDisplay *secondController = [[CNJokeDisplay alloc] initWithNibName:nil bundle:nil];
-    secondController.category = self.chosenCategory;
     secondController.searchedString = self.searchString;
+    [self.navigationController pushViewController:secondController animated:YES];
+}
+
+
+- (IBAction)getResults:(UIButton *)sender {
+    CNJokeDisplay *secondController = [[CNJokeDisplay alloc] initWithNibName:nil bundle:nil];
+    secondController.category = self.chosenCategory;
     [self.navigationController pushViewController:secondController animated:YES];
 }
 

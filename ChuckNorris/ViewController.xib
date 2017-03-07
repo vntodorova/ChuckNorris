@@ -37,6 +37,9 @@
                 <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="SLR-tS-sqQ">
                     <rect key="frame" x="47" y="298" width="320" height="44"/>
                     <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="EWe-4d-NXU"/>
+                    </connections>
                 </searchBar>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w7g-25-NnQ">
                     <rect key="frame" x="186" y="442" width="42" height="30"/>
