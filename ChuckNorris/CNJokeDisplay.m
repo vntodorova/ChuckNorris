@@ -12,6 +12,7 @@
 #import "CNJoke.h"
 
 NSString *jokeValue;
+NSString *urlToImage;
 @implementation CNJokeDisplay
 
 - (void)viewDidLoad {
@@ -35,6 +36,7 @@ NSString *jokeValue;
 -(void) getCNJoke {
     NSURLSession *defaultSession = [NSURLSession sharedSession];
     NSMutableString *urlToApi = [[NSMutableString alloc] init];
+    
     self.searchedString = @"Chuck";
     
     [urlToApi appendString: @"https://api.chucknorris.io/jokes/random"];
@@ -55,9 +57,15 @@ NSString *jokeValue;
                                                             NSError *error;
                                                             CNJoke *requestResult = [[CNJoke alloc] initWithData:data error:&error];
 //                                                            NSLog(@"%@", );
+                                                            urlToImage = requestResult.icon_url;
+                                                            NSLog(@"%@", urlToImage);
                                                             jokeValue = requestResult.value;
                                                         }
                                                     }];
+    NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: urlToImage]];
+    
+    self.imageView.image = [UIImage imageWithData: imageData];
+    //[imageData release];
     self.jokeField.text = jokeValue;
     [dataTask resume];
 }

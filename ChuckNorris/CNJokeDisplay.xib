@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CNJokeDisplay">
             <connections>
+                <outlet property="imageView" destination="Kjx-XU-6yu" id="PjB-r8-v40"/>
                 <outlet property="jokeField" destination="HDW-79-7vG" id="IYw-Fo-pat"/>
                 <outlet property="view" destination="iN0-l3-epB" id="EAN-1C-05L"/>
             </connections>
@@ -21,18 +22,30 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="HDW-79-7vG">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <rect key="frame" x="0.0" y="250" width="320" height="300"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="300" id="GDc-Kh-35I"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Kjx-XU-6yu">
+                    <rect key="frame" x="0.0" y="50" width="320" height="150"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="150" id="e1B-B3-Ihh"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="HDW-79-7vG" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="ctO-1w-ZLZ"/>
-                <constraint firstItem="HDW-79-7vG" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="jDL-RK-0Fw"/>
-                <constraint firstItem="HDW-79-7vG" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="rjA-aO-fP8"/>
-                <constraint firstItem="HDW-79-7vG" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="uOb-dI-KRe"/>
+                <constraint firstItem="Kjx-XU-6yu" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="50" id="6J2-xu-aeM"/>
+                <constraint firstItem="HDW-79-7vG" firstAttribute="top" secondItem="Kjx-XU-6yu" secondAttribute="bottom" constant="50" id="WtD-hR-cmL"/>
+                <constraint firstItem="Kjx-XU-6yu" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="Yvh-bu-0L2"/>
+                <constraint firstItem="Kjx-XU-6yu" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="biA-vN-NaK"/>
+                <constraint firstItem="HDW-79-7vG" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="cyu-dx-lGt"/>
+                <constraint firstItem="Kjx-XU-6yu" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="hyV-i3-agt"/>
+                <constraint firstItem="HDW-79-7vG" firstAttribute="trailing" secondItem="Kjx-XU-6yu" secondAttribute="trailing" id="tBK-Hv-mdF"/>
             </constraints>
         </view>
     </objects>
