@@ -39,11 +39,11 @@ NSString *urlToImage;
     
     [urlToApi appendString: @"https://api.chucknorris.io/jokes/random"];
     
-    if (![self.searchedString isEqualToString: @""]) {
+    if (!(self.searchedString == nil)) {
         [urlToApi appendString:@"?query="];
         [urlToApi appendString: self.searchedString];
         
-    } else if(![self.category isEqualToString: @""]) {
+    } else if(!(self.category == nil)) {
         [urlToApi appendString: @"?category="];
         [urlToApi appendString: self.category];
     }
