@@ -11,42 +11,43 @@
 #import "CNJokeDisplay.h"
 #import "CNJoke.h"
 
-NSString *jokeValue;
-NSString *urlToImage;
 @implementation CNJokeDisplay
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"Second controller";
         NSLog(@"------------------------------");
-    NSTimer *t = [NSTimer scheduledTimerWithTimeInterval: 2.0
+    [NSTimer scheduledTimerWithTimeInterval: 2.0
                                                   target: self
-                                                selector:@selector(onTick:)
+                                                selector:@selector(getCNJoke)
                                                 userInfo: nil repeats:YES];
-
-    // Do any additional setup after loading the view, typically from a nib.
 }
 
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+}
+
+- (NSMutableString *)buildURL:(NSString *) searchString andCategory:(NSString*) category{
+    NSMutableString *result = [[NSMutableString alloc] init];
+    
+    [result appendString: @"https://api.chucknorris.io/jokes/random"];
+    
+    if (!(searchString == nil)) {
+        [result appendString:@"?query="];
+        [result appendString: searchString];
+        
+    } else if(!(category == nil)) {
+        [result appendString: @"?category="];
+        [result appendString: category];
+    }
+    
+    return result;
 }
 
 -(void) getCNJoke {
     NSURLSession *defaultSession = [NSURLSession sharedSession];
-    NSMutableString *urlToApi = [[NSMutableString alloc] init];
-    
-    [urlToApi appendString: @"https://api.chucknorris.io/jokes/random"];
-    
-    if (!(self.searchedString == nil)) {
-        [urlToApi appendString:@"?query="];
-        [urlToApi appendString: self.searchedString];
-        
-    } else if(!(self.category == nil)) {
-        [urlToApi appendString: @"?category="];
-        [urlToApi appendString: self.category];
-    }
+    NSMutableString *urlToApi = [self buildURL:self.searchedString andCategory:self.category];
     
     NSURL * url = [NSURL URLWithString:urlToApi];
     NSURLSessionDataTask * dataTask = [defaultSession dataTaskWithURL:url
@@ -54,21 +55,17 @@ NSString *urlToImage;
                                                         if(error == nil) {
                                                             NSError *error;
                                                             CNJoke *requestResult = [[CNJoke alloc] initWithData:data error:&error];
-//                                                            NSLog(@"%@", );
-                                                            urlToImage = requestResult.icon_url;
-                                                            NSLog(@"%@", urlToImage);
-                                                            jokeValue = requestResult.value;
+                                                            [self updateUI:requestResult];
                                                         }
                                                     }];
-    NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: urlToImage]];
-    
-    self.imageView.image = [UIImage imageWithData: imageData];
-    //[imageData release];
-    self.jokeField.text = jokeValue;
     [dataTask resume];
 }
 
--(void)onTick:(NSTimer *)timer {
-  [self getCNJoke];
+-(void)updateUI:(CNJoke *) joke{
+    NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: joke.icon_url]];
+    dispatch_async(dispatch_get_main_queue(),^{
+        self.imageView.image = [UIImage imageWithData: imageData];
+        self.jokeField.text = joke.value;
+    });
 }
 @end

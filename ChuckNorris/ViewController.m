@@ -25,7 +25,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)retrieveCategories{
+- (NSArray*)retrieveCategories{
     NSURLSession *defaultSession = [NSURLSession sharedSession];
     NSURL * url = [NSURL URLWithString:@"https://api.chucknorris.io/jokes/categories"];
     NSURLSessionDataTask * dataTask = [defaultSession dataTaskWithURL:url
@@ -37,6 +37,7 @@
                                                         }
                                                     }];
     [dataTask resume];
+    return self.allCategories;
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{

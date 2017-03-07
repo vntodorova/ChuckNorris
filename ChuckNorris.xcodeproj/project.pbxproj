@@ -16,12 +16,23 @@
 		1DEC6B731E6D849100D1B223 /* JSONModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DEC6B6D1E6D841700D1B223 /* JSONModel.framework */; };
 		1DEC6B741E6D849100D1B223 /* JSONModel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1DEC6B6D1E6D841700D1B223 /* JSONModel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D05984B21E68394300F20240 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D05984B11E68394300F20240 /* ViewController.xib */; };
+		D0B2B61C1E6ED8C100EC6B6B /* ChuckNorrisTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B2B61B1E6ED8C100EC6B6B /* ChuckNorrisTests.m */; };
 		D0C3F7811E6838E6005AB2FC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C3F7801E6838E6005AB2FC /* main.m */; };
 		D0C3F7841E6838E6005AB2FC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C3F7831E6838E6005AB2FC /* AppDelegate.m */; };
 		D0C3F7871E6838E6005AB2FC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C3F7861E6838E6005AB2FC /* ViewController.m */; };
 		D0C3F78C1E6838E6005AB2FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0C3F78B1E6838E6005AB2FC /* Assets.xcassets */; };
 		D0C3F78F1E6838E6005AB2FC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0C3F78D1E6838E6005AB2FC /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D0B2B61E1E6ED8C100EC6B6B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D0C3F7741E6838E6005AB2FC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D0C3F77B1E6838E6005AB2FC;
+			remoteInfo = ChuckNorris;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		1DEC6B751E6D849100D1B223 /* Embed Frameworks */ = {
@@ -48,6 +59,9 @@
 		1DEC6B6D1E6D841700D1B223 /* JSONModel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JSONModel.framework; sourceTree = "<group>"; };
 		1DEC6B6E1E6D841700D1B223 /* JSONModel.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = JSONModel.framework.dSYM; sourceTree = "<group>"; };
 		D05984B11E68394300F20240 /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
+		D0B2B6191E6ED8C100EC6B6B /* ChuckNorrisTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChuckNorrisTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0B2B61B1E6ED8C100EC6B6B /* ChuckNorrisTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChuckNorrisTests.m; sourceTree = "<group>"; };
+		D0B2B61D1E6ED8C100EC6B6B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D0C3F77C1E6838E6005AB2FC /* ChuckNorris.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChuckNorris.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0C3F7801E6838E6005AB2FC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D0C3F7821E6838E6005AB2FC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -60,6 +74,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		D0B2B6161E6ED8C100EC6B6B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D0C3F7791E6838E6005AB2FC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -91,10 +112,20 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		D0B2B61A1E6ED8C100EC6B6B /* ChuckNorrisTests */ = {
+			isa = PBXGroup;
+			children = (
+				D0B2B61B1E6ED8C100EC6B6B /* ChuckNorrisTests.m */,
+				D0B2B61D1E6ED8C100EC6B6B /* Info.plist */,
+			);
+			path = ChuckNorrisTests;
+			sourceTree = "<group>";
+		};
 		D0C3F7731E6838E6005AB2FC = {
 			isa = PBXGroup;
 			children = (
 				D0C3F77E1E6838E6005AB2FC /* ChuckNorris */,
+				D0B2B61A1E6ED8C100EC6B6B /* ChuckNorrisTests */,
 				D0C3F77D1E6838E6005AB2FC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -103,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				D0C3F77C1E6838E6005AB2FC /* ChuckNorris.app */,
+				D0B2B6191E6ED8C100EC6B6B /* ChuckNorrisTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -139,6 +171,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		D0B2B6181E6ED8C100EC6B6B /* ChuckNorrisTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D0B2B6221E6ED8C100EC6B6B /* Build configuration list for PBXNativeTarget "ChuckNorrisTests" */;
+			buildPhases = (
+				D0B2B6151E6ED8C100EC6B6B /* Sources */,
+				D0B2B6161E6ED8C100EC6B6B /* Frameworks */,
+				D0B2B6171E6ED8C100EC6B6B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D0B2B61F1E6ED8C100EC6B6B /* PBXTargetDependency */,
+			);
+			name = ChuckNorrisTests;
+			productName = ChuckNorrisTests;
+			productReference = D0B2B6191E6ED8C100EC6B6B /* ChuckNorrisTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		D0C3F77B1E6838E6005AB2FC /* ChuckNorris */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D0C3F7931E6838E6005AB2FC /* Build configuration list for PBXNativeTarget "ChuckNorris" */;
@@ -166,6 +216,12 @@
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = Veneta;
 				TargetAttributes = {
+					D0B2B6181E6ED8C100EC6B6B = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 9XZLRPAEST;
+						ProvisioningStyle = Automatic;
+						TestTargetID = D0C3F77B1E6838E6005AB2FC;
+					};
 					D0C3F77B1E6838E6005AB2FC = {
 						CreatedOnToolsVersion = 8.2.1;
 						ProvisioningStyle = Automatic;
@@ -186,11 +242,19 @@
 			projectRoot = "";
 			targets = (
 				D0C3F77B1E6838E6005AB2FC /* ChuckNorris */,
+				D0B2B6181E6ED8C100EC6B6B /* ChuckNorrisTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		D0B2B6171E6ED8C100EC6B6B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D0C3F77A1E6838E6005AB2FC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -208,6 +272,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		D0B2B6151E6ED8C100EC6B6B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D0B2B61C1E6ED8C100EC6B6B /* ChuckNorrisTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D0C3F7781E6838E6005AB2FC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -222,6 +294,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		D0B2B61F1E6ED8C100EC6B6B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D0C3F77B1E6838E6005AB2FC /* ChuckNorris */;
+			targetProxy = D0B2B61E1E6ED8C100EC6B6B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		D0C3F78D1E6838E6005AB2FC /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -234,6 +314,32 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		D0B2B6201E6ED8C100EC6B6B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 9XZLRPAEST;
+				INFOPLIST_FILE = ChuckNorrisTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = bg.nemetschek.ChuckNorrisTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ChuckNorris.app/ChuckNorris";
+			};
+			name = Debug;
+		};
+		D0B2B6211E6ED8C100EC6B6B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 9XZLRPAEST;
+				INFOPLIST_FILE = ChuckNorrisTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = bg.nemetschek.ChuckNorrisTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ChuckNorris.app/ChuckNorris";
+			};
+			name = Release;
+		};
 		D0C3F7911E6838E6005AB2FC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -359,6 +465,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		D0B2B6221E6ED8C100EC6B6B /* Build configuration list for PBXNativeTarget "ChuckNorrisTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D0B2B6201E6ED8C100EC6B6B /* Debug */,
+				D0B2B6211E6ED8C100EC6B6B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		D0C3F7771E6838E6005AB2FC /* Build configuration list for PBXProject "ChuckNorris" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
