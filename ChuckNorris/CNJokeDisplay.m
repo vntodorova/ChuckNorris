@@ -37,8 +37,6 @@ NSString *urlToImage;
     NSURLSession *defaultSession = [NSURLSession sharedSession];
     NSMutableString *urlToApi = [[NSMutableString alloc] init];
     
-    self.searchedString = @"Chuck";
-    
     [urlToApi appendString: @"https://api.chucknorris.io/jokes/random"];
     
     if (![self.searchedString isEqualToString: @""]) {
