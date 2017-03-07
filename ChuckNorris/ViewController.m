@@ -16,31 +16,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"First Controller";
+    self.title = @"Chuck Norris Jokes";
     [self retrieveCategories];
-        // Do any additional setup after loading the view, typically from a nib.
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
-    [_textField resignFirstResponder];
-    self.searchString = _textField.text;
-    NSLog(@"%@", self.searchString);
-    CNJokeDisplay *secondController = [[CNJokeDisplay alloc] initWithNibName:nil bundle:nil];
-    secondController.searchedString = self.searchString;
-    [self.navigationController pushViewController:secondController animated:YES];
-}
-
-
-- (IBAction)getResults:(UIButton *)sender {
-    CNJokeDisplay *secondController = [[CNJokeDisplay alloc] initWithNibName:nil bundle:nil];
-    secondController.category = self.chosenCategory;
-    [self.navigationController pushViewController:secondController animated:YES];
 }
 
 - (void)retrieveCategories{
@@ -52,21 +34,30 @@
                                                             NSError *error;
                                                             id jsonObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
                                                             self.allCategories = (NSArray *) jsonObject;
-                                                            
                                                         }
                                                     }];
     [dataTask resume];
 }
 
-- (IBAction)chooseCategory:(UIButton *)sender {
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+    [searchBar resignFirstResponder];
+    NSLog(@"%@", searchBar.text);
+    CNJokeDisplay *secondController = [[CNJokeDisplay alloc] initWithNibName:nil bundle:nil];
+    secondController.searchedString = searchBar.text;
+    [self.navigationController pushViewController:secondController animated:YES];
+}
+
+- (IBAction)chooseCategoryButtonClicked:(UIButton *)sender {
     UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Categories"
                                                                    message:@"Choose category"
                                                             preferredStyle:UIAlertControllerStyleActionSheet];
     
     for (NSString* currentCategory in self.allCategories) {
         [alert addAction:[UIAlertAction actionWithTitle:currentCategory style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-            self.chosenCategory = currentCategory;
-            NSLog(@"%@", _chosenCategory);
+            CNJokeDisplay *secondController = [[CNJokeDisplay alloc] initWithNibName:nil bundle:nil];
+            secondController.category = currentCategory;
+            NSLog(@"%@", currentCategory);
+            [self.navigationController pushViewController:secondController animated:YES];
             [self dismissViewControllerAnimated:YES completion:^{
             }];
         }]];
@@ -79,4 +70,5 @@
     
     [self presentViewController:alert animated:YES completion:nil];
 }
+
 @end

@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ViewController">
             <connections>
-                <outlet property="textField" destination="SLR-tS-sqQ" id="VGe-0Y-QAz"/>
+                <outlet property="searchBar" destination="SLR-tS-sqQ" id="ptf-DA-En3"/>
                 <outlet property="view" destination="iN0-l3-epB" id="2Xp-rA-49x"/>
             </connections>
         </placeholder>
@@ -25,7 +25,7 @@
                     <fontDescription key="fontDescription" type="system" pointSize="19"/>
                     <state key="normal" title="Choose category"/>
                     <connections>
-                        <action selector="chooseCategory:" destination="-1" eventType="touchUpInside" id="FSF-yr-iKe"/>
+                        <action selector="chooseCategoryButtonClicked:" destination="-1" eventType="touchUpInside" id="lj5-gH-5iV"/>
                     </connections>
                 </button>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Search" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ePQ-ZJ-fRf">
@@ -41,13 +41,6 @@
                         <outlet property="delegate" destination="-1" id="EWe-4d-NXU"/>
                     </connections>
                 </searchBar>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w7g-25-NnQ">
-                    <rect key="frame" x="186" y="442" width="42" height="30"/>
-                    <state key="normal" title="DONE"/>
-                    <connections>
-                        <action selector="getResults:" destination="-1" eventType="touchUpInside" id="PhH-t8-Q5A"/>
-                    </connections>
-                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -56,29 +49,19 @@
                 <constraint firstItem="ePQ-ZJ-fRf" firstAttribute="top" secondItem="9up-tR-tts" secondAttribute="bottom" constant="70" id="5My-Jo-q0Q"/>
                 <constraint firstItem="SLR-tS-sqQ" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Gz4-xL-ejL"/>
                 <constraint firstItem="SLR-tS-sqQ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="230" id="N5j-kT-Va7"/>
-                <constraint firstItem="w7g-25-NnQ" firstAttribute="top" secondItem="SLR-tS-sqQ" secondAttribute="bottom" constant="30" id="NLw-bp-Vg0"/>
                 <constraint firstItem="ePQ-ZJ-fRf" firstAttribute="width" secondItem="SLR-tS-sqQ" secondAttribute="width" id="RfA-6k-yAR"/>
-                <constraint firstItem="w7g-25-NnQ" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Rsa-Vo-YdJ"/>
                 <constraint firstItem="SLR-tS-sqQ" firstAttribute="centerX" secondItem="ePQ-ZJ-fRf" secondAttribute="centerX" id="V5N-UG-mr4"/>
                 <constraint firstItem="ePQ-ZJ-fRf" firstAttribute="top" secondItem="9up-tR-tts" secondAttribute="bottom" priority="999" constant="84" id="ahZ-jJ-vWQ"/>
                 <constraint firstItem="SLR-tS-sqQ" firstAttribute="top" secondItem="ePQ-ZJ-fRf" secondAttribute="bottom" constant="16" id="gfJ-Lf-1P7"/>
                 <constraint firstItem="SLR-tS-sqQ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="47" id="hjG-LO-Fdj"/>
-                <constraint firstItem="w7g-25-NnQ" firstAttribute="top" secondItem="SLR-tS-sqQ" secondAttribute="bottom" priority="999" constant="100" id="ntq-DC-omJ"/>
                 <constraint firstItem="9up-tR-tts" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" priority="999" id="pEB-Y8-Kym"/>
                 <constraint firstItem="SLR-tS-sqQ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" priority="999" constant="298" id="vNA-pr-yyp"/>
             </constraints>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="NLw-bp-Vg0"/>
-                </mask>
-            </variation>
             <variation key="heightClass=compact-widthClass=compact">
                 <mask key="constraints">
                     <exclude reference="2fS-F0-px7"/>
                     <exclude reference="ahZ-jJ-vWQ"/>
                     <exclude reference="vNA-pr-yyp"/>
-                    <include reference="NLw-bp-Vg0"/>
-                    <exclude reference="ntq-DC-omJ"/>
                 </mask>
             </variation>
             <variation key="heightClass=compact-widthClass=regular">
