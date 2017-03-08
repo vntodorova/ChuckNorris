@@ -12,7 +12,6 @@
 		1DEC6B551E6864DF00D1B223 /* CNJokeDisplay.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DEC6B541E6864DF00D1B223 /* CNJokeDisplay.xib */; };
 		1DEC6B6F1E6D841700D1B223 /* AD14DA8D-C30C-39E8-A498-1035714193BD.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = 1DEC6B6B1E6D841700D1B223 /* AD14DA8D-C30C-39E8-A498-1035714193BD.bcsymbolmap */; };
 		1DEC6B701E6D841700D1B223 /* CEEFAF8D-1566-3F31-A3BC-C5CA298F090C.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = 1DEC6B6C1E6D841700D1B223 /* CEEFAF8D-1566-3F31-A3BC-C5CA298F090C.bcsymbolmap */; };
-		1DEC6B721E6D841700D1B223 /* JSONModel.framework.dSYM in Resources */ = {isa = PBXBuildFile; fileRef = 1DEC6B6E1E6D841700D1B223 /* JSONModel.framework.dSYM */; };
 		1DEC6B731E6D849100D1B223 /* JSONModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DEC6B6D1E6D841700D1B223 /* JSONModel.framework */; };
 		1DEC6B741E6D849100D1B223 /* JSONModel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1DEC6B6D1E6D841700D1B223 /* JSONModel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D05984B21E68394300F20240 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D05984B11E68394300F20240 /* ViewController.xib */; };
@@ -57,7 +56,6 @@
 		1DEC6B6B1E6D841700D1B223 /* AD14DA8D-C30C-39E8-A498-1035714193BD.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "AD14DA8D-C30C-39E8-A498-1035714193BD.bcsymbolmap"; sourceTree = "<group>"; };
 		1DEC6B6C1E6D841700D1B223 /* CEEFAF8D-1566-3F31-A3BC-C5CA298F090C.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "CEEFAF8D-1566-3F31-A3BC-C5CA298F090C.bcsymbolmap"; sourceTree = "<group>"; };
 		1DEC6B6D1E6D841700D1B223 /* JSONModel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JSONModel.framework; sourceTree = "<group>"; };
-		1DEC6B6E1E6D841700D1B223 /* JSONModel.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = JSONModel.framework.dSYM; sourceTree = "<group>"; };
 		D05984B11E68394300F20240 /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
 		D0B2B6191E6ED8C100EC6B6B /* ChuckNorrisTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChuckNorrisTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0B2B61B1E6ED8C100EC6B6B /* ChuckNorrisTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChuckNorrisTests.m; sourceTree = "<group>"; };
@@ -98,7 +96,6 @@
 				1DEC6B6B1E6D841700D1B223 /* AD14DA8D-C30C-39E8-A498-1035714193BD.bcsymbolmap */,
 				1DEC6B6C1E6D841700D1B223 /* CEEFAF8D-1566-3F31-A3BC-C5CA298F090C.bcsymbolmap */,
 				1DEC6B6D1E6D841700D1B223 /* JSONModel.framework */,
-				1DEC6B6E1E6D841700D1B223 /* JSONModel.framework.dSYM */,
 			);
 			path = Frameworks;
 			sourceTree = "<group>";
@@ -260,7 +257,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0C3F78F1E6838E6005AB2FC /* LaunchScreen.storyboard in Resources */,
-				1DEC6B721E6D841700D1B223 /* JSONModel.framework.dSYM in Resources */,
 				D0C3F78C1E6838E6005AB2FC /* Assets.xcassets in Resources */,
 				1DEC6B701E6D841700D1B223 /* CEEFAF8D-1566-3F31-A3BC-C5CA298F090C.bcsymbolmap in Resources */,
 				1DEC6B551E6864DF00D1B223 /* CNJokeDisplay.xib in Resources */,
@@ -472,6 +468,7 @@
 				D0B2B6211E6ED8C100EC6B6B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D0C3F7771E6838E6005AB2FC /* Build configuration list for PBXProject "ChuckNorris" */ = {
 			isa = XCConfigurationList;
