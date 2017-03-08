@@ -16,67 +16,33 @@
 
 @implementation ChuckNorrisTests
 
--(void) testBuildURL {
+-(void) testBuildURLWithCategory {
     CNJokeDisplay *testClass = [[CNJokeDisplay alloc] init];
-    
-    //TEST 1
     NSMutableString *urlResult = [testClass buildURL:nil andCategory:@"animal"];
     NSString *str = [NSString stringWithString:urlResult];
     XCTAssertEqualObjects(str, @"https://api.chucknorris.io/jokes/random?category=animal", @"1. URL BUILD FAILED");
-    
-    //TEST 2
-    urlResult = [testClass buildURL:@"bear" andCategory:@"animal"];
-    str = [NSString stringWithString:urlResult];
+}
+
+-(void) testBuildURLWithQuery {
+    CNJokeDisplay *testClass = [[CNJokeDisplay alloc] init];
+    NSMutableString *urlResult = [testClass buildURL:@"bear" andCategory:@"animal"];
+    NSString *str = [NSString stringWithString:urlResult];
     XCTAssertEqualObjects(str, @"https://api.chucknorris.io/jokes/search?query=bear", @"2. URL BUILD FAILED");
 }
 
-- (void)testGetCNJokeWithCategory {
-    XCTestExpectation *expectation = [self expectationWithDescription:@"asynchronous request"];
+-(void) testResponseHandlerDataNil{
+    CNJokeDisplay *testClass = [[CNJokeDisplay alloc] init];
     
-    NSURLSession *defaultSession = [NSURLSession sharedSession];
+    XCTAssertThrows([testClass responseHandler:nil withResponse:[[NSURLResponse alloc] init] andError:nil], "Data is nil");
     
-    NSURL * url = [NSURL URLWithString:@"https://api.chucknorris.io/jokes/random?category=animal"];
-    NSURLSessionDataTask *dataTask = [defaultSession dataTaskWithURL:url
-                                                   completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                                                       XCTAssertNil(error, @"Error occured : %@", error);
-                                                       
-                                                       if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
-                                                           XCTAssertNotNil(data, "Data returned is nill");
-                                                       }
-                                                       [expectation fulfill];
-                                                   }];
-    [dataTask resume];
-    [self waitForExpectationsWithTimeout:10.0 handler:nil];
+    XCTAssertThrows([testClass responseHandler:[[NSData alloc] init] withResponse:nil andError:nil], "Response is nil");
 }
 
-- (void)testGetCNJokeWithQuery {
-    XCTestExpectation *expectation = [self expectationWithDescription:@"Testing Async Method Works!"];
+-(void) testResposeHandlerWithError{
+    CNJokeDisplay *testClass = [[CNJokeDisplay alloc] init];
     
-//    [CNJokeDisplay asyncMethodWithCompletionBlock:^(NSError *error, NSHTTPURLResponse *httpResponse, NSData *data) {
-//        
-//        if(error)
-//        {
-//            NSLog(@"error is: %@", error);
-//        }else{
-//            NSInteger statusCode = [httpResponse statusCode];
-//            XCTAssertEqual(statusCode, 200);
-//            [expectation fulfill];
-//        }
-//        
-//    }];
-    
-    
-    [self waitForExpectationsWithTimeout:5.0 handler:^(NSError *error) {
-        
-        if(error)
-        {
-            XCTFail(@"Expectation Failed with error: %@", error);
-        }
-        
-    }];
+    XCTAssertThrows([testClass responseHandler:[[NSData alloc] init] withResponse:[[NSURLResponse alloc] init] andError:[[NSError alloc] init]], "Error is not nil");
 }
-
-
 
 - (void)setUp {
     [super setUp];
