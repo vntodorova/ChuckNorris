@@ -9,14 +9,17 @@
 #import <UIKit/UIKit.h>
 
 @interface CNJokeDisplay : UIViewController
+
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UITextView *jokeField;
-
-
--(void)getCNJoke;
-
 @property NSString *category;
 @property NSString *searchedString;
+@property NSURLSessionDataTask *dataTask;
+@property NSMutableArray *jokeList;
+- (void)getCNJoke;
+- (void)responseHandler: (NSData *) data withRsponse:(NSURLResponse *) response andError:(NSError *) error;
+- (NSMutableString *)buildURL:(NSString *) searchString andCategory:(NSString*) category;
+
 
 @end
 

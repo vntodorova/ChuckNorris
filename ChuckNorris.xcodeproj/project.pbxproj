@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1D3800501E6D87280063BD37 /* CNJoke.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D38004F1E6D87280063BD37 /* CNJoke.m */; };
+		1D3800561E6EC6700063BD37 /* CNJokeArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3800551E6EC6700063BD37 /* CNJokeArray.m */; };
 		1DEC6B4F1E68633600D1B223 /* CNJokeDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DEC6B4E1E68633600D1B223 /* CNJokeDisplay.m */; };
 		1DEC6B551E6864DF00D1B223 /* CNJokeDisplay.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DEC6B541E6864DF00D1B223 /* CNJokeDisplay.xib */; };
 		1DEC6B6F1E6D841700D1B223 /* AD14DA8D-C30C-39E8-A498-1035714193BD.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = 1DEC6B6B1E6D841700D1B223 /* AD14DA8D-C30C-39E8-A498-1035714193BD.bcsymbolmap */; };
@@ -50,6 +51,8 @@
 /* Begin PBXFileReference section */
 		1D38004E1E6D87280063BD37 /* CNJoke.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CNJoke.h; sourceTree = "<group>"; };
 		1D38004F1E6D87280063BD37 /* CNJoke.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CNJoke.m; sourceTree = "<group>"; };
+		1D3800541E6EC6700063BD37 /* CNJokeArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CNJokeArray.h; sourceTree = "<group>"; };
+		1D3800551E6EC6700063BD37 /* CNJokeArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CNJokeArray.m; sourceTree = "<group>"; };
 		1DEC6B4D1E68633600D1B223 /* CNJokeDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CNJokeDisplay.h; sourceTree = "<group>"; };
 		1DEC6B4E1E68633600D1B223 /* CNJokeDisplay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CNJokeDisplay.m; sourceTree = "<group>"; };
 		1DEC6B541E6864DF00D1B223 /* CNJokeDisplay.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CNJokeDisplay.xib; sourceTree = "<group>"; };
@@ -105,6 +108,8 @@
 			children = (
 				1D38004E1E6D87280063BD37 /* CNJoke.h */,
 				1D38004F1E6D87280063BD37 /* CNJoke.m */,
+				1D3800541E6EC6700063BD37 /* CNJokeArray.h */,
+				1D3800551E6EC6700063BD37 /* CNJokeArray.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -283,6 +288,7 @@
 				D0C3F7871E6838E6005AB2FC /* ViewController.m in Sources */,
 				D0C3F7841E6838E6005AB2FC /* AppDelegate.m in Sources */,
 				D0C3F7811E6838E6005AB2FC /* main.m in Sources */,
+				1D3800561E6EC6700063BD37 /* CNJokeArray.m in Sources */,
 				1DEC6B4F1E68633600D1B223 /* CNJokeDisplay.m in Sources */,
 				1D3800501E6D87280063BD37 /* CNJoke.m in Sources */,
 			);
