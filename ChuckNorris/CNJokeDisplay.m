@@ -18,7 +18,7 @@
     //self.jokeList = [[NSMutableArray init] alloc];
     self.title = @"Second controller";
     [NSTimer scheduledTimerWithTimeInterval: 2.0 target: self
-                                   selector:@selector(getCNJoke)
+                                   selector:@selector(onTick)
                                    userInfo: nil repeats:YES];
 }
 
@@ -28,7 +28,6 @@
 
 - (NSMutableString *)buildURL:(NSString *) searchString andCategory:(NSString*) category{
     NSMutableString *result = [[NSMutableString alloc] init];
-    
     [result appendString: @"https://api.chucknorris.io/jokes/"];
     
     if (!(searchString == nil)) {
@@ -43,11 +42,10 @@
     return result;
 }
 
--(void) getCNJoke {
+-(void) getCNJoke: (NSMutableString *) providedUrl {
     NSURLSession *defaultSession = [NSURLSession sharedSession];
-    NSMutableString *urlToApi = [self buildURL:self.searchedString andCategory:self.category];
-    
-    NSURL * url = [NSURL URLWithString:urlToApi];
+
+    NSURL * url = [NSURL URLWithString:providedUrl];
     self.dataTask = [defaultSession dataTaskWithURL:url
                                   completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
                                       @try {
@@ -105,13 +103,16 @@
     }
 }
 
-
-
 -(void)updateUI:(CNJoke *) joke{
     NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: joke.icon_url]];
     dispatch_async(dispatch_get_main_queue(),^{
         self.imageView.image = [UIImage imageWithData: imageData];
         self.jokeField.text = joke.value;
     });
+}
+
+-(void) onTick {
+    NSMutableString *urlToApi = [self buildURL:self.searchedString andCategory:self.category];
+    [self getCNJoke:urlToApi];
 }
 @end
