@@ -17,7 +17,7 @@
 @property NSURLSessionDataTask *dataTask;
 @property NSMutableArray *jokeList;
 - (void)getCNJoke;
-- (void)responseHandler: (NSData *) data withRsponse:(NSURLResponse *) response andError:(NSError *) error;
+- (void)responseHandler: (NSData *) data withResponse:(NSURLResponse *) response andError:(NSError *) error;
 - (NSMutableString *)buildURL:(NSString *) searchString andCategory:(NSString*) category;
 
 

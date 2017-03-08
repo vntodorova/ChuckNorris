@@ -51,7 +51,7 @@
     self.dataTask = [defaultSession dataTaskWithURL:url
                                   completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
                                       @try {
-                                           [self responseHandler:data withRsponse:response andError:error];
+                                           [self responseHandler:data withResponse:response andError:error];
                                       } @catch (NSException *exception) {
                                           NSLog(@"OPS %@", [exception description]);
                                       }
@@ -59,7 +59,7 @@
     [self.dataTask resume];
 }
 
--(void) responseHandler:(NSData * _Nonnull) data withRsponse:(NSURLResponse *) response andError:(NSError *) responseError {
+-(void) responseHandler:(NSData * _Nonnull) data withResponse:(NSURLResponse *) response andError:(NSError *) responseError {
     if (data == nil || data.length == 0) {
         @throw [NSException
                 exceptionWithName:@"Exception"
