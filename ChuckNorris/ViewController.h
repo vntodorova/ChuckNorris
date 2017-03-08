@@ -13,7 +13,11 @@
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property(nonatomic , strong) NSArray *allCategories;
 
-- (NSArray*)retrieveCategories;
+- (void)retrieveCategories;
+- (BOOL)handleCompletion:   (NSData *) data
+             andResponse:   (NSURLResponse *)response
+                andError:   (NSError *) error;
+
 - (IBAction)chooseCategoryButtonClicked:(UIButton *)sender;
 
 @end

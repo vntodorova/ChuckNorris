@@ -25,19 +25,27 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (NSArray*)retrieveCategories{
+- (void)retrieveCategories{
     NSURLSession *defaultSession = [NSURLSession sharedSession];
-    NSURL * url = [NSURL URLWithString:@"https://api.chucknorris.io/jokes/categories"];
-    NSURLSessionDataTask * dataTask = [defaultSession dataTaskWithURL:url
-                                                    completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                                                        if(error == nil) {
-                                                            NSError *error;
-                                                            id jsonObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-                                                            self.allCategories = (NSArray *) jsonObject;
-                                                        }
-                                                    }];
+    NSURL *url = [NSURL URLWithString:@"https://api.chucknorris.io/jokes/categories"];
+    NSURLSessionDataTask *dataTask = [defaultSession dataTaskWithURL:url
+                                                   completionHandler:^(NSData *data, NSURLResponse *response, NSError *error){
+                                                       [self handleCompletion:data andResponse:response andError:error];
+                                                   }];
     [dataTask resume];
-    return self.allCategories;
+}
+
+- (BOOL)handleCompletion:	(NSData *) data
+             andResponse: (NSURLResponse *)response
+                andError: (NSError *) error{
+    NSHTTPURLResponse *resp = (NSHTTPURLResponse *) response;
+    if(error == nil && [resp statusCode] == 200) {
+        NSError *error;
+        id jsonObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+        self.allCategories = (NSArray *) jsonObject;
+        return YES;
+    }
+    return NO;
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
