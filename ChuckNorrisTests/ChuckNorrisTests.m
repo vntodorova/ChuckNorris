@@ -16,12 +16,6 @@
 
 @implementation ChuckNorrisTests
 
--(void)testRetrieveCategories{
-    ViewController *testClass = [[ViewController alloc] init];
-    NSArray* result = [testClass retrieveCategories];
-    XCTAssertNil(result,@"Categories not found");
-}
-
 -(void) testBuildURL {
     CNJokeDisplay *testClass = [[CNJokeDisplay alloc] init];
     

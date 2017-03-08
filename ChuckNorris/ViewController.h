@@ -14,9 +14,9 @@
 @property(nonatomic , strong) NSArray *allCategories;
 
 - (void)retrieveCategories;
-- (BOOL)handleCompletion:   (NSData *) data
-             andResponse:   (NSURLResponse *)response
-                andError:   (NSError *) error;
+- (void)responseHandler:   (NSData *) data
+           withResponse:   (NSURLResponse *)response
+               andError:   (NSError *) error;
 
 - (IBAction)chooseCategoryButtonClicked:(UIButton *)sender;
 

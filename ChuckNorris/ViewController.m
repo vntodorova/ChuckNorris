@@ -30,23 +30,57 @@
     NSURL *url = [NSURL URLWithString:@"https://api.chucknorris.io/jokes/categories"];
     NSURLSessionDataTask *dataTask = [defaultSession dataTaskWithURL:url
                                                    completionHandler:^(NSData *data, NSURLResponse *response, NSError *error){
-                                                       [self handleCompletion:data andResponse:response andError:error];
+                                                       [self responseHandler:data withResponse:response andError:error];
                                                    }];
     [dataTask resume];
 }
 
-- (BOOL)handleCompletion:	(NSData *) data
-             andResponse: (NSURLResponse *)response
-                andError: (NSError *) error{
-    NSHTTPURLResponse *resp = (NSHTTPURLResponse *) response;
-    if(error == nil && [resp statusCode] == 200) {
-        NSError *error;
-        id jsonObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-        self.allCategories = (NSArray *) jsonObject;
-        return YES;
+-(void) responseHandler:(NSData * _Nonnull) data withResponse:(NSURLResponse *) response andError:(NSError *) responseError {
+    if (data == nil || data.length == 0) {
+        @throw [NSException
+                exceptionWithName:@"Exception"
+                reason:@"Data empty"
+                userInfo:nil];
     }
-    return NO;
+    
+    if (response == nil) {
+        @throw [NSException
+                exceptionWithName:@"Exception"
+                reason:@"Response is nil"
+                userInfo:nil];
+    }
+    
+    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+    
+    if([httpResponse statusCode] != 200) {
+        @throw [NSException
+                exceptionWithName:@"Exception"
+                reason:[NSString stringWithFormat:@"Response code %ld", (long)[httpResponse statusCode]]
+                userInfo:nil];
+    }
+    
+    if(responseError == nil ) {
+        NSError *error;
+        
+        if(error == nil) {
+            NSError *error;
+            id jsonObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+            self.allCategories = (NSArray *) jsonObject;
+            
+        } else {
+            @throw[NSException
+                   exceptionWithName:@"Exception"
+                   reason:[NSString stringWithFormat:@"Data is invalid format :%@",[data description]]
+                   userInfo: nil];
+        }
+    } else {
+        @throw [NSException
+                exceptionWithName:@"Exception"
+                reason:[NSString stringWithFormat:@"Error recived %@", [responseError description]]
+                userInfo:nil];
+    }
 }
+
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
     [searchBar resignFirstResponder];
