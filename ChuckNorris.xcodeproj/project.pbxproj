@@ -561,6 +561,7 @@
 				B50FBF131E70429200708C76 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D0B2B6221E6ED8C100EC6B6B /* Build configuration list for PBXNativeTarget "ChuckNorrisTests" */ = {
 			isa = XCConfigurationList;

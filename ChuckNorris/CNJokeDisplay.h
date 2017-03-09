@@ -12,9 +12,11 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UITextView *jokeField;
+@property NSInteger currentStatus;
 @property NSString *category;
 @property NSString *searchedString;
 @property NSURLSessionDataTask *dataTask;
+
 @property NSMutableArray *jokeList;
 -(void) getCNJoke: (NSMutableString *) providedUrl;
 - (void)responseHandler: (NSData *) data withResponse:(NSURLResponse *) response andError:(NSError *) error;

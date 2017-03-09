@@ -14,7 +14,6 @@
 
 @interface CNJokeArray : JSONModel
 @property NSString *total;
-@property NSArray<CNJoke*> *result;
--(void) populateResultWithJokes;
+@property (strong, nonatomic) NSArray<CNJoke*> <CNJoke> *result;
 
 @end

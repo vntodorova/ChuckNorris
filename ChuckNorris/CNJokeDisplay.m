@@ -11,21 +11,29 @@
 #import "CNJokeDisplay.h"
 #import "CNJoke.h"
 #import "CNJokeArray.h"
+
 @implementation CNJokeDisplay
+
+static const int STATUS_SEARCH_BY_QUERY = 1;
+static const int STATUS_SEARCH_BY_CATEGORY = 2;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    if(_searchedString == nil) {
-        self.title = [NSString stringWithFormat:@"Category : %@", _category];
+    if(self.searchedString == nil) {
+        self.currentStatus = STATUS_SEARCH_BY_CATEGORY;
+        self.title = [NSString stringWithFormat:@"Category : %@", self.category];
+        
+        [NSTimer scheduledTimerWithTimeInterval: 2.0
+                                         target: self
+                                       selector:@selector(onTick)
+                                       userInfo: nil repeats:YES];
     } else {
-        self.title = [NSString stringWithFormat:@"Searched word : %@", _searchedString];
+        self.currentStatus = STATUS_SEARCH_BY_QUERY;
+        self.title = [NSString stringWithFormat:@"Searched word : %@", self.searchedString];
+        NSMutableString *urlToApi = [self buildURL:self.searchedString andCategory:self.category];
+        [self getCNJoke:urlToApi];
     }
-    
-    [NSTimer scheduledTimerWithTimeInterval: 2.0
-                                     target: self
-                                   selector:@selector(onTick)
-                                   userInfo: nil repeats:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -36,15 +44,15 @@
     NSMutableString *result = [[NSMutableString alloc] init];
     [result appendString: @"https://api.chucknorris.io/jokes/"];
     
-    if (searchString != nil) {
+    if (self.currentStatus == STATUS_SEARCH_BY_QUERY) {
         [result appendString:@"search?query="];
         [result appendString: searchString];
         
-    } else if(category != nil) {
+    } else if(self.currentStatus == STATUS_SEARCH_BY_CATEGORY) {
         [result appendString: @"random?category="];
         [result appendString: category];
     }
-    NSLog(@"%@",result);
+//    NSLog(@"%@",result);
     return result;
 }
 
@@ -54,13 +62,7 @@
     self.dataTask = [defaultSession dataTaskWithURL:url
                                   completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
                                       @try {
-                                           CNJokeArray *requestResult = [[CNJokeArray alloc] initWithData:data error:&error];
-                                          [requestResult populateResultWithJokes];
-                                           NSLog(@"%lu", (unsigned long)requestResult.result.count);
-                                           CNJoke *joke = [requestResult.result objectAtIndex:1];
-                                           NSLog(@"%@", joke.value);
-                                          
-                                        //   [self responseHandler:data withResponse:response andError:error];
+                                          [self responseHandler:data withResponse:response andError:error];
                                       } @catch (NSException *exception) {
                                           NSLog(@"OPS %@", [exception description]);
                                       }
@@ -94,17 +96,22 @@
     
     if(responseError == nil ) {
         NSError *error;
-        CNJoke *requestResult = [[CNJoke alloc] initWithData:data error:&error];
         
-        if(error == nil) {
-            [self.jokeList addObject:requestResult];
-            [self updateUI:requestResult];
+        if(self.currentStatus == STATUS_SEARCH_BY_QUERY){
+            CNJokeArray *requestResult = [[CNJokeArray alloc] initWithData:data error:&error];
+            [self.jokeList addObjectsFromArray:requestResult.result];
             
-        } else {
-            @throw[NSException
-                   exceptionWithName:@"Exception"
-                   reason:[NSString stringWithFormat:@"Data is invalid format :%@",[data description]]
-                   userInfo: nil];
+        } else{
+            CNJoke *requestResult = [[CNJoke alloc] initWithData:data error:&error];
+            if(error == nil) {
+                [self.jokeList addObject:requestResult];
+                [self updateUI:requestResult];
+            } else {
+                @throw[NSException
+                       exceptionWithName:@"Exception"
+                       reason:[NSString stringWithFormat:@"Data is invalid format :%@",[data description]]
+                       userInfo: nil];
+            }
         }
     } else {
         @throw [NSException

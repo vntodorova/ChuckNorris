@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import <JSONModel/JSONModel.h>
 
+@protocol CNJoke
+@end
+
 @interface CNJoke : JSONModel
 
 -(instancetype)initWithDictionary:(NSDictionary *) dictionary;
