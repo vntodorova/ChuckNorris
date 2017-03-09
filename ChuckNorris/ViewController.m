@@ -84,7 +84,6 @@
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
     [searchBar resignFirstResponder];
-    NSLog(@"%@", searchBar.text);
     CNJokeDisplay *secondController = [[CNJokeDisplay alloc] initWithNibName:nil bundle:nil];
     secondController.searchedString = searchBar.text;
     [self.navigationController pushViewController:secondController animated:YES];

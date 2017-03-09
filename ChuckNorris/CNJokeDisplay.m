@@ -15,8 +15,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"Second controller";
-    [NSTimer scheduledTimerWithTimeInterval: 2.0 target: self
+    
+    if(_searchedString == nil) {
+        self.title = [NSString stringWithFormat:@"Category : %@", _category];
+    } else {
+        self.title = [NSString stringWithFormat:@"Searched word : %@", _searchedString];
+    }
+    
+    [NSTimer scheduledTimerWithTimeInterval: 2.0
+                                     target: self
                                    selector:@selector(onTick)
                                    userInfo: nil repeats:YES];
 }
@@ -29,11 +36,11 @@
     NSMutableString *result = [[NSMutableString alloc] init];
     [result appendString: @"https://api.chucknorris.io/jokes/"];
     
-    if (!(searchString == nil)) {
+    if (searchString != nil) {
         [result appendString:@"search?query="];
         [result appendString: searchString];
         
-    } else if(!(category == nil)) {
+    } else if(category != nil) {
         [result appendString: @"random?category="];
         [result appendString: category];
     }
