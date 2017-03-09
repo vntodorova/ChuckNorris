@@ -54,11 +54,11 @@ typedef void (^ RequstHandleBlock)(NSData*, NSURLResponse*, NSError*);
     NSMutableString *result = [[NSMutableString alloc] init];
     [result appendString: @"https://api.chucknorris.io/jokes/"];
     
-    if (self.currentStatus == STATUS_SEARCH_BY_QUERY) {
+    if (searchString != nil) {
         [result appendString:@"search?query="];
         [result appendString: searchString];
         
-    } else if(self.currentStatus == STATUS_SEARCH_BY_CATEGORY) {
+    } else if(category != nil) {
         [result appendString: @"random?category="];
         [result appendString: category];
     }
