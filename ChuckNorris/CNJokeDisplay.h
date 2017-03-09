@@ -13,8 +13,10 @@
 
 @interface CNJokeDisplay : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
+@property (weak, nonatomic) IBOutlet UISwitch *switchView;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+- (IBAction)switchToggle:(UISwitch *)sender;
 
 @property NSInteger currentStatus;
 @property NSString *category;

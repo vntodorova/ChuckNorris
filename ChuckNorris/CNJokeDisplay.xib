@@ -13,6 +13,7 @@
             <connections>
                 <outlet property="collectionView" destination="4ib-tM-SZB" id="sUZ-6t-3NZ"/>
                 <outlet property="imageView" destination="Kjx-XU-6yu" id="PjB-r8-v40"/>
+                <outlet property="switchView" destination="7eB-oS-2Ez" id="zfi-Sz-Y8X"/>
                 <outlet property="view" destination="iN0-l3-epB" id="EAN-1C-05L"/>
             </connections>
         </placeholder>
@@ -35,13 +36,20 @@
                         <outlet property="delegate" destination="-1" id="BwN-QQ-fXt"/>
                     </connections>
                 </collectionView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kjx-XU-6yu">
-                    <rect key="frame" x="132" y="17" width="150" height="150"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Kjx-XU-6yu">
+                    <rect key="frame" x="132" y="65" width="150" height="150"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="150" id="NnJ-0Z-lDw"/>
                         <constraint firstAttribute="height" constant="150" id="e1B-B3-Ihh"/>
                     </constraints>
                 </imageView>
+                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7eB-oS-2Ez">
+                    <rect key="frame" x="318" y="125" width="51" height="31"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <connections>
+                        <action selector="switchToggle:" destination="-1" eventType="valueChanged" id="HAz-K4-xwN"/>
+                    </connections>
+                </switch>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>

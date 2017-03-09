@@ -165,9 +165,19 @@ typedef void (^ RequstHandleBlock)(NSData*, NSURLResponse*, NSError*);
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    CGRect screenRect = [[UIScreen mainScreen] bounds];
-    CGFloat screenWidth = screenRect.size.width;
+    CGFloat screenWidth;
+    if(_switchView.isOn){
+        CGRect screenRect = [[UIScreen mainScreen] bounds];
+        screenWidth = screenRect.size.width;
+    } else {
+        screenWidth = 50;
+    }
     return CGSizeMake(screenWidth,50);
 }
 
+- (IBAction)switchToggle:(UISwitch *)sender {
+    dispatch_async(dispatch_get_main_queue(),^{
+        [self.collectionView reloadData];
+    });
+}
 @end
