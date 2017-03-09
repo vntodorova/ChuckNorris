@@ -17,6 +17,9 @@
 static const int STATUS_SEARCH_BY_QUERY = 1;
 static const int STATUS_SEARCH_BY_CATEGORY = 2;
 
+typedef void (^ RequstHandleBlock)(NSData*, NSURLResponse*, NSError*);
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.collectionView registerClass:[CollectionViewCell class] forCellWithReuseIdentifier:@"CollectionViewCell"];
@@ -33,7 +36,9 @@ static const int STATUS_SEARCH_BY_CATEGORY = 2;
         self.currentStatus = STATUS_SEARCH_BY_QUERY;
         self.title = [NSString stringWithFormat:@"Searched word : %@", self.searchedString];
         NSMutableString *urlToApi = [self buildURL:self.searchedString andCategory:self.category];
-        [self getCNJoke:urlToApi];
+        [self getCNJoke:urlToApi withResponseBlock:^(NSData *data, NSURLResponse *response, NSError *error) {
+            [self responseHandler:data withResponse:response andError:error];
+        }];
     }
 }
 
@@ -53,21 +58,15 @@ static const int STATUS_SEARCH_BY_CATEGORY = 2;
         [result appendString: @"random?category="];
         [result appendString: category];
     }
-//    NSLog(@"%@",result);
     return result;
 }
 
--(void) getCNJoke: (NSMutableString *) providedUrl {
+-(void) getCNJoke: (NSMutableString *) providedUrl withResponseBlock:(void (^)(NSData *, NSURLResponse *, NSError *))respBlock {
     NSURLSession *defaultSession = [NSURLSession sharedSession];
     NSURL * url = [NSURL URLWithString:providedUrl];
+    
     self.dataTask = [defaultSession dataTaskWithURL:url
-                                  completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                                      @try {
-                                          [self responseHandler:data withResponse:response andError:error];
-                                      } @catch (NSException *exception) {
-                                          NSLog(@"OPS %@", [exception description]);
-                                      }
-                                  }];
+                                  completionHandler:respBlock];
     [self.dataTask resume];
 }
 
@@ -102,7 +101,7 @@ static const int STATUS_SEARCH_BY_CATEGORY = 2;
             CNJokeArray *requestResult = [[CNJokeArray alloc] initWithData:data error:&error];
             [self.jokeList addObjectsFromArray:requestResult.result];
             
-        } else{
+        } else {
             CNJoke *requestResult = [[CNJoke alloc] initWithData:data error:&error];
             if(error == nil) {
                 [self.jokeList addObject:requestResult];
@@ -132,7 +131,9 @@ static const int STATUS_SEARCH_BY_CATEGORY = 2;
 
 -(void) onTick {
     NSMutableString *urlToApi = [self buildURL:self.searchedString andCategory:self.category];
-    [self getCNJoke:urlToApi];
+    [self getCNJoke:urlToApi withResponseBlock:^(NSData *data, NSURLResponse *response, NSError *error) {
+        [self responseHandler:data withResponse:response andError:error];
+    }];
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section

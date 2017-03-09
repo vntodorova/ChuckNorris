@@ -44,6 +44,27 @@
     XCTAssertThrows([testClass responseHandler:[[NSData alloc] init] withResponse:[[NSURLResponse alloc] init] andError:[[NSError alloc] init]], "Error is not nil");
 }
 
+-(void) testGetCNJokeInvalidInput {
+    XCTestExpectation *expectation = [self expectationWithDescription:@"Asynch test"];
+    NSMutableString *testUrl = [[NSMutableString alloc] init];
+    [testUrl appendString:@"invalid url"];
+    CNJokeDisplay *testClass = [[CNJokeDisplay alloc] init];
+    
+    [testClass getCNJoke:testUrl withResponseBlock:^(NSData *data, NSURLResponse *response, NSError *error) {
+        XCTAssertNotNil(error, @"Expectation Failed with error: %@", error);
+        
+        NSHTTPURLResponse *respo = (NSHTTPURLResponse *) response;
+        XCTAssertNotEqual([respo statusCode], 200, @"Status code is %ld", (long)[respo statusCode]);
+        [expectation fulfill];
+    }];
+    
+    [self waitForExpectationsWithTimeout:10 handler:^(NSError *error){
+        
+    XCTAssertNil(error, @"Expectation Failed with error: %@", error);
+    }];
+
+}
+
 - (void)setUp {
     [super setUp];
     // Put setup code here. This method is called before the invocation of each test method in the class.

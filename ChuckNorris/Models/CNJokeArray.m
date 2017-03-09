@@ -7,7 +7,6 @@
 //
 
 #import "CNJokeArray.h"
-#import "CNJoke.h"
 @implementation CNJokeArray
 
 @end

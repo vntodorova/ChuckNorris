@@ -18,8 +18,11 @@
 @property NSString *searchedString;
 @property NSURLSessionDataTask *dataTask;
 @property NSMutableArray *jokeList;
--(void) getCNJoke: (NSMutableString *) providedUrl;
+
+-(void) getCNJoke: (NSMutableString *) providedUrl withResponseBlock: (void(^)(NSData*,NSURLResponse*, NSError*))respBlock;
+
 - (void)responseHandler: (NSData *) data withResponse:(NSURLResponse *) response andError:(NSError *) error;
+
 - (NSMutableString *)buildURL:(NSString *) searchString andCategory:(NSString*) category;
 
 
