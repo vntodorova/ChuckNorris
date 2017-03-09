@@ -12,6 +12,8 @@
 #import "CNJoke.h"
 #import "CNJokeArray.h"
 
+#define CELL_IDENTIFIER @"CVCell"
+
 @implementation CNJokeDisplay
 
 static const int STATUS_SEARCH_BY_QUERY = 1;
@@ -21,8 +23,10 @@ typedef void (^ RequstHandleBlock)(NSData*, NSURLResponse*, NSError*);
 
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    [self.collectionView registerClass:[CollectionViewCell class] forCellWithReuseIdentifier:@"CollectionViewCell"];
+    //[super viewDidLoad];
+    [self.collectionView registerNib:[UINib nibWithNibName:@"NibCell" bundle:nil] forCellWithReuseIdentifier:CELL_IDENTIFIER];
+    
+    self.jokeList = [[NSMutableArray alloc] init];
     
     if(self.searchedString == nil) {
         self.currentStatus = STATUS_SEARCH_BY_CATEGORY;
@@ -99,7 +103,11 @@ typedef void (^ RequstHandleBlock)(NSData*, NSURLResponse*, NSError*);
         
         if(self.currentStatus == STATUS_SEARCH_BY_QUERY){
             CNJokeArray *requestResult = [[CNJokeArray alloc] initWithData:data error:&error];
+            NSLog(@"%@", requestResult.result);
             [self.jokeList addObjectsFromArray:requestResult.result];
+            dispatch_async(dispatch_get_main_queue(),^{
+                [self.collectionView reloadData];
+            });
             
         } else {
             CNJoke *requestResult = [[CNJoke alloc] initWithData:data error:&error];
@@ -125,7 +133,7 @@ typedef void (^ RequstHandleBlock)(NSData*, NSURLResponse*, NSError*);
     NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: joke.icon_url]];
     dispatch_async(dispatch_get_main_queue(),^{
         self.imageView.image = [UIImage imageWithData: imageData];
-        //self.jokeField.text = joke.value;
+        [self.collectionView reloadData];
     });
 }
 
@@ -138,21 +146,28 @@ typedef void (^ RequstHandleBlock)(NSData*, NSURLResponse*, NSError*);
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    NSMutableArray *sectionArray = [self.jokeList objectAtIndex:section];
-    return [sectionArray count];
+    return self.jokeList.count;
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cellIdentifier = @"CollectionViewCell";
-    CollectionViewCell *cell = (CollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
-    NSMutableArray *data = [self.jokeList objectAtIndex:indexPath.section];
-    NSString *cellData = [data objectAtIndex:indexPath.row];
-    [cell.joke setText:cellData];
+    CollectionViewCell *cell = (CollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:CELL_IDENTIFIER forIndexPath:indexPath];
+    CNJoke * joke = [self.jokeList objectAtIndex:indexPath.row];
+    cell.jokeLabel.text = joke.value;
+
     return cell;
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
-    return [[self jokeList] count];
+    return 1;
 }
+
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    CGFloat screenWidth = screenRect.size.width;
+    return CGSizeMake(screenWidth,50);
+}
+
 @end

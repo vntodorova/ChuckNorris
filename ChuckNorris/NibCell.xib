@@ -9,33 +9,34 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner">
-            <connections>
-                <outlet property="joke" destination="iVY-eo-2GG" id="oWB-7e-WJA"/>
-            </connections>
-        </placeholder>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="qyx-n8-PFQ" customClass="CollectionViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="267" height="114"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="CVCell" id="qyx-n8-PFQ" customClass="CollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="400" height="120"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="267" height="114"/>
+                <rect key="frame" x="0.0" y="0.0" width="400" height="120"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iVY-eo-2GG">
-                        <rect key="frame" x="0.0" y="0.0" width="267" height="114"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FqG-pG-aNc">
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="120"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
             </view>
-            <size key="customSize" width="267" height="114"/>
+            <constraints>
+                <constraint firstItem="FqG-pG-aNc" firstAttribute="leading" secondItem="qyx-n8-PFQ" secondAttribute="leading" id="5la-Z7-Kbp"/>
+                <constraint firstItem="FqG-pG-aNc" firstAttribute="width" secondItem="qyx-n8-PFQ" secondAttribute="width" id="6Z0-4c-2R7"/>
+                <constraint firstItem="FqG-pG-aNc" firstAttribute="height" secondItem="qyx-n8-PFQ" secondAttribute="height" id="Zvy-m0-AyJ"/>
+                <constraint firstItem="FqG-pG-aNc" firstAttribute="top" secondItem="qyx-n8-PFQ" secondAttribute="top" id="eCV-74-eOY"/>
+            </constraints>
+            <size key="customSize" width="400" height="120"/>
             <connections>
-                <outlet property="joke" destination="iVY-eo-2GG" id="ljg-h1-Tf3"/>
+                <outlet property="jokeLabel" destination="FqG-pG-aNc" id="F6q-dV-GXl"/>
             </connections>
-            <point key="canvasLocation" x="60.5" y="-9"/>
+            <point key="canvasLocation" x="87" y="-6"/>
         </collectionViewCell>
     </objects>
 </document>

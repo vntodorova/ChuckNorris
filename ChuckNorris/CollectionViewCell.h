@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface CollectionViewCell : UICollectionViewCell
-@property (nonatomic, strong) IBOutlet UILabel *joke;
+@property (weak, nonatomic) IBOutlet UILabel *jokeLabel;
+
 @end

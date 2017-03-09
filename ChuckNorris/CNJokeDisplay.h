@@ -9,15 +9,18 @@
 #import <UIKit/UIKit.h>
 #import "CollectionViewCell.h"
 
-@interface CNJokeDisplay : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
+@class CNJoke;
+
+@interface CNJokeDisplay : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+
 @property NSInteger currentStatus;
 @property NSString *category;
 @property NSString *searchedString;
 @property NSURLSessionDataTask *dataTask;
-@property NSMutableArray *jokeList;
+@property NSMutableArray<CNJoke*> *jokeList;
 
 -(void) getCNJoke: (NSMutableString *) providedUrl withResponseBlock: (void(^)(NSData*,NSURLResponse*, NSError*))respBlock;
 
