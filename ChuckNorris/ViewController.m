@@ -17,6 +17,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"Chuck Norris Jokes";
+    [self.view addGestureRecognizer:[[UITapGestureRecognizer alloc]
+                                     initWithTarget:self
+                                     action:@selector(dismissKeyboard)]];
     [self retrieveCategories];
 }
 
@@ -33,6 +36,12 @@
                                                        [self responseHandler:data withResponse:response andError:error];
                                                    }];
     [dataTask resume];
+}
+
+- (void) dismissKeyboard
+{
+    // add self
+    [self.searchBar resignFirstResponder];
 }
 
 -(void) responseHandler:(NSData * _Nonnull) data withResponse:(NSURLResponse *) response andError:(NSError *) responseError {

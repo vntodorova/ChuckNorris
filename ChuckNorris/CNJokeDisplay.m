@@ -18,6 +18,7 @@
 
 static const int STATUS_SEARCH_BY_QUERY = 1;
 static const int STATUS_SEARCH_BY_CATEGORY = 2;
+BOOL isPaused = NO;
 
 typedef void (^ RequstHandleBlock)(NSData*, NSURLResponse*, NSError*);
 
@@ -138,10 +139,12 @@ typedef void (^ RequstHandleBlock)(NSData*, NSURLResponse*, NSError*);
 }
 
 -(void) onTick {
-    NSMutableString *urlToApi = [self buildURL:self.searchedString andCategory:self.category];
-    [self getCNJoke:urlToApi withResponseBlock:^(NSData *data, NSURLResponse *response, NSError *error) {
+    if(!isPaused){
+        NSMutableString *urlToApi = [self buildURL:self.searchedString andCategory:self.category];
+        [self getCNJoke:urlToApi withResponseBlock:^(NSData *data, NSURLResponse *response, NSError *error) {
         [self responseHandler:data withResponse:response andError:error];
-    }];
+        }];
+    }
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
@@ -162,6 +165,9 @@ typedef void (^ RequstHandleBlock)(NSData*, NSURLResponse*, NSError*);
     return 1;
 }
 
+-(void) onTimerPause{
+    isPaused = !isPaused;
+}
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
