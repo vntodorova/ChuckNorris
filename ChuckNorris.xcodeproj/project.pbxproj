@@ -16,6 +16,8 @@
 		1DEC6B731E6D849100D1B223 /* JSONModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DEC6B6D1E6D841700D1B223 /* JSONModel.framework */; };
 		1DEC6B741E6D849100D1B223 /* JSONModel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1DEC6B6D1E6D841700D1B223 /* JSONModel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B50FBF171E70432A00708C76 /* ViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B50FBF161E70432A00708C76 /* ViewControllerTests.m */; };
+		B50FBF1C1E7164D600708C76 /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B50FBF1B1E7164D600708C76 /* CollectionViewCell.m */; };
+		B50FBF1E1E7170B300708C76 /* NibCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B50FBF1D1E7170B300708C76 /* NibCell.xib */; };
 		D05984B21E68394300F20240 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D05984B11E68394300F20240 /* ViewController.xib */; };
 		D0B2B61C1E6ED8C100EC6B6B /* ChuckNorrisTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B2B61B1E6ED8C100EC6B6B /* ChuckNorrisTests.m */; };
 		D0C3F7811E6838E6005AB2FC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C3F7801E6838E6005AB2FC /* main.m */; };
@@ -69,6 +71,9 @@
 		1DEC6B6D1E6D841700D1B223 /* JSONModel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JSONModel.framework; sourceTree = "<group>"; };
 		B50FBF0B1E70429200708C76 /* ViewControllerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ViewControllerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B50FBF161E70432A00708C76 /* ViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewControllerTests.m; sourceTree = "<group>"; };
+		B50FBF1A1E7164D600708C76 /* CollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewCell.h; sourceTree = "<group>"; };
+		B50FBF1B1E7164D600708C76 /* CollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCell.m; sourceTree = "<group>"; };
+		B50FBF1D1E7170B300708C76 /* NibCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NibCell.xib; sourceTree = "<group>"; };
 		D05984B11E68394300F20240 /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
 		D0B2B6191E6ED8C100EC6B6B /* ChuckNorrisTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChuckNorrisTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0B2B61B1E6ED8C100EC6B6B /* ChuckNorrisTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChuckNorrisTests.m; sourceTree = "<group>"; };
@@ -177,6 +182,9 @@
 				D0C3F7851E6838E6005AB2FC /* ViewController.h */,
 				D0C3F7861E6838E6005AB2FC /* ViewController.m */,
 				D05984B11E68394300F20240 /* ViewController.xib */,
+				B50FBF1A1E7164D600708C76 /* CollectionViewCell.h */,
+				B50FBF1B1E7164D600708C76 /* CollectionViewCell.m */,
+				B50FBF1D1E7170B300708C76 /* NibCell.xib */,
 			);
 			path = ChuckNorris;
 			sourceTree = "<group>";
@@ -311,6 +319,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B50FBF1E1E7170B300708C76 /* NibCell.xib in Resources */,
 				D0C3F78F1E6838E6005AB2FC /* LaunchScreen.storyboard in Resources */,
 				D0C3F78C1E6838E6005AB2FC /* Assets.xcassets in Resources */,
 				1DEC6B701E6D841700D1B223 /* CEEFAF8D-1566-3F31-A3BC-C5CA298F090C.bcsymbolmap in Resources */,
@@ -348,6 +357,7 @@
 				D0C3F7811E6838E6005AB2FC /* main.m in Sources */,
 				1D3800561E6EC6700063BD37 /* CNJokeArray.m in Sources */,
 				1DEC6B4F1E68633600D1B223 /* CNJokeDisplay.m in Sources */,
+				B50FBF1C1E7164D600708C76 /* CollectionViewCell.m in Sources */,
 				1D3800501E6D87280063BD37 /* CNJoke.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

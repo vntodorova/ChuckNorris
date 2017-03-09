@@ -11,8 +11,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CNJokeDisplay">
             <connections>
+                <outlet property="collectionView" destination="4ib-tM-SZB" id="sUZ-6t-3NZ"/>
                 <outlet property="imageView" destination="Kjx-XU-6yu" id="PjB-r8-v40"/>
-                <outlet property="jokeField" destination="HDW-79-7vG" id="IYw-Fo-pat"/>
                 <outlet property="view" destination="iN0-l3-epB" id="EAN-1C-05L"/>
             </connections>
         </placeholder>
@@ -21,31 +21,37 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="HDW-79-7vG">
-                    <rect key="frame" x="0.0" y="250" width="320" height="300"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="300" id="GDc-Kh-35I"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                </textView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Kjx-XU-6yu">
                     <rect key="frame" x="0.0" y="50" width="320" height="150"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="150" id="e1B-B3-Ihh"/>
                     </constraints>
                 </imageView>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="4ib-tM-SZB">
+                    <rect key="frame" x="0.0" y="200" width="320" height="280"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="SWR-bX-v9c">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="5gC-To-GSJ"/>
+                        <outlet property="delegate" destination="-1" id="BwN-QQ-fXt"/>
+                    </connections>
+                </collectionView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="4ib-tM-SZB" secondAttribute="bottom" id="1mT-2U-QDZ"/>
                 <constraint firstItem="Kjx-XU-6yu" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="50" id="6J2-xu-aeM"/>
-                <constraint firstItem="HDW-79-7vG" firstAttribute="top" secondItem="Kjx-XU-6yu" secondAttribute="bottom" constant="50" id="WtD-hR-cmL"/>
                 <constraint firstItem="Kjx-XU-6yu" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="Yvh-bu-0L2"/>
+                <constraint firstItem="4ib-tM-SZB" firstAttribute="top" secondItem="Kjx-XU-6yu" secondAttribute="bottom" id="bgT-iz-jJZ"/>
                 <constraint firstItem="Kjx-XU-6yu" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="biA-vN-NaK"/>
-                <constraint firstItem="HDW-79-7vG" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="cyu-dx-lGt"/>
                 <constraint firstItem="Kjx-XU-6yu" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="hyV-i3-agt"/>
-                <constraint firstItem="HDW-79-7vG" firstAttribute="trailing" secondItem="Kjx-XU-6yu" secondAttribute="trailing" id="tBK-Hv-mdF"/>
+                <constraint firstItem="4ib-tM-SZB" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="lCH-D1-01k"/>
+                <constraint firstItem="4ib-tM-SZB" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="lto-LN-fLp"/>
             </constraints>
         </view>
     </objects>

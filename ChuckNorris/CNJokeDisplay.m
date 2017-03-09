@@ -19,6 +19,7 @@ static const int STATUS_SEARCH_BY_CATEGORY = 2;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.collectionView registerClass:[CollectionViewCell class] forCellWithReuseIdentifier:@"CollectionViewCell"];
     
     if(self.searchedString == nil) {
         self.currentStatus = STATUS_SEARCH_BY_CATEGORY;
@@ -125,12 +126,32 @@ static const int STATUS_SEARCH_BY_CATEGORY = 2;
     NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: joke.icon_url]];
     dispatch_async(dispatch_get_main_queue(),^{
         self.imageView.image = [UIImage imageWithData: imageData];
-        self.jokeField.text = joke.value;
+        //self.jokeField.text = joke.value;
     });
 }
 
 -(void) onTick {
     NSMutableString *urlToApi = [self buildURL:self.searchedString andCategory:self.category];
     [self getCNJoke:urlToApi];
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    NSMutableArray *sectionArray = [self.jokeList objectAtIndex:section];
+    return [sectionArray count];
+}
+
+- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *cellIdentifier = @"CollectionViewCell";
+    CollectionViewCell *cell = (CollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
+    NSMutableArray *data = [self.jokeList objectAtIndex:indexPath.section];
+    NSString *cellData = [data objectAtIndex:indexPath.row];
+    [cell.joke setText:cellData];
+    return cell;
+}
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
+    return [[self jokeList] count];
 }
 @end
