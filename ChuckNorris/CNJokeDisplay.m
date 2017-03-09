@@ -54,11 +54,11 @@ typedef void (^ RequstHandleBlock)(NSData*, NSURLResponse*, NSError*);
     NSMutableString *result = [[NSMutableString alloc] init];
     [result appendString: @"https://api.chucknorris.io/jokes/"];
     
-    if (self.currentStatus == STATUS_SEARCH_BY_QUERY) {
+    if (self.searchedString != nil) {
         [result appendString:@"search?query="];
         [result appendString: searchString];
         
-    } else if(self.currentStatus == STATUS_SEARCH_BY_CATEGORY) {
+    } else if(self.category != nil) {
         [result appendString: @"random?category="];
         [result appendString: category];
     }
@@ -109,7 +109,7 @@ typedef void (^ RequstHandleBlock)(NSData*, NSURLResponse*, NSError*);
                 [self.collectionView reloadData];
             });
             
-        } else {
+        } else if(self.currentStatus == STATUS_SEARCH_BY_CATEGORY){
             CNJoke *requestResult = [[CNJoke alloc] initWithData:data error:&error];
             if(error == nil) {
                 [self.jokeList addObject:requestResult];
