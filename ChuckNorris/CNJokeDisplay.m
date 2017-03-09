@@ -169,10 +169,11 @@ typedef void (^ RequstHandleBlock)(NSData*, NSURLResponse*, NSError*);
     if(_switchView.isOn){
         CGRect screenRect = [[UIScreen mainScreen] bounds];
         screenWidth = screenRect.size.width;
+        return CGSizeMake(screenWidth,50);
+
     } else {
-        screenWidth = 50;
+        return CGSizeMake(100,100);
     }
-    return CGSizeMake(screenWidth,50);
 }
 
 - (IBAction)switchToggle:(UISwitch *)sender {

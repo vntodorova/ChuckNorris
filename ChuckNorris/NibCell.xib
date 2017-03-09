@@ -18,23 +18,24 @@
                 <rect key="frame" x="0.0" y="0.0" width="400" height="120"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FqG-pG-aNc">
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="JGN-0r-O5X">
                         <rect key="frame" x="0.0" y="0.0" width="400" height="120"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="FqG-pG-aNc" firstAttribute="leading" secondItem="qyx-n8-PFQ" secondAttribute="leading" id="5la-Z7-Kbp"/>
-                <constraint firstItem="FqG-pG-aNc" firstAttribute="width" secondItem="qyx-n8-PFQ" secondAttribute="width" id="6Z0-4c-2R7"/>
-                <constraint firstItem="FqG-pG-aNc" firstAttribute="height" secondItem="qyx-n8-PFQ" secondAttribute="height" id="Zvy-m0-AyJ"/>
-                <constraint firstItem="FqG-pG-aNc" firstAttribute="top" secondItem="qyx-n8-PFQ" secondAttribute="top" id="eCV-74-eOY"/>
+                <constraint firstItem="JGN-0r-O5X" firstAttribute="height" secondItem="qyx-n8-PFQ" secondAttribute="height" id="2US-YO-XoG"/>
+                <constraint firstItem="JGN-0r-O5X" firstAttribute="leading" secondItem="qyx-n8-PFQ" secondAttribute="leading" id="Ql8-mz-svg"/>
+                <constraint firstItem="JGN-0r-O5X" firstAttribute="top" secondItem="qyx-n8-PFQ" secondAttribute="top" id="Sd7-6V-LMY"/>
+                <constraint firstItem="JGN-0r-O5X" firstAttribute="width" secondItem="qyx-n8-PFQ" secondAttribute="width" id="sH3-Dy-aVJ"/>
             </constraints>
             <size key="customSize" width="400" height="120"/>
             <connections>
-                <outlet property="jokeLabel" destination="FqG-pG-aNc" id="F6q-dV-GXl"/>
+                <outlet property="jokeLabel" destination="JGN-0r-O5X" id="zjk-gq-VPR"/>
             </connections>
             <point key="canvasLocation" x="87" y="-6"/>
         </collectionViewCell>

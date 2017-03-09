@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface CollectionViewCell : UICollectionViewCell
-@property (weak, nonatomic) IBOutlet UILabel *jokeLabel;
+@property (weak, nonatomic) IBOutlet UITextView *jokeLabel;
 
 @end
