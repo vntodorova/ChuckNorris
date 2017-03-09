@@ -11,10 +11,13 @@
 
 @interface CNJoke : JSONModel
 
+-(instancetype)initWithDictionary:(NSDictionary *) dictionary;
+
 @property (nonatomic, strong) NSArray<NSString*><Optional> *category;
 @property (nonatomic, strong) NSString *icon_url;
 @property (nonatomic, strong) NSString *id;
 @property (nonatomic, strong) NSString *url;
 @property (nonatomic, strong) NSString *value;
+
 
 @end

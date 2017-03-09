@@ -8,8 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import <JSONModel/JSONModel.h>
+#import "CNJoke.h"
+
+
 
 @interface CNJokeArray : JSONModel
+@property NSString *total;
+@property NSArray<CNJoke*> *result;
+-(void) populateResultWithJokes;
 
-//@property (nonatomic, strong) NSInteger *total;?
 @end

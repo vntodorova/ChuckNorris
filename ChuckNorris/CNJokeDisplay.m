@@ -10,12 +10,11 @@
 
 #import "CNJokeDisplay.h"
 #import "CNJoke.h"
-
+#import "CNJokeArray.h"
 @implementation CNJokeDisplay
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //self.jokeList = [[NSMutableArray init] alloc];
     self.title = @"Second controller";
     [NSTimer scheduledTimerWithTimeInterval: 2.0 target: self
                                    selector:@selector(onTick)
@@ -44,12 +43,17 @@
 
 -(void) getCNJoke: (NSMutableString *) providedUrl {
     NSURLSession *defaultSession = [NSURLSession sharedSession];
-
     NSURL * url = [NSURL URLWithString:providedUrl];
     self.dataTask = [defaultSession dataTaskWithURL:url
                                   completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
                                       @try {
-                                           [self responseHandler:data withResponse:response andError:error];
+                                           CNJokeArray *requestResult = [[CNJokeArray alloc] initWithData:data error:&error];
+                                          [requestResult populateResultWithJokes];
+                                           NSLog(@"%lu", (unsigned long)requestResult.result.count);
+                                           CNJoke *joke = [requestResult.result objectAtIndex:1];
+                                           NSLog(@"%@", joke.value);
+                                          
+                                        //   [self responseHandler:data withResponse:response andError:error];
                                       } @catch (NSException *exception) {
                                           NSLog(@"OPS %@", [exception description]);
                                       }
