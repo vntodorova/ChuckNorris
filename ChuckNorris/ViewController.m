@@ -12,7 +12,11 @@
 
 @end
 
+#define KEYBOARD_HEIGHT 90.0
+
 @implementation ViewController
+
+BOOL keyboardIsShown = NO;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -20,6 +24,16 @@
     [self.view addGestureRecognizer:[[UITapGestureRecognizer alloc]
                                      initWithTarget:self
                                      action:@selector(dismissKeyboard)]];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
     [self retrieveCategories];
 }
 
@@ -121,5 +135,39 @@
     
     [self presentViewController:alert animated:YES completion:nil];
 }
+
+-(void)keyboardWillShow {
+    if(keyboardIsShown == NO){
+        keyboardIsShown = YES;
+        [self moveUpView:YES];
+    }
+}
+
+-(void)keyboardWillHide {
+    if(keyboardIsShown == YES){
+        keyboardIsShown = NO;
+        [self moveUpView:NO];
+    }
+}
+
+-(void)moveUpView:(BOOL)movedUp
+{
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.3];
+    CGRect rect = self.view.frame;
+    if (movedUp)
+    {
+        rect.origin.y -= KEYBOARD_HEIGHT;
+        rect.size.height += KEYBOARD_HEIGHT;
+    }
+    else
+    {
+        rect.origin.y += KEYBOARD_HEIGHT;
+        rect.size.height -= KEYBOARD_HEIGHT;
+    }
+    self.view.frame = rect;
+    [UIView commitAnimations];
+}
+
 
 @end
