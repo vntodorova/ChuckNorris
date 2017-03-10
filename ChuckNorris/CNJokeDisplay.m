@@ -22,6 +22,7 @@ typedef void (^ RequstHandleBlock)(NSData*, NSURLResponse*, NSError*);
 
 - (void)viewDidLoad {
     //[super viewDidLoad];
+    [self showSMS:@"asd"];
     [self.timerPauseSwitch setOn:NO];
     [self.switchView setOn:NO];
     [self.collectionView registerNib:[UINib nibWithNibName:@"NibCell" bundle:nil] forCellWithReuseIdentifier:CELL_IDENTIFIER];
@@ -164,6 +165,26 @@ typedef void (^ RequstHandleBlock)(NSData*, NSURLResponse*, NSError*);
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
     return 1;
+}
+
+- (void)showSMS:(NSString*)file {
+    
+    if(![MFMessageComposeViewController canSendText]) {
+        UIAlertView *warningAlert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Your device doesn't support SMS!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [warningAlert show];
+        return;
+    }
+    
+    NSArray *recipents = @[@"12345678", @"72345524"];
+    NSString *message = [NSString stringWithFormat:@"Just sent the %@ file to your email. Please check!", file];
+    
+    MFMessageComposeViewController *messageController = [[MFMessageComposeViewController alloc] init];
+    messageController.messageComposeDelegate = self;
+    [messageController setRecipients:recipents];
+    [messageController setBody:message];
+    
+    // Present message view controller on screen
+    [self presentViewController:messageController animated:YES completion:nil];
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
