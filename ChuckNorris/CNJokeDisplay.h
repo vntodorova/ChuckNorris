@@ -17,6 +17,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 - (IBAction)switchToggle:(UISwitch *)sender;
+- (IBAction)stopTimer:(UIButton *)sender;
+- (IBAction)stopTimerSwitch:(UISwitch *)sender;
 
 @property NSInteger currentStatus;
 @property NSString *category;

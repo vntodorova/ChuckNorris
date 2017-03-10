@@ -165,10 +165,6 @@ typedef void (^ RequstHandleBlock)(NSData*, NSURLResponse*, NSError*);
     return 1;
 }
 
--(void) onTimerPause{
-    isPaused = !isPaused;
-}
-
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     CGFloat screenWidth;
@@ -186,5 +182,9 @@ typedef void (^ RequstHandleBlock)(NSData*, NSURLResponse*, NSError*);
     dispatch_async(dispatch_get_main_queue(),^{
         [self.collectionView reloadData];
     });
+}
+
+- (IBAction)stopTimerSwitch:(UISwitch *)sender {
+    isPaused = !isPaused;
 }
 @end
