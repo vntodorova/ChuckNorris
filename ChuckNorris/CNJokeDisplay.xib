@@ -43,30 +43,26 @@
                         <constraint firstAttribute="height" constant="150" id="e1B-B3-Ihh"/>
                     </constraints>
                 </imageView>
-                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7eB-oS-2Ez">
+                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7eB-oS-2Ez">
                     <rect key="frame" x="321" y="149" width="51" height="31"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <connections>
                         <action selector="switchToggle:" destination="-1" eventType="valueChanged" id="HAz-K4-xwN"/>
                     </connections>
                 </switch>
-                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C1p-XN-2W9">
+                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C1p-XN-2W9">
                     <rect key="frame" x="33" y="149" width="51" height="31"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <connections>
                         <action selector="stopTimerSwitch:" destination="-1" eventType="valueChanged" id="Fkj-hX-cFi"/>
                     </connections>
                 </switch>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="List/Grid" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ins-9Z-aHA">
-                    <rect key="frame" x="309" y="120" width="72" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="List/Grid" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ins-9Z-aHA">
+                    <rect key="frame" x="309" y="120" width="65.333333333333314" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="On/Off" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Shq-wd-N3A">
-                    <rect key="frame" x="30" y="120" width="55" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="On/Off" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Shq-wd-N3A">
+                    <rect key="frame" x="32.666666666666657" y="120" width="52.333333333333343" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -76,11 +72,19 @@
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="4ib-tM-SZB" secondAttribute="bottom" id="1mT-2U-QDZ"/>
                 <constraint firstItem="Kjx-XU-6yu" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Crj-uc-PSz"/>
+                <constraint firstItem="C1p-XN-2W9" firstAttribute="top" secondItem="Shq-wd-N3A" secondAttribute="bottom" constant="8" id="GfK-2E-s8a"/>
+                <constraint firstItem="Ins-9Z-aHA" firstAttribute="leading" secondItem="Kjx-XU-6yu" secondAttribute="trailing" constant="27" id="J6L-Dh-f6C"/>
+                <constraint firstItem="7eB-oS-2Ez" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="149" id="K0v-uu-fvH"/>
+                <constraint firstItem="7eB-oS-2Ez" firstAttribute="leading" secondItem="Kjx-XU-6yu" secondAttribute="trailing" constant="39" id="Q14-e1-fK7"/>
                 <constraint firstItem="4ib-tM-SZB" firstAttribute="top" secondItem="Kjx-XU-6yu" secondAttribute="bottom" id="bgT-iz-jJZ"/>
+                <constraint firstItem="7eB-oS-2Ez" firstAttribute="top" secondItem="Ins-9Z-aHA" secondAttribute="bottom" constant="8" id="fYr-ML-UD4"/>
                 <constraint firstItem="Kjx-XU-6yu" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="hyV-i3-agt"/>
                 <constraint firstItem="Kjx-XU-6yu" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="65" id="kp9-XF-Cq7"/>
                 <constraint firstItem="4ib-tM-SZB" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="lCH-D1-01k"/>
                 <constraint firstItem="4ib-tM-SZB" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="lto-LN-fLp"/>
+                <constraint firstItem="Kjx-XU-6yu" firstAttribute="leading" secondItem="C1p-XN-2W9" secondAttribute="trailing" constant="50" id="pWX-sx-gQm"/>
+                <constraint firstItem="Kjx-XU-6yu" firstAttribute="leading" secondItem="Shq-wd-N3A" secondAttribute="trailing" constant="47" id="v07-PR-L8J"/>
+                <constraint firstItem="C1p-XN-2W9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="149" id="wy1-oh-CKz"/>
             </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
         </view>
