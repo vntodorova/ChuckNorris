@@ -7,7 +7,6 @@
 //
 
 #import "CNJokeDisplay.h"
-
 #define CELL_IDENTIFIER @"CVCell"
 
 @implementation CNJokeDisplay
@@ -15,8 +14,7 @@
 static const int STATUS_SEARCH_BY_QUERY = 1;
 static const int STATUS_SEARCH_BY_CATEGORY = 2;
 BOOL isPaused = NO;
-
-typedef void (^ RequstHandleBlock)(NSData*, NSURLResponse*, NSError*);
+//typedef void (^ RequstHandleBlock)(NSData*, NSURLResponse*, NSError*);
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -29,10 +27,11 @@ typedef void (^ RequstHandleBlock)(NSData*, NSURLResponse*, NSError*);
         self.currentStatus = STATUS_SEARCH_BY_CATEGORY;
         self.title = [NSString stringWithFormat:@"Category : %@", self.category];
         
-        [NSTimer scheduledTimerWithTimeInterval: 2.0
-                                         target: self
-                                       selector:@selector(onTick)
-                                       userInfo: nil repeats:YES];
+    [NSTimer scheduledTimerWithTimeInterval: 2.0
+                                    target: self
+                                    selector:@selector(onTick)
+                                    userInfo: nil repeats:YES];
+        
     } else {
         self.currentStatus = STATUS_SEARCH_BY_QUERY;
         self.title = [NSString stringWithFormat:@"Searched word : %@", self.searchedString];
@@ -72,57 +71,74 @@ typedef void (^ RequstHandleBlock)(NSData*, NSURLResponse*, NSError*);
 }
 
 -(void) responseHandler:(NSData * _Nonnull) data withResponse:(NSURLResponse *) response andError:(NSError *) responseError {
-    if (data == nil || data.length == 0) {
-        @throw [NSException
-                exceptionWithName:@"Exception"
-                reason:@"Data empty"
-                userInfo:nil];
-    }
-    
-    if (response == nil) {
-        @throw [NSException
-                exceptionWithName:@"Exception"
-                reason:@"Response is nil"
-                userInfo:nil];
-    }
-    
-    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
-    
-    if([httpResponse statusCode] != 200) {
-        @throw [NSException
-                exceptionWithName:@"Exception"
-                reason:[NSString stringWithFormat:@"Response code %ld", (long)[httpResponse statusCode]]
-                userInfo:nil];
-    }
-    
+    [self verifyResponse:response andData:data];
     if(responseError == nil ) {
-        NSError *error;
-        
         if(self.currentStatus == STATUS_SEARCH_BY_QUERY){
-            CNJokeArray *requestResult = [[CNJokeArray alloc] initWithData:data error:&error];
-            NSLog(@"%@", requestResult.result);
-            [self.jokeList addObjectsFromArray:requestResult.result];
-            dispatch_async(dispatch_get_main_queue(),^{
-                [self.collectionView reloadData];
-            });
-            
+            [self addFoundJokesToArray:data];
         } else {
-            CNJoke *requestResult = [[CNJoke alloc] initWithData:data error:&error];
-            if(error == nil) {
-                [self.jokeList addObject:requestResult];
-                [self updateUI:requestResult];
-            } else {
-                @throw[NSException
-                       exceptionWithName:@"Exception"
-                       reason:[NSString stringWithFormat:@"Data is invalid format :%@",[data description]]
-                       userInfo: nil];
-            }
+            [self addCurrentJokeToArray:data];
         }
     } else {
         @throw [NSException
                 exceptionWithName:@"Exception"
                 reason:[NSString stringWithFormat:@"Error recived %@", [responseError description]]
                 userInfo:nil];
+    }
+}
+
+-(void)verifyResponse:(NSURLResponse *) response
+              andData:(NSData *) data
+{
+    if (data == nil || data.length == 0) {
+        @throw [NSException
+                exceptionWithName:@"Exception"
+                reason:@"Data empty"
+                userInfo:nil];
+    }
+    if (response == nil) {
+        @throw [NSException
+                exceptionWithName:@"Exception"
+                reason:@"Response is nil"
+                userInfo:nil];
+    }
+    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+    if([httpResponse statusCode] != 200) {
+        @throw [NSException
+                exceptionWithName:@"Exception"
+                reason:[NSString stringWithFormat:@"Response code %ld", (long)[httpResponse statusCode]]
+                userInfo:nil];
+    }
+}
+
+-(void)addCurrentJokeToArray: (NSData *) data
+{
+    NSError *error;
+    CNJoke *requestResult = [[CNJoke alloc] initWithData:data error:&error];
+    if(error == nil) {
+        [self.jokeList addObject:requestResult];
+        [self updateUI:requestResult];
+    } else {
+        @throw[NSException
+               exceptionWithName:@"Exception"
+               reason:[NSString stringWithFormat:@"Data is invalid format :%@",[data description]]
+               userInfo: nil];
+    }
+}
+
+-(void)addFoundJokesToArray: (NSData*) data
+{
+    NSError *error;
+    CNJokeArray *requestResult = [[CNJokeArray alloc] initWithData:data error:&error];
+    if(error == nil) {
+        [self.jokeList addObjectsFromArray:requestResult.result];
+        dispatch_async(dispatch_get_main_queue(),^{
+            [self.collectionView reloadData];
+        });
+    } else {
+        @throw[NSException
+               exceptionWithName:@"Exception"
+               reason:[NSString stringWithFormat:@"Data is invalid format :%@",[data description]]
+               userInfo: nil];
     }
 }
 
@@ -184,7 +200,9 @@ typedef void (^ RequstHandleBlock)(NSData*, NSURLResponse*, NSError*);
 {
     CGFloat screenWidth;
     if(!_switchView.isOn){
-        return CGSizeMake(130,70);
+        CGRect screenRect = [[UIScreen mainScreen] bounds];
+        CGFloat width = screenRect.size.width/2 - 5;
+        return CGSizeMake(width,70);
     } else {
         CGRect screenRect = [[UIScreen mainScreen] bounds];
         screenWidth = screenRect.size.width;

@@ -54,7 +54,6 @@ BOOL keyboardIsShown = NO;
 
 - (void) dismissKeyboard
 {
-    // add self
     [self.searchBar resignFirstResponder];
 }
 

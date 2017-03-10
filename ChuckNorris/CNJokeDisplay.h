@@ -14,15 +14,15 @@
 
 @class CNJoke;
 
-@interface CNJokeDisplay : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
-@property (weak, nonatomic) IBOutlet UISwitch *timerPauseSwitch;
+@interface CNJokeDisplay : UIViewController <UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 
+@property (weak, nonatomic) IBOutlet UISwitch *timerPauseSwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *switchView;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
-- (IBAction)switchToggle:(UISwitch *)sender;
-- (IBAction)stopTimerSwitch:(UISwitch *)sender;
+-(IBAction)switchToggle:(UISwitch *)sender;
+-(IBAction)stopTimerSwitch:(UISwitch *)sender;
 
 @property NSInteger currentStatus;
 @property NSString *category;
@@ -32,9 +32,17 @@
 
 -(void) getCNJoke: (NSMutableString *) providedUrl withResponseBlock: (void(^)(NSData*,NSURLResponse*, NSError*))respBlock;
 
-- (void)responseHandler: (NSData *) data withResponse:(NSURLResponse *) response andError:(NSError *) error;
+-(void)responseHandler: (NSData *) data withResponse:(NSURLResponse *) response andError:(NSError *) error;
 
-- (NSMutableString *)buildURL:(NSString *) searchString andCategory:(NSString*) category;
+-(NSMutableString *)buildURL:(NSString *) searchString andCategory:(NSString*) category;
+
+-(void)addFoundJokesToArray: (NSData*) data;
+
+-(void)verifyResponse:(NSURLResponse *) response andData:(NSData *) data;
+
+-(void)addCurrentJokeToArray: (NSData *) data;
+
+
 
 @end
 
