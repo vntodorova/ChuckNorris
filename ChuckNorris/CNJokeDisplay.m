@@ -6,11 +6,8 @@
 //  Copyright © 2017 Veneta. All rights reserved.
 //
 
-#include <JSONModel/JSONModel.h>
-
 #import "CNJokeDisplay.h"
-#import "CNJoke.h"
-#import "CNJokeArray.h"
+
 
 #define CELL_IDENTIFIER @"CVCell"
 
@@ -25,6 +22,8 @@ typedef void (^ RequstHandleBlock)(NSData*, NSURLResponse*, NSError*);
 
 - (void)viewDidLoad {
     //[super viewDidLoad];
+    [self.timerPauseSwitch setOn:NO];
+    [self.switchView setOn:NO];
     [self.collectionView registerNib:[UINib nibWithNibName:@"NibCell" bundle:nil] forCellWithReuseIdentifier:CELL_IDENTIFIER];
     
     self.jokeList = [[NSMutableArray alloc] init];
@@ -155,9 +154,11 @@ typedef void (^ RequstHandleBlock)(NSData*, NSURLResponse*, NSError*);
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     CollectionViewCell *cell = (CollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:CELL_IDENTIFIER forIndexPath:indexPath];
+    [cell.jokeLabel setEditable:NO];
     CNJoke * joke = [self.jokeList objectAtIndex:indexPath.row];
     cell.jokeLabel.text = joke.value;
-
+    cell.layer.borderWidth = 2;
+    cell.layer.borderColor = [UIColor greenColor].CGColor;
     return cell;
 }
 
@@ -169,12 +170,11 @@ typedef void (^ RequstHandleBlock)(NSData*, NSURLResponse*, NSError*);
 {
     CGFloat screenWidth;
     if(_switchView.isOn){
+        return CGSizeMake(100,100);
+    } else {
         CGRect screenRect = [[UIScreen mainScreen] bounds];
         screenWidth = screenRect.size.width;
         return CGSizeMake(screenWidth,50);
-
-    } else {
-        return CGSizeMake(100,100);
     }
 }
 
