@@ -60,14 +60,14 @@
             </constraints>
             <variation key="heightClass=compact-widthClass=compact">
                 <mask key="constraints">
-                    <exclude reference="iCT-oz-Jsy"/>
                     <exclude reference="ndD-CH-hbA"/>
+                    <exclude reference="iCT-oz-Jsy"/>
                 </mask>
             </variation>
             <variation key="heightClass=regular-widthClass=compact">
                 <mask key="constraints">
-                    <exclude reference="eYG-Oh-f5k"/>
                     <exclude reference="CqH-bs-kXC"/>
+                    <exclude reference="eYG-Oh-f5k"/>
                 </mask>
             </variation>
             <point key="canvasLocation" x="25" y="25"/>

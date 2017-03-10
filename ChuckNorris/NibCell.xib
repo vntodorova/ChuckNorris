@@ -26,6 +26,8 @@
                     </label>
                 </subviews>
             </view>
+            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+            <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="S04-aP-yr5" firstAttribute="width" secondItem="qyx-n8-PFQ" secondAttribute="width" id="66B-uh-OPB"/>
                 <constraint firstItem="S04-aP-yr5" firstAttribute="leading" secondItem="qyx-n8-PFQ" secondAttribute="leading" id="SGc-QD-9HT"/>

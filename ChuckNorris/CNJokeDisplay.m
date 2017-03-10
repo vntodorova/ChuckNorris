@@ -165,6 +165,14 @@ typedef void (^ RequstHandleBlock)(NSData*, NSURLResponse*, NSError*);
     CollectionViewCell *cell = (CollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:CELL_IDENTIFIER forIndexPath:indexPath];
     CNJoke * joke = [self.jokeList objectAtIndex:indexPath.row];
     cell.jokeLabel.text = joke.value;
+    
+    cell.layer.cornerRadius = 5;
+    cell.layer.shadowColor = [UIColor darkGrayColor].CGColor;
+    cell.layer.shadowOffset = CGSizeMake(0, 2.0f);
+    cell.layer.shadowRadius = 2.0f;
+    cell.layer.shadowOpacity = 1.0f;
+    cell.layer.masksToBounds = NO;
+
     return cell;
 }
 
@@ -176,7 +184,7 @@ typedef void (^ RequstHandleBlock)(NSData*, NSURLResponse*, NSError*);
 {
     CGFloat screenWidth;
     if(!_switchView.isOn){
-        return CGSizeMake(120,70);
+        return CGSizeMake(130,70);
     } else {
         CGRect screenRect = [[UIScreen mainScreen] bounds];
         screenWidth = screenRect.size.width;
