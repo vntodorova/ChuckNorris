@@ -11,10 +11,22 @@
 #import "CollectionViewCell.h"
 #import "CNJokeDisplay.h"
 #import "CNJokeArray.h"
+#import "LayoutProvider.h"
 
 @class CNJoke;
 
+typedef enum searchStateTypes
+{
+    SEARCH_BY_CATEGORY,
+    SEARCH_BY_QUERY,
+    
+} Status;
+
 @interface CNJokeDisplay : UIViewController <UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
+{
+    Status searchStatus;
+    NSInteger numberOfColumns;
+}
 
 @property (weak, nonatomic) IBOutlet UISwitch *timerPauseSwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *switchView;
@@ -23,12 +35,13 @@
 
 -(IBAction)switchToggle:(UISwitch *)sender;
 -(IBAction)stopTimerSwitch:(UISwitch *)sender;
+-(IBAction)changeColumnsNumber:(UIButton *)sender;
 
-@property NSInteger currentStatus;
 @property NSString *category;
 @property NSString *searchedString;
 @property NSURLSessionDataTask *dataTask;
 @property NSMutableArray<CNJoke*> *jokeList;
+@property LayoutProvider *layoutProvider;
 
 -(void) getCNJoke: (NSMutableString *) providedUrl withResponseBlock: (void(^)(NSData*,NSURLResponse*, NSError*))respBlock;
 

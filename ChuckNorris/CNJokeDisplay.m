@@ -6,25 +6,23 @@
 //  Copyright © 2017 Veneta. All rights reserved.
 //
 
+#import "LayoutProvider.h"
 #import "CNJokeDisplay.h"
 #define CELL_IDENTIFIER @"CVCell"
 
 @implementation CNJokeDisplay
 
-static const int STATUS_SEARCH_BY_QUERY = 1;
-static const int STATUS_SEARCH_BY_CATEGORY = 2;
 BOOL isPaused = NO;
-//typedef void (^ RequstHandleBlock)(NSData*, NSURLResponse*, NSError*);
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    self.layoutProvider = [[LayoutProvider alloc] init];
+    [[self layoutProvider] initialize];
     [self.collectionView registerNib:[UINib nibWithNibName:@"NibCell" bundle:nil] forCellWithReuseIdentifier:CELL_IDENTIFIER];
-    
     self.jokeList = [[NSMutableArray alloc] init];
     
     if(self.searchedString == nil) {
-        self.currentStatus = STATUS_SEARCH_BY_CATEGORY;
+        searchStatus = SEARCH_BY_CATEGORY;
         self.title = [NSString stringWithFormat:@"Category : %@", self.category];
         
     [NSTimer scheduledTimerWithTimeInterval: 2.0
@@ -33,7 +31,7 @@ BOOL isPaused = NO;
                                     userInfo: nil repeats:YES];
         
     } else {
-        self.currentStatus = STATUS_SEARCH_BY_QUERY;
+        searchStatus = SEARCH_BY_QUERY;
         self.title = [NSString stringWithFormat:@"Searched word : %@", self.searchedString];
         NSMutableString *urlToApi = [self buildURL:self.searchedString andCategory:self.category];
         [self getCNJoke:urlToApi withResponseBlock:^(NSData *data, NSURLResponse *response, NSError *error) {
@@ -73,7 +71,7 @@ BOOL isPaused = NO;
 -(void) responseHandler:(NSData * _Nonnull) data withResponse:(NSURLResponse *) response andError:(NSError *) responseError {
     [self verifyResponse:response andData:data];
     if(responseError == nil ) {
-        if(self.currentStatus == STATUS_SEARCH_BY_QUERY){
+        if(searchStatus == SEARCH_BY_QUERY){
             [self addFoundJokesToArray:data];
         } else {
             [self addCurrentJokeToArray:data];
@@ -160,6 +158,12 @@ BOOL isPaused = NO;
 }
 
 - (IBAction)switchToggle:(UISwitch *)sender {
+    if(self.layoutProvider.cvLayout == GRID){
+        [[self layoutProvider] setCvLayout:LIST];
+    } else {
+        [[self layoutProvider] setCvLayout:GRID];
+    }
+    
     dispatch_async(dispatch_get_main_queue(),^{
         [self.collectionView reloadData];
     });
@@ -167,6 +171,14 @@ BOOL isPaused = NO;
 
 - (IBAction)stopTimerSwitch:(UISwitch *)sender {
     isPaused = !isPaused;
+}
+
+- (IBAction)changeColumnsNumber:(UIButton *)sender {
+    if(numberOfColumns == 3){
+        numberOfColumns = 2;
+    } else {
+        numberOfColumns = 3;
+    }
 }
 
 #pragma mark - CollectionView delegates
@@ -178,18 +190,10 @@ BOOL isPaused = NO;
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    CNJoke *joke = [self.jokeList objectAtIndex:indexPath.row];
     CollectionViewCell *cell = (CollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:CELL_IDENTIFIER forIndexPath:indexPath];
-    CNJoke * joke = [self.jokeList objectAtIndex:indexPath.row];
-    cell.jokeLabel.text = joke.value;
-    
-    cell.layer.cornerRadius = 5;
-    cell.layer.shadowColor = [UIColor darkGrayColor].CGColor;
-    cell.layer.shadowOffset = CGSizeMake(0, 2.0f);
-    cell.layer.shadowRadius = 2.0f;
-    cell.layer.shadowOpacity = 1.0f;
-    cell.layer.masksToBounds = NO;
-
-    return cell;
+    UICollectionViewCell *formattedCell = [[self layoutProvider] getNewCell:cell withJoke:joke];
+    return formattedCell;
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
@@ -198,16 +202,8 @@ BOOL isPaused = NO;
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    CGFloat screenWidth;
-    if(!_switchView.isOn){
-        CGRect screenRect = [[UIScreen mainScreen] bounds];
-        CGFloat width = screenRect.size.width/2 - 5;
-        return CGSizeMake(width,70);
-    } else {
-        CGRect screenRect = [[UIScreen mainScreen] bounds];
-        screenWidth = screenRect.size.width;
-        return CGSizeMake(screenWidth,50);
-    }
+    CGSize size = [[self layoutProvider] getCellSize:numberOfColumns];
+    return size;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
