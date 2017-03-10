@@ -8,7 +8,6 @@
 
 #import "CNJokeDisplay.h"
 
-
 #define CELL_IDENTIFIER @"CVCell"
 
 @implementation CNJokeDisplay
@@ -18,7 +17,6 @@ static const int STATUS_SEARCH_BY_CATEGORY = 2;
 BOOL isPaused = NO;
 
 typedef void (^ RequstHandleBlock)(NSData*, NSURLResponse*, NSError*);
-
 
 - (void)viewDidLoad {
     //[super viewDidLoad];
@@ -208,4 +206,10 @@ typedef void (^ RequstHandleBlock)(NSData*, NSURLResponse*, NSError*);
 - (IBAction)stopTimerSwitch:(UISwitch *)sender {
     isPaused = !isPaused;
 }
+
+- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+}
+
 @end

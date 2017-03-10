@@ -7,10 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <JSONModel/JSONModel.h>
 #import "CNJoke.h"
-
-
 
 @interface CNJokeArray : JSONModel
 @property NSString *total;

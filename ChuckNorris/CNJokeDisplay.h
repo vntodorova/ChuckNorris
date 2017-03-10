@@ -8,13 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <MessageUI/MessageUI.h>
-#include <JSONModel/JSONModel.h>
-
 #import "CollectionViewCell.h"
 #import "CNJokeDisplay.h"
-#import "CNJoke.h"
 #import "CNJokeArray.h"
-
 
 @class CNJoke;
 
