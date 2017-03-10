@@ -36,6 +36,5 @@
 
 - (NSMutableString *)buildURL:(NSString *) searchString andCategory:(NSString*) category;
 
-
 @end
 

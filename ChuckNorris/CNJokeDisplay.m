@@ -19,10 +19,8 @@ BOOL isPaused = NO;
 typedef void (^ RequstHandleBlock)(NSData*, NSURLResponse*, NSError*);
 
 - (void)viewDidLoad {
-    //[super viewDidLoad];
-//    [self showSMS:@"asd"];
-    [self.timerPauseSwitch setOn:NO];
-    [self.switchView setOn:NO];
+    [super viewDidLoad];
+
     [self.collectionView registerNib:[UINib nibWithNibName:@"NibCell" bundle:nil] forCellWithReuseIdentifier:CELL_IDENTIFIER];
     
     self.jokeList = [[NSMutableArray alloc] init];
@@ -145,58 +143,6 @@ typedef void (^ RequstHandleBlock)(NSData*, NSURLResponse*, NSError*);
     }
 }
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
-{
-    return self.jokeList.count;
-}
-
-- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    CollectionViewCell *cell = (CollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:CELL_IDENTIFIER forIndexPath:indexPath];
-    [cell.jokeLabel setEditable:NO];
-    CNJoke * joke = [self.jokeList objectAtIndex:indexPath.row];
-    cell.jokeLabel.text = joke.value;
-    cell.layer.borderWidth = 2;
-    cell.layer.borderColor = [UIColor greenColor].CGColor;
-    return cell;
-}
-
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
-    return 1;
-}
-
-- (void)showSMS:(NSString*)file {
-    
-    if(![MFMessageComposeViewController canSendText]) {
-        UIAlertView *warningAlert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Your device doesn't support SMS!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [warningAlert show];
-        return;
-    }
-    
-    NSArray *recipents = @[@"12345678", @"72345524"];
-    NSString *message = [NSString stringWithFormat:@"Just sent the %@ file to your email. Please check!", file];
-    
-    MFMessageComposeViewController *messageController = [[MFMessageComposeViewController alloc] init];
-    messageController.messageComposeDelegate = self;
-    [messageController setRecipients:recipents];
-    [messageController setBody:message];
-    
-    // Present message view controller on screen
-    [self presentViewController:messageController animated:YES completion:nil];
-}
-
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    CGFloat screenWidth;
-    if(_switchView.isOn){
-        return CGSizeMake(100,100);
-    } else {
-        CGRect screenRect = [[UIScreen mainScreen] bounds];
-        screenWidth = screenRect.size.width;
-        return CGSizeMake(screenWidth,50);
-    }
-}
-
 - (IBAction)switchToggle:(UISwitch *)sender {
     dispatch_async(dispatch_get_main_queue(),^{
         [self.collectionView reloadData];
@@ -207,8 +153,41 @@ typedef void (^ RequstHandleBlock)(NSData*, NSURLResponse*, NSError*);
     isPaused = !isPaused;
 }
 
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath
+#pragma mark - CollectionView delegates
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
+    return self.jokeList.count;
+}
+
+- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    CollectionViewCell *cell = (CollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:CELL_IDENTIFIER forIndexPath:indexPath];
+    CNJoke * joke = [self.jokeList objectAtIndex:indexPath.row];
+    cell.jokeLabel.text = joke.value;
+    return cell;
+}
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
+    return 1;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    CGFloat screenWidth;
+    if(!_switchView.isOn){
+        return CGSizeMake(120,70);
+    } else {
+        CGRect screenRect = [[UIScreen mainScreen] bounds];
+        screenWidth = screenRect.size.width;
+        return CGSizeMake(screenWidth,50);
+    }
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
+    NSLog(@"touched cell %@ at indexPath %@", cell, indexPath);
     
 }
 
