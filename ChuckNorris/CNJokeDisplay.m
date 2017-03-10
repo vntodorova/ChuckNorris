@@ -20,7 +20,7 @@ typedef void (^ RequstHandleBlock)(NSData*, NSURLResponse*, NSError*);
 
 - (void)viewDidLoad {
     //[super viewDidLoad];
-    //[self showSMS:@"asd"];
+//    [self showSMS:@"asd"];
     [self.timerPauseSwitch setOn:NO];
     [self.switchView setOn:NO];
     [self.collectionView registerNib:[UINib nibWithNibName:@"NibCell" bundle:nil] forCellWithReuseIdentifier:CELL_IDENTIFIER];

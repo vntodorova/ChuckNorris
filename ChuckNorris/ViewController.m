@@ -133,7 +133,14 @@ BOOL keyboardIsShown = NO;
         }];
     }]];
     
+    UIPopoverPresentationController *popPresenter = [alert
+                                                     popoverPresentationController];
+    popPresenter.sourceView = sender;
+    popPresenter.sourceRect = sender.bounds;
     [self presentViewController:alert animated:YES completion:nil];
+
+    
+//    [self presentViewController:alert animated:YES completion:nil];
 }
 
 -(void)keyboardWillShow {
@@ -144,7 +151,7 @@ BOOL keyboardIsShown = NO;
 }
 
 -(void)keyboardWillHide {
-    if(keyboardIsShown == YES){
+    if(keyboardIsShown == YES) {
         keyboardIsShown = NO;
         [self moveUpView:NO];
     }
