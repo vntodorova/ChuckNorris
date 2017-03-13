@@ -25,11 +25,19 @@ typedef enum collectionViewLayoutTypes
 } CollectionViewLayout;
 
 @interface LayoutProvider : NSObject
+{
+    NSInteger numberOfColumnsIpad;
+}
 
 - (void)initialize;
 - (void)changeCVLayout: (CollectionViewLayout) layout;
-- (CGSize)getCellSize:(NSInteger)columns;
-- (CollectionViewCell *)getNewCell:(CollectionViewCell *)cell withJoke:(CNJoke *)joke;
+- (CGSize)getIPhoneCellSize;
+- (CGSize)getIPadCellSize;
+- (CGSize)getCellSize;
+- (CollectionViewCell *)getNewCell:(UICollectionView *) collectionView
+                      atIndexPath: (NSIndexPath *)indexPath
+                         withJoke:(CNJoke *) joke;
+- (void)switchNumberOfColumnsIpad;
 
 @property CollectionViewLayout cvLayout;
 @property DeviceType deviceType;

@@ -8,6 +8,7 @@
 
 #import "LayoutProvider.h"
 #import "CNJokeDisplay.h"
+#import <MessageUI/MessageUI.h>
 #define CELL_IDENTIFIER @"CVCell"
 
 @implementation CNJokeDisplay
@@ -38,6 +39,10 @@ BOOL isPaused = NO;
             [self responseHandler:data withResponse:response andError:error];
         }];
     }
+    
+    UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
+    lpgr.delegate = self;
+    [self.collectionView addGestureRecognizer:lpgr];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -173,12 +178,12 @@ BOOL isPaused = NO;
     isPaused = !isPaused;
 }
 
-- (IBAction)changeColumnsNumber:(UIButton *)sender {
-    if(numberOfColumns == 3){
-        numberOfColumns = 2;
-    } else {
-        numberOfColumns = 3;
-    }
+- (IBAction)changeColumnsNumber:(UIButton *)sender
+{
+    [[self layoutProvider] switchNumberOfColumnsIpad];
+    dispatch_async(dispatch_get_main_queue(),^{
+        [self.collectionView reloadData];
+    });
 }
 
 #pragma mark - CollectionView delegates
@@ -191,26 +196,40 @@ BOOL isPaused = NO;
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     CNJoke *joke = [self.jokeList objectAtIndex:indexPath.row];
-    CollectionViewCell *cell = (CollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:CELL_IDENTIFIER forIndexPath:indexPath];
-    UICollectionViewCell *formattedCell = [[self layoutProvider] getNewCell:cell withJoke:joke];
-    return formattedCell;
+    return [[self layoutProvider] getNewCell:collectionView atIndexPath:indexPath withJoke:joke];
 }
 
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
     return 1;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    CGSize size = [[self layoutProvider] getCellSize:numberOfColumns];
+    CGSize size = [[self layoutProvider] getCellSize];
     return size;
 }
 
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+-(void)handleLongPress:(UILongPressGestureRecognizer *)gestureRecognizer
 {
-    UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
-    NSLog(@"touched cell %@ at indexPath %@", cell, indexPath);
+    if (gestureRecognizer.state != UIGestureRecognizerStateEnded) {
+        return;
+    }
+    CGPoint p = [gestureRecognizer locationInView:self.collectionView];
     
+    NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:p];
+    if (indexPath != nil){
+        [self sendMailWithJoke:[_jokeList objectAtIndex:indexPath.row]];
+    }
 }
 
+-(void)sendMailWithJoke: (CNJoke *) joke
+{
+    NSString *emailTitle = @"Chuck Norris Joke";
+    MFMailComposeViewController *mailController = [[MFMailComposeViewController alloc] init];
+    mailController.mailComposeDelegate = self;
+    [mailController setSubject:emailTitle];
+    [mailController setMessageBody:[joke value] isHTML:NO];
+    [self presentViewController:mailController animated:YES completion:NULL];
+}
 @end

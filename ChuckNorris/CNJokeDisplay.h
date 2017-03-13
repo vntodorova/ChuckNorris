@@ -8,12 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import <MessageUI/MessageUI.h>
-#import "CollectionViewCell.h"
 #import "CNJokeDisplay.h"
 #import "CNJokeArray.h"
-#import "LayoutProvider.h"
 
 @class CNJoke;
+@class LayoutProvider;
+@class CollectionViewCell;
 
 typedef enum searchStateTypes
 {
@@ -22,10 +22,9 @@ typedef enum searchStateTypes
     
 } Status;
 
-@interface CNJokeDisplay : UIViewController <UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
+@interface CNJokeDisplay : UIViewController <UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,MFMailComposeViewControllerDelegate,UIGestureRecognizerDelegate>
 {
     Status searchStatus;
-    NSInteger numberOfColumns;
 }
 
 @property (weak, nonatomic) IBOutlet UISwitch *timerPauseSwitch;
@@ -55,7 +54,7 @@ typedef enum searchStateTypes
 
 -(void)addCurrentJokeToArray: (NSData *) data;
 
-
+-(void)sendMailWithJoke: (CNJoke *) joke;
 
 @end
 
