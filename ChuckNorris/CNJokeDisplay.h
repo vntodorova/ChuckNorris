@@ -56,5 +56,9 @@ typedef enum searchStateTypes
 
 -(void)sendMailWithJoke: (CNJoke *) joke;
 
+-(void)displayMailError;
+
+-(void)saveJokeToDevice: (CNJoke *) joke;
+
 @end
 

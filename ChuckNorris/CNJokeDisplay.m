@@ -218,33 +218,46 @@ BOOL isPaused = NO;
     CGPoint p = [gestureRecognizer locationInView:self.collectionView];
     
     NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:p];
-    if (indexPath != nil && [MFMailComposeViewController canSendMail])
+    if (indexPath != nil)
     {
-        [self sendMailWithJoke:[_jokeList objectAtIndex:indexPath.row]];
-    } else
-    {
-        UIAlertController * alert=[UIAlertController
-                                   alertControllerWithTitle:@"Error"
-                                   message:@"Device is not able to send email."
-                                   preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction* close = [UIAlertAction
-                                actionWithTitle:@"Close"
-                                style:UIAlertActionStyleDefault
-                                handler:^(UIAlertAction * action)
-                                {
-                                    [alert dismissViewControllerAnimated:YES completion:nil];
-                                }];
-        [alert addAction:close];
-        [self presentViewController:alert animated:YES completion:nil];
+        [self saveJokeToDevice:[_jokeList objectAtIndex:indexPath.row]];
+        //[self sendMailWithJoke:[_jokeList objectAtIndex:indexPath.row]];
     }
 }
 
 -(void)sendMailWithJoke: (CNJoke *) joke
 {
-    MFMailComposeViewController *mailController = [[MFMailComposeViewController alloc] init];
-    mailController.mailComposeDelegate = self;
-    [mailController setMessageBody:[joke value] isHTML:NO];
-    [self presentViewController:mailController animated:YES completion:NULL];
+    if([MFMailComposeViewController canSendMail])
+    {
+        MFMailComposeViewController *mailController = [[MFMailComposeViewController alloc] init];
+        mailController.mailComposeDelegate = self;
+        [mailController setMessageBody:[joke value] isHTML:NO];
+        [self presentViewController:mailController animated:YES completion:NULL];
+    } else
+    {
+        [self displayMailError];
+    }
+}
 
+-(void)displayMailError
+{
+    UIAlertController * alert=[UIAlertController
+                               alertControllerWithTitle:@"Error"
+                               message:@"Device is not able to send email."
+                               preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction* close = [UIAlertAction
+                            actionWithTitle:@"Close"
+                            style:UIAlertActionStyleDefault
+                            handler:^(UIAlertAction * action)
+                            {
+                                [alert dismissViewControllerAnimated:YES completion:nil];
+                            }];
+    [alert addAction:close];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+-(void)saveJokeToDevice: (CNJoke *) joke
+{
+    
 }
 @end
