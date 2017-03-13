@@ -218,18 +218,33 @@ BOOL isPaused = NO;
     CGPoint p = [gestureRecognizer locationInView:self.collectionView];
     
     NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:p];
-    if (indexPath != nil){
+    if (indexPath != nil && [MFMailComposeViewController canSendMail])
+    {
         [self sendMailWithJoke:[_jokeList objectAtIndex:indexPath.row]];
+    } else
+    {
+        UIAlertController * alert=[UIAlertController
+                                   alertControllerWithTitle:@"Error"
+                                   message:@"Device is not able to send email."
+                                   preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction* close = [UIAlertAction
+                                actionWithTitle:@"Close"
+                                style:UIAlertActionStyleDefault
+                                handler:^(UIAlertAction * action)
+                                {
+                                    [alert dismissViewControllerAnimated:YES completion:nil];
+                                }];
+        [alert addAction:close];
+        [self presentViewController:alert animated:YES completion:nil];
     }
 }
 
 -(void)sendMailWithJoke: (CNJoke *) joke
 {
-    NSString *emailTitle = @"Chuck Norris Joke";
     MFMailComposeViewController *mailController = [[MFMailComposeViewController alloc] init];
     mailController.mailComposeDelegate = self;
-    [mailController setSubject:emailTitle];
     [mailController setMessageBody:[joke value] isHTML:NO];
     [self presentViewController:mailController animated:YES completion:NULL];
+
 }
 @end
