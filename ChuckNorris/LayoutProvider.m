@@ -7,15 +7,23 @@
 //
 
 #import "LayoutProvider.h"
-#import <UIKit/UIKit.h>
-#define CELL_IDENTIFIER @"CVCell"
+
 #define SPACE_BETWEEN_CELLS_IPHONE 5;
 #define SPACE_BETWEEN_CELLS_IPAD 10;
+
+@interface LayoutProvider()
+@property (strong , nonatomic) NSMutableDictionary *cellsForModelRegister;
+
+@end
 
 @implementation LayoutProvider
 
 - (void) initialize
 {
+    self.cellsForModelRegister = [[NSMutableDictionary alloc] init];
+    [self.cellsForModelRegister setObject:[CollectionViewCell class] forKey:[[CNJoke class] description]];
+    [self.cellsForModelRegister setObject:[ExpandedCell class] forKey:[[CNTrimmedJoke class] description]];
+    
     NSString *currentDeviceType = [UIDevice currentDevice].model;
     if([currentDeviceType isEqualToString:@"iPhone"])
     {
@@ -66,19 +74,13 @@
 }
 
 -(CollectionViewCell *)getNewCell:(UICollectionView *) collectionView
-                      atIndexPath: (NSIndexPath *)indexPath
+                      atIndexPath:(NSIndexPath *)indexPath
                          withJoke:(CNJoke *) joke
 {
-    CollectionViewCell *cell = (CollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:CELL_IDENTIFIER forIndexPath:indexPath];
+    NSString* cellIdentifier = [joke.class identifierForCell];
+    CollectionViewCell *cell = (CollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
     
-    
-    cell.jokeLabel.text = joke.value;
-    cell.layer.cornerRadius = 5;
-    cell.layer.shadowColor = [UIColor darkGrayColor].CGColor;
-    cell.layer.shadowOffset = CGSizeMake(0, 2.0f);
-    cell.layer.shadowRadius = 2.0f;
-    cell.layer.shadowOpacity = 1.0f;
-    cell.layer.masksToBounds = NO;
+    [cell setupCellWithJoke:joke];
     
     return cell;
 }

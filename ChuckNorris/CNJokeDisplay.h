@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import <MessageUI/MessageUI.h>
+#import "CollectionViewCell.h"
 #import "CNJokeDisplay.h"
 #import "CNJokeArray.h"
+#import "LayoutProvider.h"
+#import "ExpandedCell.h"
 
 @class CNJoke;
 @class LayoutProvider;
@@ -22,7 +25,7 @@ typedef enum searchStateTypes
     
 } Status;
 
-@interface CNJokeDisplay : UIViewController <UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,MFMailComposeViewControllerDelegate,UIGestureRecognizerDelegate>
+@interface CNJokeDisplay : UIViewController <UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 {
     Status searchStatus;
 }

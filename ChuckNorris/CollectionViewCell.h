@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CNJoke.h"
 
 @interface CollectionViewCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UILabel *jokeLabel;
+
+-(void)setupCellWithJoke:(CNJoke*)joke;
 
 @end

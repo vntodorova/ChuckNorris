@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "CNJokeDisplay.h"
+
 @interface ViewController () <UISearchBarDelegate>
 
 @end

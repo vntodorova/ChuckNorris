@@ -1,18 +1,25 @@
 //
-//  CollectionViewCell.m
+//  ExpandedCell.m
 //  ChuckNorris
 //
-//  Created by Nemetschek A-Team on 3/9/17.
+//  Created by VCS on 3/13/17.
 //  Copyright © 2017 Veneta. All rights reserved.
 //
 
-#import "CollectionViewCell.h"
+#import "ExpandedCell.h"
+#import "CNJoke.h"
 
-@implementation CollectionViewCell
+@implementation ExpandedCell
+
+- (IBAction)onSMSClick:(id)sender {
+}
+
+- (IBAction)onEmailClick:(id)sender {
+}
 
 -(void)setupCellWithJoke:(CNJoke*)joke
 {
-    self.jokeLabel.text = joke.getJoke;
+    self.jokeTextField.text = joke.getJoke;
     self.layer.cornerRadius = 5;
     self.layer.shadowColor = [UIColor darkGrayColor].CGColor;
     self.layer.shadowOffset = CGSizeMake(0, 2.0f);
@@ -20,5 +27,4 @@
     self.layer.shadowOpacity = 1.0f;
     self.layer.masksToBounds = NO;
 }
-
 @end

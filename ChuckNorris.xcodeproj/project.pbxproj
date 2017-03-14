@@ -7,12 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D1513491E76BDE20074CCD3 /* ExpandedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D1513471E76BDE20074CCD3 /* ExpandedCell.m */; };
+		1D15134A1E76BDE20074CCD3 /* ExpandedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D1513481E76BDE20074CCD3 /* ExpandedCell.xib */; };
+		1D1513501E76EF860074CCD3 /* CNTrimmedJoke.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D15134F1E76EF860074CCD3 /* CNTrimmedJoke.m */; };
 		1D3800501E6D87280063BD37 /* CNJoke.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D38004F1E6D87280063BD37 /* CNJoke.m */; };
 		1D3800561E6EC6700063BD37 /* CNJokeArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3800551E6EC6700063BD37 /* CNJokeArray.m */; };
 		1DEC6B4F1E68633600D1B223 /* CNJokeDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DEC6B4E1E68633600D1B223 /* CNJokeDisplay.m */; };
 		1DEC6B551E6864DF00D1B223 /* CNJokeDisplay.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DEC6B541E6864DF00D1B223 /* CNJokeDisplay.xib */; };
-		1DEC6B6F1E6D841700D1B223 /* AD14DA8D-C30C-39E8-A498-1035714193BD.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = 1DEC6B6B1E6D841700D1B223 /* AD14DA8D-C30C-39E8-A498-1035714193BD.bcsymbolmap */; };
-		1DEC6B701E6D841700D1B223 /* CEEFAF8D-1566-3F31-A3BC-C5CA298F090C.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = 1DEC6B6C1E6D841700D1B223 /* CEEFAF8D-1566-3F31-A3BC-C5CA298F090C.bcsymbolmap */; };
 		1DEC6B731E6D849100D1B223 /* JSONModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DEC6B6D1E6D841700D1B223 /* JSONModel.framework */; };
 		B50F78F71E76A287005EDC63 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B50F78F61E76A287005EDC63 /* MessageUI.framework */; };
 		B50F78FC1E76D6B4005EDC63 /* JSONModel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1DEC6B6D1E6D841700D1B223 /* JSONModel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -61,6 +62,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1D1513461E76BDE20074CCD3 /* ExpandedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExpandedCell.h; path = ../ExpandedCell.h; sourceTree = "<group>"; };
+		1D1513471E76BDE20074CCD3 /* ExpandedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExpandedCell.m; path = ../ExpandedCell.m; sourceTree = "<group>"; };
+		1D1513481E76BDE20074CCD3 /* ExpandedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ExpandedCell.xib; path = ../ExpandedCell.xib; sourceTree = "<group>"; };
+		1D15134E1E76EF860074CCD3 /* CNTrimmedJoke.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CNTrimmedJoke.h; sourceTree = "<group>"; };
+		1D15134F1E76EF860074CCD3 /* CNTrimmedJoke.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CNTrimmedJoke.m; sourceTree = "<group>"; };
 		1D38004E1E6D87280063BD37 /* CNJoke.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CNJoke.h; sourceTree = "<group>"; };
 		1D38004F1E6D87280063BD37 /* CNJoke.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CNJoke.m; sourceTree = "<group>"; };
 		1D3800541E6EC6700063BD37 /* CNJokeArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CNJokeArray.h; sourceTree = "<group>"; };
@@ -68,8 +74,6 @@
 		1DEC6B4D1E68633600D1B223 /* CNJokeDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CNJokeDisplay.h; sourceTree = "<group>"; };
 		1DEC6B4E1E68633600D1B223 /* CNJokeDisplay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CNJokeDisplay.m; sourceTree = "<group>"; };
 		1DEC6B541E6864DF00D1B223 /* CNJokeDisplay.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CNJokeDisplay.xib; sourceTree = "<group>"; };
-		1DEC6B6B1E6D841700D1B223 /* AD14DA8D-C30C-39E8-A498-1035714193BD.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "AD14DA8D-C30C-39E8-A498-1035714193BD.bcsymbolmap"; sourceTree = "<group>"; };
-		1DEC6B6C1E6D841700D1B223 /* CEEFAF8D-1566-3F31-A3BC-C5CA298F090C.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "CEEFAF8D-1566-3F31-A3BC-C5CA298F090C.bcsymbolmap"; sourceTree = "<group>"; };
 		1DEC6B6D1E6D841700D1B223 /* JSONModel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JSONModel.framework; sourceTree = "<group>"; };
 		B50F78F61E76A287005EDC63 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		B50FBF0B1E70429200708C76 /* ViewControllerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ViewControllerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -124,8 +128,6 @@
 		1DEC6B5F1E6D815E00D1B223 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1DEC6B6B1E6D841700D1B223 /* AD14DA8D-C30C-39E8-A498-1035714193BD.bcsymbolmap */,
-				1DEC6B6C1E6D841700D1B223 /* CEEFAF8D-1566-3F31-A3BC-C5CA298F090C.bcsymbolmap */,
 				1DEC6B6D1E6D841700D1B223 /* JSONModel.framework */,
 			);
 			path = Frameworks;
@@ -138,6 +140,8 @@
 				1D38004F1E6D87280063BD37 /* CNJoke.m */,
 				1D3800541E6EC6700063BD37 /* CNJokeArray.h */,
 				1D3800551E6EC6700063BD37 /* CNJokeArray.m */,
+				1D15134E1E76EF860074CCD3 /* CNTrimmedJoke.h */,
+				1D15134F1E76EF860074CCD3 /* CNTrimmedJoke.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -183,6 +187,9 @@
 		D0C3F77E1E6838E6005AB2FC /* ChuckNorris */ = {
 			isa = PBXGroup;
 			children = (
+				1D1513461E76BDE20074CCD3 /* ExpandedCell.h */,
+				1D1513471E76BDE20074CCD3 /* ExpandedCell.m */,
+				1D1513481E76BDE20074CCD3 /* ExpandedCell.xib */,
 				D0C3F7821E6838E6005AB2FC /* AppDelegate.h */,
 				D0C3F7831E6838E6005AB2FC /* AppDelegate.m */,
 				D0C3F78B1E6838E6005AB2FC /* Assets.xcassets */,
@@ -191,13 +198,13 @@
 				1DEC6B541E6864DF00D1B223 /* CNJokeDisplay.xib */,
 				B50FBF1A1E7164D600708C76 /* CollectionViewCell.h */,
 				B50FBF1B1E7164D600708C76 /* CollectionViewCell.m */,
+				B50FBF1D1E7170B300708C76 /* NibCell.xib */,
 				1DEC6B5F1E6D815E00D1B223 /* Frameworks */,
 				D0C3F7901E6838E6005AB2FC /* Info.plist */,
 				D0C3F78D1E6838E6005AB2FC /* LaunchScreen.storyboard */,
 				B5B0CF301E72EF8200F3BD12 /* LayoutProvider.h */,
 				B5B0CF311E72EF8200F3BD12 /* LayoutProvider.m */,
 				1DEC6B761E6D84B300D1B223 /* Models */,
-				B50FBF1D1E7170B300708C76 /* NibCell.xib */,
 				D0C3F77F1E6838E6005AB2FC /* Supporting Files */,
 				D0C3F7851E6838E6005AB2FC /* ViewController.h */,
 				D0C3F7861E6838E6005AB2FC /* ViewController.m */,
@@ -349,11 +356,10 @@
 			files = (
 				B50FBF1E1E7170B300708C76 /* NibCell.xib in Resources */,
 				D0C3F78F1E6838E6005AB2FC /* LaunchScreen.storyboard in Resources */,
+				1D15134A1E76BDE20074CCD3 /* ExpandedCell.xib in Resources */,
 				D0C3F78C1E6838E6005AB2FC /* Assets.xcassets in Resources */,
-				1DEC6B701E6D841700D1B223 /* CEEFAF8D-1566-3F31-A3BC-C5CA298F090C.bcsymbolmap in Resources */,
 				1DEC6B551E6864DF00D1B223 /* CNJokeDisplay.xib in Resources */,
 				D05984B21E68394300F20240 /* ViewController.xib in Resources */,
-				1DEC6B6F1E6D841700D1B223 /* AD14DA8D-C30C-39E8-A498-1035714193BD.bcsymbolmap in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,11 +388,13 @@
 			files = (
 				D0C3F7871E6838E6005AB2FC /* ViewController.m in Sources */,
 				D0C3F7841E6838E6005AB2FC /* AppDelegate.m in Sources */,
+				1D1513501E76EF860074CCD3 /* CNTrimmedJoke.m in Sources */,
 				D0C3F7811E6838E6005AB2FC /* main.m in Sources */,
 				1D3800561E6EC6700063BD37 /* CNJokeArray.m in Sources */,
 				B5B0CF321E72EF8200F3BD12 /* LayoutProvider.m in Sources */,
 				1DEC6B4F1E68633600D1B223 /* CNJokeDisplay.m in Sources */,
 				B50FBF1C1E7164D600708C76 /* CollectionViewCell.m in Sources */,
+				1D1513491E76BDE20074CCD3 /* ExpandedCell.m in Sources */,
 				1D3800501E6D87280063BD37 /* CNJoke.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

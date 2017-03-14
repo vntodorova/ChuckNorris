@@ -10,6 +10,8 @@
 #import <UIKit/UIKit.h>
 #import "CollectionViewCell.h"
 #import "CNJoke.h"
+#import "ExpandedCell.h"
+#import "CNTrimmedJoke.h"
 
 typedef enum deviceTypes
 {

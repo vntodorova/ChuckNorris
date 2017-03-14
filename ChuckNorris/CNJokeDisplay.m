@@ -5,11 +5,7 @@
 //  Created by VCS on 3/2/17.
 //  Copyright © 2017 Veneta. All rights reserved.
 //
-
-#import "LayoutProvider.h"
 #import "CNJokeDisplay.h"
-#import <MessageUI/MessageUI.h>
-#define CELL_IDENTIFIER @"CVCell"
 
 @implementation CNJokeDisplay
 
@@ -19,18 +15,22 @@ BOOL isPaused = NO;
     [super viewDidLoad];
     self.layoutProvider = [[LayoutProvider alloc] init];
     [[self layoutProvider] initialize];
-    [self.collectionView registerNib:[UINib nibWithNibName:@"NibCell" bundle:nil] forCellWithReuseIdentifier:CELL_IDENTIFIER];
+    
+    [self.collectionView registerNib:[UINib nibWithNibName:@"NibCell" bundle:nil] forCellWithReuseIdentifier:[CNTrimmedJoke identifierForCell]];
+    [self.collectionView registerNib:[UINib nibWithNibName:@"ExpandedCell" bundle:nil] forCellWithReuseIdentifier:[CNJoke identifierForCell]];
+    
     self.jokeList = [[NSMutableArray alloc] init];
     
     if(self.searchedString == nil) {
         searchStatus = SEARCH_BY_CATEGORY;
         self.title = [NSString stringWithFormat:@"Category : %@", self.category];
         
-    [NSTimer scheduledTimerWithTimeInterval: 2.0
-                                    target: self
-                                    selector:@selector(onTick)
-                                    userInfo: nil repeats:YES];
-        
+        NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:2.0
+                                                          target:self
+                                                        selector:@selector(onTick)
+                                                        userInfo:nil
+                                                         repeats:YES];
+        [timer fire];
     } else {
         searchStatus = SEARCH_BY_QUERY;
         self.title = [NSString stringWithFormat:@"Searched word : %@", self.searchedString];
@@ -116,7 +116,7 @@ BOOL isPaused = NO;
 -(void)addCurrentJokeToArray: (NSData *) data
 {
     NSError *error;
-    CNJoke *requestResult = [[CNJoke alloc] initWithData:data error:&error];
+    CNJoke *requestResult = [[CNTrimmedJoke alloc] initWithData:data error:&error];
     if(error == nil) {
         [self.jokeList addObject:requestResult];
         [self updateUI:requestResult];
@@ -186,8 +186,6 @@ BOOL isPaused = NO;
     });
 }
 
-#pragma mark - CollectionView delegates
-
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     return self.jokeList.count;
@@ -196,7 +194,8 @@ BOOL isPaused = NO;
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     CNJoke *joke = [self.jokeList objectAtIndex:indexPath.row];
-    return [[self layoutProvider] getNewCell:collectionView atIndexPath:indexPath withJoke:joke];
+    UICollectionViewCell *cell = [self.layoutProvider getNewCell:collectionView atIndexPath:indexPath withJoke:joke];
+    return cell;
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
@@ -207,6 +206,11 @@ BOOL isPaused = NO;
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     CGSize size = [[self layoutProvider] getCellSize];
+    CNJoke* currentJoke = [self.jokeList objectAtIndex:indexPath.row];
+    if ([currentJoke isMemberOfClass:[CNJoke class]])
+    {
+        size.height += 100;
+    }
     return size;
 }
 
@@ -218,10 +222,10 @@ BOOL isPaused = NO;
     CGPoint p = [gestureRecognizer locationInView:self.collectionView];
     
     NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:p];
-    if (indexPath != nil)
+    if (indexPath != nil && [MFMailComposeViewController canSendMail])
     {
         [self saveJokeToDevice:[_jokeList objectAtIndex:indexPath.row]];
-        //[self sendMailWithJoke:[_jokeList objectAtIndex:indexPath.row]];
+        [self sendMailWithJoke:[_jokeList objectAtIndex:indexPath.row]];
     }
 }
 
@@ -239,25 +243,52 @@ BOOL isPaused = NO;
     }
 }
 
--(void)displayMailError
-{
-    UIAlertController * alert=[UIAlertController
-                               alertControllerWithTitle:@"Error"
-                               message:@"Device is not able to send email."
-                               preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction* close = [UIAlertAction
-                            actionWithTitle:@"Close"
-                            style:UIAlertActionStyleDefault
-                            handler:^(UIAlertAction * action)
-                            {
-                                [alert dismissViewControllerAnimated:YES completion:nil];
-                            }];
-    [alert addAction:close];
-    [self presentViewController:alert animated:YES completion:nil];
+        UIAlertController * alert=[UIAlertController
+                                   alertControllerWithTitle:@"Error"
+                                   message:@"Device is not able to send email."
+                                   preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction* close = [UIAlertAction
+                                actionWithTitle:@"Close"
+                                style:UIAlertActionStyleDefault
+                                handler:^(UIAlertAction * action)
+                                {
+                                    [alert dismissViewControllerAnimated:YES completion:nil];
+                                }];
+        [alert addAction:close];
+        [self presentViewController:alert animated:YES completion:nil];
+    }
 }
 
--(void)saveJokeToDevice: (CNJoke *) joke
-{
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    BOOL shouldUpdate = NO;
+    CNJoke* currentJoke = [self.jokeList objectAtIndex:indexPath.row];
     
+    CNJoke* replacement;
+    if ([currentJoke isMemberOfClass:[CNTrimmedJoke class]])
+    {
+        shouldUpdate = YES;
+        replacement = [[CNJoke alloc] initWithString:currentJoke.toJSONString error:nil];
+    }
+    if ([currentJoke isMemberOfClass:[CNJoke class]])
+    {
+        shouldUpdate = YES;
+        replacement = [[CNTrimmedJoke alloc] initWithString:currentJoke.toJSONString error:nil];
+    }
+    
+    if (shouldUpdate)
+    {
+        [self.jokeList removeObjectAtIndex:indexPath.row];
+        [self.jokeList insertObject:replacement atIndex:indexPath.row];
+        
+        [self.collectionView reloadData];
+    }
+}
+
+-(void)sendMailWithJoke: (CNJoke *) joke
+{
+    MFMailComposeViewController *mailController = [[MFMailComposeViewController alloc] init];
+    mailController.mailComposeDelegate = self;
+    [mailController setMessageBody:[joke value] isHTML:NO];
+    [self presentViewController:mailController animated:YES completion:NULL];
 }
 @end

@@ -7,7 +7,19 @@
 //
 
 #import "CNJoke.h"
+#define CELL_IDENTIFIER @"NormalCell"
+
 
 @implementation CNJoke
+
++(NSString *)identifierForCell
+{
+    return CELL_IDENTIFIER;
+}
+
+-(NSString*)getJoke
+{
+    return self.value;
+}
 
 @end

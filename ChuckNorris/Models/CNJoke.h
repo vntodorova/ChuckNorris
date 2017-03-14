@@ -9,10 +9,13 @@
 #import <Foundation/Foundation.h>
 #import <JSONModel/JSONModel.h>
 
+//Needed for Json parsing
 @protocol CNJoke
 @end
 
 @interface CNJoke : JSONModel
+
++(NSString*) identifierForCell;
 
 @property (nonatomic, strong) NSArray<NSString*><Optional> *category;
 @property (nonatomic, strong) NSString *icon_url;
@@ -20,5 +23,6 @@
 @property (nonatomic, strong) NSString *url;
 @property (nonatomic, strong) NSString *value;
 
+-(NSString*)getJoke;
 
 @end
