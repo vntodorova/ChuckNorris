@@ -11,24 +11,29 @@
 
 @implementation ExpandedCell
 
-- (IBAction)onDeleteClick:(id)sender {
-    [self.delegate onDeleteClicked:self joke:self.jokeTextField.text];
+- (void)onDeleteClick:(id)sender {
+    NSLog(@"asd");
+    [self.delegate onDeleteClicked:self joke:self.cellJoke];
 }
 
-- (IBAction)onSMSClick:(id)sender {
-     [self.delegate onSMSClicked:self joke:self.jokeTextField.text];
+- (void)onSMSClick:(id)sender {
+    NSLog(@"asd");
+     [self.delegate onSMSClicked:self joke:self.cellJoke];
 }
 
-- (IBAction)onEmailClick:(id)sender {
-     [self.delegate onEmailClicked:self joke:self.jokeTextField.text];
+- (void)onEmailClick:(id)sender {
+    NSLog(@"asd");
+    [self.delegate onEmailClicked:self joke:self.cellJoke];
 }
 
-- (IBAction)onHideClick:(id)sender {
-     [self.delegate onHideClicked:self joke:self.jokeTextField.text];
+- (void)onHideClick:(id)sender {
+    NSLog(@"asd");
+    [self.delegate onHideClicked:self joke:self.cellJoke];
 }
 
 -(void)setupCellWithJoke:(CNJoke*)joke
 {
+    self.cellJoke = joke;
     self.jokeTextField.text = joke.getJoke;
     self.layer.cornerRadius = 5;
     self.layer.shadowColor = [UIColor darkGrayColor].CGColor;

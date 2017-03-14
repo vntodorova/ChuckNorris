@@ -91,7 +91,6 @@
     }
     
     [cell setupCellWithJoke:joke];
-    
     return cell;
 }
 

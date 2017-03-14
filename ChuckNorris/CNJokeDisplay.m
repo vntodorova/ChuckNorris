@@ -17,9 +17,6 @@
 
 BOOL isPaused = NO;
 
--(void)onDeleteClicked:(ExpandedCell *)cell joke:(NSString *)joke {
-    NSLog(@"asd");
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -235,7 +232,7 @@ BOOL isPaused = NO;
     NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:p];
     if (indexPath != nil)
     {
-        //[self sendMailWithJoke:[_jokeList objectAtIndex:indexPath.row]];
+       // [self sendMailWithJoke:[_jokeList objectAtIndex:indexPath.row]];
     }
 }
 }
@@ -276,23 +273,41 @@ BOOL isPaused = NO;
     BOOL shouldUpdate = NO;
     CNJoke* currentJoke = [self.jokeList objectAtIndex:indexPath.row];
     
-    CNJoke* replacement;
+    CNJoke* expandedJoke;
     if ([currentJoke isMemberOfClass:[CNTrimmedJoke class]])
     {
         shouldUpdate = YES;
-        replacement = [[CNJoke alloc] initWithString:currentJoke.toJSONString error:nil];
+        expandedJoke = [[CNJoke alloc] initWithString:currentJoke.toJSONString error:nil];
     }
-    if ([currentJoke isMemberOfClass:[CNJoke class]])
-    {
-        shouldUpdate = YES;
-        replacement = [[CNTrimmedJoke alloc] initWithString:currentJoke.toJSONString error:nil];
-    }
+
     if (shouldUpdate)
     {
         [self.jokeList removeObjectAtIndex:indexPath.row];
-        [self.jokeList insertObject:replacement atIndex:indexPath.row];
+        [self.jokeList insertObject:expandedJoke atIndex:indexPath.row];
         [self.collectionView reloadData];
     }
 }
 
-    @end
+-(void)onDeleteClicked:(ExpandedCell *)cell joke:(CNJoke *)joke {
+    [self.jokeList removeObject:joke];
+    [self.collectionView reloadData];
+}
+
+- (void)onHideClicked:(ExpandedCell *)cell joke:(CNJoke *)joke {
+    NSInteger index = [self.jokeList indexOfObject:joke];
+    CNJoke* colapsedJoke;
+    colapsedJoke = [[CNTrimmedJoke alloc]initWithString:joke.toJSONString error:nil];
+
+    [self.jokeList removeObjectAtIndex:index];
+    [self.jokeList insertObject:colapsedJoke atIndex:index];
+    [self.collectionView reloadData];
+}
+
+- (void)onEmailClicked:(ExpandedCell *)cell joke:(CNJoke *)joke {
+    NSLog(@"Email clicked");
+}
+
+- (void)onSMSClicked:(ExpandedCell *)cell joke:(CNJoke *)joke {
+    NSLog(@"SMS clicked");
+}
+@end

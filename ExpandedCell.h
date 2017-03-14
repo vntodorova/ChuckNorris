@@ -7,24 +7,26 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CNJoke.h"
 @class ExpandedCell;
 
 @protocol cellDelagate <NSObject>
 
--(void) onDeleteClicked:(ExpandedCell *) cell joke:(NSString *) joke;
--(void) onEmailClicked:(ExpandedCell *) cell joke:(NSString *) joke;
--(void) onSMSClicked:(ExpandedCell *) cell joke:(NSString *) joke;
--(void) onHideClicked:(ExpandedCell *) cell joke:(NSString *) joke;
-@end
-@interface ExpandedCell : UICollectionViewCell
+-(void) onHideClicked:(ExpandedCell *) cell joke:(CNJoke *) joke;
+-(void) onDeleteClicked:(ExpandedCell *) cell joke:(CNJoke *) joke;
+-(void) onEmailClicked:(ExpandedCell *) cell joke:(CNJoke *) joke;
+-(void) onSMSClicked:(ExpandedCell *) cell joke:(CNJoke *) joke;
 
+@end
+
+@interface ExpandedCell : UICollectionViewCell
+@property CNJoke *cellJoke;
 @property (nonatomic , weak) id<cellDelagate> delegate;
+@property (weak, nonatomic) IBOutlet UITextView *jokeTextField;
 
 - (IBAction)onDeleteClick:(id)sender;
 - (IBAction)onSMSClick:(id)sender;
 - (IBAction)onEmailClick:(id)sender;
 - (IBAction)onHideClick:(id)sender;
-
-@property (weak, nonatomic) IBOutlet UITextView *jokeTextField;
 
 @end
