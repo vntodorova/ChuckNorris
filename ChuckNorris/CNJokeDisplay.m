@@ -5,7 +5,13 @@
 //  Created by VCS on 3/2/17.
 //  Copyright © 2017 Veneta. All rights reserved.
 //
+
+#import "LayoutProvider.h"
 #import "CNJokeDisplay.h"
+#import "JokeStreamManager.h"
+#import <MessageUI/MessageUI.h>
+#define CELL_IDENTIFIER @"CVCell"
+
 
 @implementation CNJokeDisplay
 
@@ -222,10 +228,10 @@ BOOL isPaused = NO;
     CGPoint p = [gestureRecognizer locationInView:self.collectionView];
     
     NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:p];
-    if (indexPath != nil && [MFMailComposeViewController canSendMail])
+    if (indexPath != nil)
     {
         [self saveJokeToDevice:[_jokeList objectAtIndex:indexPath.row]];
-        [self sendMailWithJoke:[_jokeList objectAtIndex:indexPath.row]];
+        //[self sendMailWithJoke:[_jokeList objectAtIndex:indexPath.row]];
     }
 }
 
@@ -243,6 +249,8 @@ BOOL isPaused = NO;
     }
 }
 
+-(void)displayMailError
+{
         UIAlertController * alert=[UIAlertController
                                    alertControllerWithTitle:@"Error"
                                    message:@"Device is not able to send email."
@@ -286,9 +294,8 @@ BOOL isPaused = NO;
 
 -(void)sendMailWithJoke: (CNJoke *) joke
 {
+    NSString *documentsDirectory = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+    NSString *filePath = [documentsDirectory stringByAppendingPathComponent:@"ChuckNorrisJokes"];
     MFMailComposeViewController *mailController = [[MFMailComposeViewController alloc] init];
-    mailController.mailComposeDelegate = self;
-    [mailController setMessageBody:[joke value] isHTML:NO];
-    [self presentViewController:mailController animated:YES completion:NULL];
 }
 @end
