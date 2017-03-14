@@ -25,7 +25,7 @@ typedef enum searchStateTypes
     
 } Status;
 
-@interface CNJokeDisplay : UIViewController <UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
+@interface CNJokeDisplay : UIViewController <UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout, MFMailComposeViewControllerDelegate, UIGestureRecognizerDelegate>
 {
     Status searchStatus;
 }
@@ -60,8 +60,6 @@ typedef enum searchStateTypes
 -(void)sendMailWithJoke: (CNJoke *) joke;
 
 -(void)displayMailError;
-
--(void)saveJokeToDevice: (CNJoke *) joke;
 
 @end
 

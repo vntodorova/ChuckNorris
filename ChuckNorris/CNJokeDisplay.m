@@ -230,7 +230,6 @@ BOOL isPaused = NO;
     NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:p];
     if (indexPath != nil)
     {
-        [self saveJokeToDevice:[_jokeList objectAtIndex:indexPath.row]];
         //[self sendMailWithJoke:[_jokeList objectAtIndex:indexPath.row]];
     }
 }
@@ -264,7 +263,6 @@ BOOL isPaused = NO;
                                 }];
         [alert addAction:close];
         [self presentViewController:alert animated:YES completion:nil];
-    }
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -290,12 +288,5 @@ BOOL isPaused = NO;
         
         [self.collectionView reloadData];
     }
-}
-
--(void)sendMailWithJoke: (CNJoke *) joke
-{
-    NSString *documentsDirectory = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
-    NSString *filePath = [documentsDirectory stringByAppendingPathComponent:@"ChuckNorrisJokes"];
-    MFMailComposeViewController *mailController = [[MFMailComposeViewController alloc] init];
 }
 @end
