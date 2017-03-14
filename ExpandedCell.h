@@ -11,6 +11,9 @@
 @interface ExpandedCell : UICollectionViewCell
 - (IBAction)onSMSClick:(id)sender;
 - (IBAction)onEmailClick:(id)sender;
-@property (weak, nonatomic) IBOutlet UITextField *jokeTextField;
+- (IBAction)onDeleteClick:(id)sender;
+- (IBAction)onHideClick:(id)sender;
+
+@property (weak, nonatomic) IBOutlet UITextView *jokeTextField;
 
 @end

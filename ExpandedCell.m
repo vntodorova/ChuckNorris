@@ -17,6 +17,12 @@
 - (IBAction)onEmailClick:(id)sender {
 }
 
+- (IBAction)onDeleteClick:(id)sender {
+}
+
+- (IBAction)onHideClick:(id)sender {
+}
+
 -(void)setupCellWithJoke:(CNJoke*)joke
 {
     self.jokeTextField.text = joke.getJoke;
