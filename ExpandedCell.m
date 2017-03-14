@@ -11,16 +11,20 @@
 
 @implementation ExpandedCell
 
+- (IBAction)onDeleteClick:(id)sender {
+    [self.delegate onDeleteClicked:self joke:self.jokeTextField.text];
+}
+
 - (IBAction)onSMSClick:(id)sender {
+     [self.delegate onSMSClicked:self joke:self.jokeTextField.text];
 }
 
 - (IBAction)onEmailClick:(id)sender {
-}
-
-- (IBAction)onDeleteClick:(id)sender {
+     [self.delegate onEmailClicked:self joke:self.jokeTextField.text];
 }
 
 - (IBAction)onHideClick:(id)sender {
+     [self.delegate onHideClicked:self joke:self.jokeTextField.text];
 }
 
 -(void)setupCellWithJoke:(CNJoke*)joke

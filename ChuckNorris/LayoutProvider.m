@@ -8,6 +8,7 @@
 
 #import "LayoutProvider.h"
 
+
 #define SPACE_BETWEEN_CELLS_IPHONE 5;
 #define SPACE_BETWEEN_CELLS_IPAD 10;
 
@@ -18,11 +19,13 @@
 
 @implementation LayoutProvider
 
-- (void) initialize
+
+- (void)initialize: (id<cellDelagate>) delegate
 {
     self.cellsForModelRegister = [[NSMutableDictionary alloc] init];
     [self.cellsForModelRegister setObject:[CollectionViewCell class] forKey:[[CNJoke class] description]];
     [self.cellsForModelRegister setObject:[ExpandedCell class] forKey:[[CNTrimmedJoke class] description]];
+    delegateObject = delegate;
     
     NSString *currentDeviceType = [UIDevice currentDevice].model;
     if([currentDeviceType isEqualToString:@"iPhone"])
@@ -35,6 +38,7 @@
     _cvLayout = LIST;
     numberOfColumnsIpad = 3;
 }
+
 
 - (CGSize)getCellSize
 {
@@ -79,6 +83,12 @@
 {
     NSString* cellIdentifier = [joke.class identifierForCell];
     CollectionViewCell *cell = (CollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
+
+    if([cell isMemberOfClass:ExpandedCell.class])
+    {
+        ExpandedCell* expandedCell = (ExpandedCell*) cell;
+        expandedCell.delegate = delegateObject;
+    }
     
     [cell setupCellWithJoke:joke];
     

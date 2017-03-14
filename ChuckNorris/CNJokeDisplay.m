@@ -17,10 +17,14 @@
 
 BOOL isPaused = NO;
 
+-(void)onDeleteClicked:(ExpandedCell *)cell joke:(NSString *)joke {
+    NSLog(@"asd");
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.layoutProvider = [[LayoutProvider alloc] init];
-    [[self layoutProvider] initialize];
+    [[self layoutProvider] initialize:self];
     
     [self.collectionView registerNib:[UINib nibWithNibName:@"NibCell" bundle:nil] forCellWithReuseIdentifier:[CNTrimmedJoke identifierForCell]];
     [self.collectionView registerNib:[UINib nibWithNibName:@"ExpandedCell" bundle:nil] forCellWithReuseIdentifier:[CNJoke identifierForCell]];
@@ -223,6 +227,7 @@ BOOL isPaused = NO;
 -(void)handleLongPress:(UILongPressGestureRecognizer *)gestureRecognizer
 {
     if (gestureRecognizer.state != UIGestureRecognizerStateEnded) {
+    {
         return;
     }
     CGPoint p = [gestureRecognizer locationInView:self.collectionView];
@@ -232,6 +237,7 @@ BOOL isPaused = NO;
     {
         //[self sendMailWithJoke:[_jokeList objectAtIndex:indexPath.row]];
     }
+}
 }
 
 -(void)sendMailWithJoke: (CNJoke *) joke
@@ -265,7 +271,8 @@ BOOL isPaused = NO;
         [self presentViewController:alert animated:YES completion:nil];
 }
 
--(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
     BOOL shouldUpdate = NO;
     CNJoke* currentJoke = [self.jokeList objectAtIndex:indexPath.row];
     
@@ -280,13 +287,12 @@ BOOL isPaused = NO;
         shouldUpdate = YES;
         replacement = [[CNTrimmedJoke alloc] initWithString:currentJoke.toJSONString error:nil];
     }
-    
     if (shouldUpdate)
     {
         [self.jokeList removeObjectAtIndex:indexPath.row];
         [self.jokeList insertObject:replacement atIndex:indexPath.row];
-        
         [self.collectionView reloadData];
     }
 }
-@end
+
+    @end

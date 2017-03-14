@@ -12,6 +12,7 @@
 #import "CNJoke.h"
 #import "ExpandedCell.h"
 #import "CNTrimmedJoke.h"
+#import "ExpandedCell.h"
 
 typedef enum deviceTypes
 {
@@ -29,9 +30,10 @@ typedef enum collectionViewLayoutTypes
 @interface LayoutProvider : NSObject
 {
     NSInteger numberOfColumnsIpad;
+    id<cellDelagate> delegateObject;
 }
 
-- (void)initialize;
+- (void)initialize: (id<cellDelagate>) delegate;
 - (void)changeCVLayout: (CollectionViewLayout) layout;
 - (CGSize)getIPhoneCellSize;
 - (CGSize)getIPadCellSize;
@@ -39,6 +41,7 @@ typedef enum collectionViewLayoutTypes
 - (CollectionViewCell *)getNewCell:(UICollectionView *) collectionView
                       atIndexPath: (NSIndexPath *)indexPath
                          withJoke:(CNJoke *) joke;
+
 - (void)switchNumberOfColumnsIpad;
 
 @property CollectionViewLayout cvLayout;
