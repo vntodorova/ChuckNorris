@@ -1,5 +1,5 @@
 //
-//  CollectionViewCell.h
+//  NormalCell.h
 //  ChuckNorris
 //
 //  Created by Nemetschek A-Team on 3/9/17.
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CNJoke.h"
 
-@interface CollectionViewCell : UICollectionViewCell
+@interface NormalCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UILabel *jokeLabel;
 
 -(void)setupCellWithJoke:(CNJoke*)joke;

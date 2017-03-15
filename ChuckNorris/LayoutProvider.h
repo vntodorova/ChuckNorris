@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "CollectionViewCell.h"
+#import "NormalCell.h"
 #import "CNJoke.h"
 #import "ExpandedCell.h"
 #import "CNTrimmedJoke.h"
@@ -38,7 +38,7 @@ typedef enum collectionViewLayoutTypes
 - (CGSize)getIPhoneCellSize;
 - (CGSize)getIPadCellSize;
 - (CGSize)getCellSize;
-- (CollectionViewCell *)getNewCell:(UICollectionView *) collectionView
+- (NormalCell *)getNewCell:(UICollectionView *) collectionView
                       atIndexPath: (NSIndexPath *)indexPath
                          withJoke:(CNJoke *) joke;
 

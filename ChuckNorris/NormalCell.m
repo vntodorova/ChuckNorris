@@ -1,14 +1,14 @@
 //
-//  CollectionViewCell.m
+//  NormalCell.h
 //  ChuckNorris
 //
 //  Created by Nemetschek A-Team on 3/9/17.
 //  Copyright © 2017 Veneta. All rights reserved.
 //
 
-#import "CollectionViewCell.h"
+#import "NormalCell.h"
 
-@implementation CollectionViewCell
+@implementation NormalCell
 
 -(void)setupCellWithJoke:(CNJoke*)joke
 {

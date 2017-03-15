@@ -12,22 +12,18 @@
 @implementation ExpandedCell
 
 - (void)onDeleteClick:(id)sender {
-    NSLog(@"asd");
     [self.delegate onDeleteClicked:self joke:self.cellJoke];
 }
 
 - (void)onSMSClick:(id)sender {
-    NSLog(@"asd");
-     [self.delegate onSMSClicked:self joke:self.cellJoke];
+    [self.delegate onSMSClicked:self joke:self.cellJoke];
 }
 
 - (void)onEmailClick:(id)sender {
-    NSLog(@"asd");
     [self.delegate onEmailClicked:self joke:self.cellJoke];
 }
 
 - (void)onHideClick:(id)sender {
-    NSLog(@"asd");
     [self.delegate onHideClicked:self joke:self.cellJoke];
 }
 

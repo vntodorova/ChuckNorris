@@ -17,21 +17,12 @@
 
 BOOL isPaused = NO;
 
--(void)onDeleteClicked:(ExpandedCell *)cell joke:(NSString *)joke {
-    NSLog(@"asd");
-}
-
--(void)onHideClicked:(ExpandedCell *)cell joke:(NSString *)joke
-{
-    
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.layoutProvider = [[LayoutProvider alloc] init];
     [[self layoutProvider] initialize:self];
     
-    [self.collectionView registerNib:[UINib nibWithNibName:@"NibCell" bundle:nil] forCellWithReuseIdentifier:[CNTrimmedJoke identifierForCell]];
+    [self.collectionView registerNib:[UINib nibWithNibName:@"NormalCell" bundle:nil] forCellWithReuseIdentifier:[CNTrimmedJoke identifierForCell]];
     [self.collectionView registerNib:[UINib nibWithNibName:@"ExpandedCell" bundle:nil] forCellWithReuseIdentifier:[CNJoke identifierForCell]];
     
     self.jokeList = [[NSMutableArray alloc] init];
@@ -197,34 +188,6 @@ BOOL isPaused = NO;
     });
 }
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
-{
-    return self.jokeList.count;
-}
-
-- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    CNJoke *joke = [self.jokeList objectAtIndex:indexPath.row];
-    UICollectionViewCell *cell = [self.layoutProvider getNewCell:collectionView atIndexPath:indexPath withJoke:joke];
-    return cell;
-}
-
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
-{
-    return 1;
-}
-
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    CGSize size = [[self layoutProvider] getCellSize];
-    CNJoke* currentJoke = [self.jokeList objectAtIndex:indexPath.row];
-    if ([currentJoke isMemberOfClass:[CNJoke class]])
-    {
-        size.height += 100;
-    }
-    return size;
-}
-
 -(void)sendMailWithJoke: (CNJoke *) joke
 {
     if([MFMailComposeViewController canSendMail])
@@ -256,6 +219,36 @@ BOOL isPaused = NO;
         [self presentViewController:alert animated:YES completion:nil];
 }
 
+#pragma mark Collection View Delegate
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return self.jokeList.count;
+}
+
+- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    CNJoke *joke = [self.jokeList objectAtIndex:indexPath.row];
+    UICollectionViewCell *cell = [self.layoutProvider getNewCell:collectionView atIndexPath:indexPath withJoke:joke];
+    return cell;
+}
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    return 1;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    CGSize size = [[self layoutProvider] getCellSize];
+    CNJoke* currentJoke = [self.jokeList objectAtIndex:indexPath.row];
+    if ([currentJoke isMemberOfClass:[CNJoke class]])
+    {
+        size.height += 100;
+    }
+    return size;
+}
+
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     BOOL shouldUpdate = NO;
@@ -275,10 +268,12 @@ BOOL isPaused = NO;
     if (shouldUpdate)
     {
         [self.jokeList removeObjectAtIndex:indexPath.row];
-        [self.jokeList insertObject:expandedJoke atIndex:indexPath.row];
+        [self.jokeList insertObject:replacement atIndex:indexPath.row];
         [self.collectionView reloadData];
     }
 }
+
+#pragma mark Expanded Cell Delegate
 
 -(void)onDeleteClicked:(ExpandedCell *)cell joke:(CNJoke *)joke {
     [self.jokeList removeObject:joke];
@@ -296,7 +291,7 @@ BOOL isPaused = NO;
 }
 
 - (void)onEmailClicked:(ExpandedCell *)cell joke:(CNJoke *)joke {
-    NSLog(@"Email clicked");
+    [self sendMailWithJoke:joke];
 }
 
 - (void)onSMSClicked:(ExpandedCell *)cell joke:(CNJoke *)joke {

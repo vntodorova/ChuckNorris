@@ -23,7 +23,7 @@
 - (void)initialize: (id<cellDelagate>) delegate
 {
     self.cellsForModelRegister = [[NSMutableDictionary alloc] init];
-    [self.cellsForModelRegister setObject:[CollectionViewCell class] forKey:[[CNJoke class] description]];
+    [self.cellsForModelRegister setObject:[NormalCell class] forKey:[[CNJoke class] description]];
     [self.cellsForModelRegister setObject:[ExpandedCell class] forKey:[[CNTrimmedJoke class] description]];
     delegateObject = delegate;
     
@@ -77,12 +77,12 @@
     return CGSizeMake(width,70);
 }
 
--(CollectionViewCell *)getNewCell:(UICollectionView *) collectionView
+-(NormalCell *)getNewCell:(UICollectionView *) collectionView
                       atIndexPath:(NSIndexPath *)indexPath
                          withJoke:(CNJoke *) joke
 {
     NSString* cellIdentifier = [joke.class identifierForCell];
-    CollectionViewCell *cell = (CollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
+    NormalCell *cell = (NormalCell *)[collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
 
     if([cell isMemberOfClass:ExpandedCell.class])
     {
