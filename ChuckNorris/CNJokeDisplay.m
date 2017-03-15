@@ -17,6 +17,14 @@
 
 BOOL isPaused = NO;
 
+-(void)onDeleteClicked:(ExpandedCell *)cell joke:(NSString *)joke {
+    NSLog(@"asd");
+}
+
+-(void)onHideClicked:(ExpandedCell *)cell joke:(NSString *)joke
+{
+    
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -46,10 +54,6 @@ BOOL isPaused = NO;
             [self responseHandler:data withResponse:response andError:error];
         }];
     }
-    
-    UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
-    lpgr.delegate = self;
-    [self.collectionView addGestureRecognizer:lpgr];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -221,22 +225,6 @@ BOOL isPaused = NO;
     return size;
 }
 
--(void)handleLongPress:(UILongPressGestureRecognizer *)gestureRecognizer
-{
-    if (gestureRecognizer.state != UIGestureRecognizerStateEnded) {
-    {
-        return;
-    }
-    CGPoint p = [gestureRecognizer locationInView:self.collectionView];
-    
-    NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:p];
-    if (indexPath != nil)
-    {
-       // [self sendMailWithJoke:[_jokeList objectAtIndex:indexPath.row]];
-    }
-}
-}
-
 -(void)sendMailWithJoke: (CNJoke *) joke
 {
     if([MFMailComposeViewController canSendMail])
@@ -273,13 +261,17 @@ BOOL isPaused = NO;
     BOOL shouldUpdate = NO;
     CNJoke* currentJoke = [self.jokeList objectAtIndex:indexPath.row];
     
-    CNJoke* expandedJoke;
+    CNJoke* replacement;
     if ([currentJoke isMemberOfClass:[CNTrimmedJoke class]])
     {
         shouldUpdate = YES;
-        expandedJoke = [[CNJoke alloc] initWithString:currentJoke.toJSONString error:nil];
+        replacement = [[CNJoke alloc] initWithString:currentJoke.toJSONString error:nil];
     }
-
+    if ([currentJoke isMemberOfClass:[CNJoke class]])
+    {
+        shouldUpdate = YES;
+        replacement = [[CNTrimmedJoke alloc] initWithString:currentJoke.toJSONString error:nil];
+    }
     if (shouldUpdate)
     {
         [self.jokeList removeObjectAtIndex:indexPath.row];
