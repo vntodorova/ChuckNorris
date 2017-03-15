@@ -17,8 +17,6 @@
 		1DEC6B731E6D849100D1B223 /* JSONModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DEC6B6D1E6D841700D1B223 /* JSONModel.framework */; };
 		B50F78F71E76A287005EDC63 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B50F78F61E76A287005EDC63 /* MessageUI.framework */; };
 		B50F78FC1E76D6B4005EDC63 /* JSONModel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1DEC6B6D1E6D841700D1B223 /* JSONModel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B50F78FF1E76DE46005EDC63 /* JokeStreamManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B50F78FD1E76DE46005EDC63 /* JokeStreamManager.h */; };
-		B50F79001E76DE46005EDC63 /* JokeStreamManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B50F78FE1E76DE46005EDC63 /* JokeStreamManager.m */; };
 		B50FBF171E70432A00708C76 /* ViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B50FBF161E70432A00708C76 /* ViewControllerTests.m */; };
 		B50FBF1C1E7164D600708C76 /* NormalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B50FBF1B1E7164D600708C76 /* NormalCell.m */; };
 		B50FBF1E1E7170B300708C76 /* NormalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B50FBF1D1E7170B300708C76 /* NormalCell.xib */; };
@@ -78,8 +76,6 @@
 		1DEC6B541E6864DF00D1B223 /* CNJokeDisplay.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CNJokeDisplay.xib; sourceTree = "<group>"; };
 		1DEC6B6D1E6D841700D1B223 /* JSONModel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JSONModel.framework; sourceTree = "<group>"; };
 		B50F78F61E76A287005EDC63 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
-		B50F78FD1E76DE46005EDC63 /* JokeStreamManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JokeStreamManager.h; sourceTree = "<group>"; };
-		B50F78FE1E76DE46005EDC63 /* JokeStreamManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JokeStreamManager.m; sourceTree = "<group>"; };
 		B50FBF0B1E70429200708C76 /* ViewControllerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ViewControllerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B50FBF161E70432A00708C76 /* ViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewControllerTests.m; sourceTree = "<group>"; };
 		B50FBF1A1E7164D600708C76 /* NormalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NormalCell.h; sourceTree = "<group>"; };
@@ -202,8 +198,6 @@
 				1D1513481E76BDE20074CCD3 /* ExpandedCell.xib */,
 				1DEC6B5F1E6D815E00D1B223 /* Frameworks */,
 				D0C3F7901E6838E6005AB2FC /* Info.plist */,
-				B50F78FD1E76DE46005EDC63 /* JokeStreamManager.h */,
-				B50F78FE1E76DE46005EDC63 /* JokeStreamManager.m */,
 				D0C3F78D1E6838E6005AB2FC /* LaunchScreen.storyboard */,
 				B5B0CF301E72EF8200F3BD12 /* LayoutProvider.h */,
 				B5B0CF311E72EF8200F3BD12 /* LayoutProvider.m */,
@@ -234,7 +228,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B50F78FF1E76DE46005EDC63 /* JokeStreamManager.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -403,7 +396,6 @@
 				B50FBF1C1E7164D600708C76 /* NormalCell.m in Sources */,
 				1D1513491E76BDE20074CCD3 /* ExpandedCell.m in Sources */,
 				1D3800501E6D87280063BD37 /* CNJoke.m in Sources */,
-				B50F79001E76DE46005EDC63 /* JokeStreamManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
