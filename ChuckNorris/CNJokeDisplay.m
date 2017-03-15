@@ -8,7 +8,6 @@
 
 #import "LayoutProvider.h"
 #import "CNJokeDisplay.h"
-#import "JokeStreamManager.h"
 #import <MessageUI/MessageUI.h>
 #define CELL_IDENTIFIER @"CVCell"
 
@@ -188,24 +187,10 @@ BOOL isPaused = NO;
     });
 }
 
--(void)sendMailWithJoke: (CNJoke *) joke
-{
-    if([MFMailComposeViewController canSendMail])
-    {
-        MFMailComposeViewController *mailController = [[MFMailComposeViewController alloc] init];
-        mailController.mailComposeDelegate = self;
-        [mailController setMessageBody:[joke value] isHTML:NO];
-        [self presentViewController:mailController animated:YES completion:NULL];
-    } else
-    {
-        [self displayMailError];
-    }
-}
-
 -(void)displayMailError
 {
         UIAlertController * alert=[UIAlertController
-                                   alertControllerWithTitle:@"Error"
+                                   alertControllerWithTitle:@"Cannot send message"
                                    message:@"Device is not able to send email."
                                    preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction* close = [UIAlertAction
@@ -217,6 +202,21 @@ BOOL isPaused = NO;
                                 }];
         [alert addAction:close];
         [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result
+{
+    switch (result) {
+        case MessageComposeResultCancelled:
+            NSLog(@"Cancelled");
+            break;
+        case MessageComposeResultFailed:
+            NSLog(@"Failed");
+            break;
+        default:
+            break;
+    }
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark Collection View Delegate
@@ -291,10 +291,25 @@ BOOL isPaused = NO;
 }
 
 - (void)onEmailClicked:(ExpandedCell *)cell joke:(CNJoke *)joke {
-    [self sendMailWithJoke:joke];
+    MFMailComposeViewController *mailController = [[MFMailComposeViewController alloc] init];
+    if([MFMailComposeViewController canSendMail])
+    {
+        [mailController setMessageBody:[joke value] isHTML:NO];
+        mailController.mailComposeDelegate = self;
+        [self presentViewController:mailController animated:YES completion:NULL];
+    } else
+    {
+        [self displayMailError];
+    }
 }
 
 - (void)onSMSClicked:(ExpandedCell *)cell joke:(CNJoke *)joke {
-    NSLog(@"SMS clicked");
+    MFMessageComposeViewController *controller = [[MFMessageComposeViewController alloc] init];
+    if([MFMessageComposeViewController canSendText])
+    {
+        controller.body = joke.value;
+        controller.messageComposeDelegate = self;
+        [self presentViewController:controller animated:YES completion:nil];
+    }
 }
 @end
