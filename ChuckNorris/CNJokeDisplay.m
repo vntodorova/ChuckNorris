@@ -9,8 +9,6 @@
 #import "LayoutProvider.h"
 #import "CNJokeDisplay.h"
 #import <MessageUI/MessageUI.h>
-#define CELL_IDENTIFIER @"CVCell"
-
 
 @implementation CNJokeDisplay
 
