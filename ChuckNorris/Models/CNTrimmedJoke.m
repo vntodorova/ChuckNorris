@@ -19,11 +19,10 @@
 -(NSString*)getJoke
 {
     NSString* result = self.value;
-    if(self.value.length >= 20)
+    if(self.value.length >= 50)
     {
-        result = [self.value substringToIndex:20];
+        result = [self.value substringToIndex:50];
     }
-    
     return result;
 }
 

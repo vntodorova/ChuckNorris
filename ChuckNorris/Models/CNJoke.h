@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+
 #import <JSONModel/JSONModel.h>
 
 //Needed for Json parsing

@@ -10,13 +10,14 @@
 		1D1513491E76BDE20074CCD3 /* ExpandedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D1513471E76BDE20074CCD3 /* ExpandedCell.m */; };
 		1D15134A1E76BDE20074CCD3 /* ExpandedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D1513481E76BDE20074CCD3 /* ExpandedCell.xib */; };
 		1D1513501E76EF860074CCD3 /* CNTrimmedJoke.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D15134F1E76EF860074CCD3 /* CNTrimmedJoke.m */; };
+		1D21E0C81E793AA300D693D6 /* JSONModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DEC6B6D1E6D841700D1B223 /* JSONModel.framework */; };
+		1D21E0C91E793AA300D693D6 /* JSONModel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1DEC6B6D1E6D841700D1B223 /* JSONModel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1D21E0CB1E793AAA00D693D6 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B50F78F61E76A287005EDC63 /* MessageUI.framework */; };
+		1D21E0CC1E793AD000D693D6 /* JSONModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DEC6B6D1E6D841700D1B223 /* JSONModel.framework */; };
 		1D3800501E6D87280063BD37 /* CNJoke.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D38004F1E6D87280063BD37 /* CNJoke.m */; };
 		1D3800561E6EC6700063BD37 /* CNJokeArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3800551E6EC6700063BD37 /* CNJokeArray.m */; };
 		1DEC6B4F1E68633600D1B223 /* CNJokeDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DEC6B4E1E68633600D1B223 /* CNJokeDisplay.m */; };
 		1DEC6B551E6864DF00D1B223 /* CNJokeDisplay.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DEC6B541E6864DF00D1B223 /* CNJokeDisplay.xib */; };
-		1DEC6B731E6D849100D1B223 /* JSONModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DEC6B6D1E6D841700D1B223 /* JSONModel.framework */; };
-		B50F78F71E76A287005EDC63 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B50F78F61E76A287005EDC63 /* MessageUI.framework */; };
-		B50F78FC1E76D6B4005EDC63 /* JSONModel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1DEC6B6D1E6D841700D1B223 /* JSONModel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B50FBF171E70432A00708C76 /* ViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B50FBF161E70432A00708C76 /* ViewControllerTests.m */; };
 		B50FBF1C1E7164D600708C76 /* NormalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B50FBF1B1E7164D600708C76 /* NormalCell.m */; };
 		B50FBF1E1E7170B300708C76 /* NormalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B50FBF1D1E7170B300708C76 /* NormalCell.xib */; };
@@ -31,13 +32,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		B50FBF101E70429200708C76 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D0C3F7741E6838E6005AB2FC /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D0C3F77B1E6838E6005AB2FC;
-			remoteInfo = ChuckNorris;
-		};
 		D0B2B61E1E6ED8C100EC6B6B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D0C3F7741E6838E6005AB2FC /* Project object */;
@@ -48,13 +42,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		1DEC6B751E6D849100D1B223 /* Embed Frameworks */ = {
+		1D21E0CA1E793AA300D693D6 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				B50F78FC1E76D6B4005EDC63 /* JSONModel.framework in Embed Frameworks */,
+				1D21E0C91E793AA300D693D6 /* JSONModel.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -76,7 +70,6 @@
 		1DEC6B541E6864DF00D1B223 /* CNJokeDisplay.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CNJokeDisplay.xib; sourceTree = "<group>"; };
 		1DEC6B6D1E6D841700D1B223 /* JSONModel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JSONModel.framework; sourceTree = "<group>"; };
 		B50F78F61E76A287005EDC63 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
-		B50FBF0B1E70429200708C76 /* ViewControllerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ViewControllerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B50FBF161E70432A00708C76 /* ViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewControllerTests.m; sourceTree = "<group>"; };
 		B50FBF1A1E7164D600708C76 /* NormalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NormalCell.h; sourceTree = "<group>"; };
 		B50FBF1B1E7164D600708C76 /* NormalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NormalCell.m; sourceTree = "<group>"; };
@@ -99,17 +92,11 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		B50FBF081E70429100708C76 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		D0B2B6161E6ED8C100EC6B6B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D21E0CC1E793AD000D693D6 /* JSONModel.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,8 +104,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B50F78F71E76A287005EDC63 /* MessageUI.framework in Frameworks */,
-				1DEC6B731E6D849100D1B223 /* JSONModel.framework in Frameworks */,
+				1D21E0CB1E793AAA00D693D6 /* MessageUI.framework in Frameworks */,
+				1D21E0C81E793AA300D693D6 /* JSONModel.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -179,7 +166,6 @@
 			children = (
 				D0C3F77C1E6838E6005AB2FC /* ChuckNorris.app */,
 				D0B2B6191E6ED8C100EC6B6B /* ChuckNorrisTests.xctest */,
-				B50FBF0B1E70429200708C76 /* ViewControllerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -234,24 +220,6 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		B50FBF0A1E70429100708C76 /* ViewControllerTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B50FBF141E70429200708C76 /* Build configuration list for PBXNativeTarget "ViewControllerTests" */;
-			buildPhases = (
-				B50FBF071E70429100708C76 /* Sources */,
-				B50FBF081E70429100708C76 /* Frameworks */,
-				B50FBF091E70429100708C76 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B50FBF111E70429200708C76 /* PBXTargetDependency */,
-			);
-			name = ViewControllerTests;
-			productName = ViewControllerTests;
-			productReference = B50FBF0B1E70429200708C76 /* ViewControllerTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		D0B2B6181E6ED8C100EC6B6B /* ChuckNorrisTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D0B2B6221E6ED8C100EC6B6B /* Build configuration list for PBXNativeTarget "ChuckNorrisTests" */;
@@ -277,8 +245,8 @@
 				D0C3F7781E6838E6005AB2FC /* Sources */,
 				D0C3F7791E6838E6005AB2FC /* Frameworks */,
 				D0C3F77A1E6838E6005AB2FC /* Resources */,
-				1DEC6B751E6D849100D1B223 /* Embed Frameworks */,
 				B50F78FB1E76D599005EDC63 /* Headers */,
+				1D21E0CA1E793AA300D693D6 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -298,14 +266,8 @@
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = Veneta;
 				TargetAttributes = {
-					B50FBF0A1E70429100708C76 = {
-						CreatedOnToolsVersion = 8.2.1;
-						ProvisioningStyle = Automatic;
-						TestTargetID = D0C3F77B1E6838E6005AB2FC;
-					};
 					D0B2B6181E6ED8C100EC6B6B = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 9XZLRPAEST;
 						ProvisioningStyle = Automatic;
 						TestTargetID = D0C3F77B1E6838E6005AB2FC;
 					};
@@ -330,19 +292,11 @@
 			targets = (
 				D0C3F77B1E6838E6005AB2FC /* ChuckNorris */,
 				D0B2B6181E6ED8C100EC6B6B /* ChuckNorrisTests */,
-				B50FBF0A1E70429100708C76 /* ViewControllerTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		B50FBF091E70429100708C76 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		D0B2B6171E6ED8C100EC6B6B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -366,13 +320,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		B50FBF071E70429100708C76 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		D0B2B6151E6ED8C100EC6B6B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -402,11 +349,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		B50FBF111E70429200708C76 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D0C3F77B1E6838E6005AB2FC /* ChuckNorris */;
-			targetProxy = B50FBF101E70429200708C76 /* PBXContainerItemProxy */;
-		};
 		D0B2B61F1E6ED8C100EC6B6B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D0C3F77B1E6838E6005AB2FC /* ChuckNorris */;
@@ -426,35 +368,15 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		B50FBF121E70429200708C76 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = ViewControllerTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.nemetschek.bg.ViewControllerTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ChuckNorris.app/ChuckNorris";
-			};
-			name = Debug;
-		};
-		B50FBF131E70429200708C76 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = ViewControllerTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.nemetschek.bg.ViewControllerTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ChuckNorris.app/ChuckNorris";
-			};
-			name = Release;
-		};
 		D0B2B6201E6ED8C100EC6B6B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = 9XZLRPAEST;
+				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ChuckNorris/Frameworks",
+				);
 				INFOPLIST_FILE = ChuckNorrisTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = bg.nemetschek.ChuckNorrisTests;
@@ -467,7 +389,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = 9XZLRPAEST;
+				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ChuckNorris/Frameworks",
+				);
 				INFOPLIST_FILE = ChuckNorrisTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = bg.nemetschek.ChuckNorrisTests;
@@ -601,15 +527,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B50FBF141E70429200708C76 /* Build configuration list for PBXNativeTarget "ViewControllerTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B50FBF121E70429200708C76 /* Debug */,
-				B50FBF131E70429200708C76 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		D0B2B6221E6ED8C100EC6B6B /* Build configuration list for PBXNativeTarget "ChuckNorrisTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

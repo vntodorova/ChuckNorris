@@ -57,7 +57,5 @@ typedef enum searchStateTypes
 
 -(void)addCurrentJokeToArray: (NSData *) data;
 
--(void)displayMailError;
-
 @end
 

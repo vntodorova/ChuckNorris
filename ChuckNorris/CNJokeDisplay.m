@@ -186,24 +186,6 @@ BOOL isPaused = NO;
         [self.collectionView reloadData];
     });
 }
-
--(void)displayMailError
-{
-        UIAlertController * alert=[UIAlertController
-                                   alertControllerWithTitle:@"Cannot send message"
-                                   message:@"Device is not able to send email."
-                                   preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction* close = [UIAlertAction
-                                actionWithTitle:@"Close"
-                                style:UIAlertActionStyleDefault
-                                handler:^(UIAlertAction * action)
-                                {
-                                    [alert dismissViewControllerAnimated:YES completion:nil];
-                                }];
-        [alert addAction:close];
-        [self presentViewController:alert animated:YES completion:nil];
-}
-
 - (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result
 {
     switch (result) {
@@ -297,9 +279,6 @@ BOOL isPaused = NO;
         [mailController setMessageBody:[joke value] isHTML:NO];
         mailController.mailComposeDelegate = self;
         [self presentViewController:mailController animated:YES completion:NULL];
-    } else
-    {
-        [self displayMailError];
     }
 }
 
