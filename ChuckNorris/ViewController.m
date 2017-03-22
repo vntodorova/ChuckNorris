@@ -42,6 +42,11 @@ BOOL keyboardIsShown = NO;
     // Dispose of any resources that can be recreated.
 }
 
+- (void) dismissKeyboard
+{
+    [self.searchBar resignFirstResponder];
+}
+
 - (void)retrieveCategories{
     NSURLSession *defaultSession = [NSURLSession sharedSession];
     NSURL *url = [NSURL URLWithString:@"https://api.chucknorris.io/jokes/categories"];
@@ -50,11 +55,6 @@ BOOL keyboardIsShown = NO;
                                                        [self responseHandler:data withResponse:response andError:error];
                                                    }];
     [dataTask resume];
-}
-
-- (void) dismissKeyboard
-{
-    [self.searchBar resignFirstResponder];
 }
 
 -(void) responseHandler:(NSData * _Nonnull) data withResponse:(NSURLResponse *) response andError:(NSError *) responseError {
@@ -105,8 +105,8 @@ BOOL keyboardIsShown = NO;
 
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
-    [searchBar resignFirstResponder];
-    CNJokeDisplay *secondController = [[CNJokeDisplay alloc] initWithNibName:nil bundle:nil];
+    [self dismissKeyboard];
+    CNJokeDisplay *secondController = [[CNJokeDisplay alloc] init];
     secondController.searchedString = searchBar.text;
     [self.navigationController pushViewController:secondController animated:YES];
 }
@@ -118,28 +118,20 @@ BOOL keyboardIsShown = NO;
     
     for (NSString* currentCategory in self.allCategories) {
         [alert addAction:[UIAlertAction actionWithTitle:currentCategory style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-            CNJokeDisplay *secondController = [[CNJokeDisplay alloc] initWithNibName:nil bundle:nil];
-            secondController.category = currentCategory;
-            NSLog(@"%@", currentCategory);
-            [self.navigationController pushViewController:secondController animated:YES];
-            [self dismissViewControllerAnimated:YES completion:^{
-            }];
+                CNJokeDisplay *secondController = [[CNJokeDisplay alloc] init];
+                secondController.category = currentCategory;
+                NSLog(@"%@", currentCategory);
+                [self.navigationController pushViewController:secondController animated:YES];
         }]];
     }
     
-    [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-        [self dismissViewControllerAnimated:YES completion:^{
-        }];
-    }]];
-    
+    [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
+
     UIPopoverPresentationController *popPresenter = [alert
                                                      popoverPresentationController];
     popPresenter.sourceView = sender;
     popPresenter.sourceRect = sender.bounds;
     [self presentViewController:alert animated:YES completion:nil];
-
-    
-//    [self presentViewController:alert animated:YES completion:nil];
 }
 
 -(void)keyboardWillShow {

@@ -101,7 +101,8 @@
 
 - (void)switchNumberOfColumnsIpad
 {
-    if(numberOfColumnsIpad == 3){
+    if(numberOfColumnsIpad == 3)
+    {
         numberOfColumnsIpad = 4;
     } else {
         numberOfColumnsIpad = 3;

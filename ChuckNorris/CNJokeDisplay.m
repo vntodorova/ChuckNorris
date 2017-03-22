@@ -10,9 +10,13 @@
 #import "CNJokeDisplay.h"
 #import <MessageUI/MessageUI.h>
 
-@implementation CNJokeDisplay
+@interface CNJokeDisplay()
 
-BOOL isPaused = NO;
+@property (assign, nonatomic) BOOL isPaused;
+
+@end
+
+@implementation CNJokeDisplay
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -133,9 +137,7 @@ BOOL isPaused = NO;
     CNJokeArray *requestResult = [[CNJokeArray alloc] initWithData:data error:&error];
     if(error == nil) {
         [self.jokeList addObjectsFromArray:requestResult.result];
-        dispatch_async(dispatch_get_main_queue(),^{
-            [self.collectionView reloadData];
-        });
+        [self updateUI:self.jokeList.lastObject];
     } else {
         @throw[NSException
                exceptionWithName:@"Exception"
@@ -153,10 +155,10 @@ BOOL isPaused = NO;
 }
 
 -(void) onTick {
-    if(!isPaused){
+    if(!self.isPaused){
         NSMutableString *urlToApi = [self buildURL:self.searchedString andCategory:self.category];
         [self getCNJoke:urlToApi withResponseBlock:^(NSData *data, NSURLResponse *response, NSError *error) {
-        [self responseHandler:data withResponse:response andError:error];
+            [self responseHandler:data withResponse:response andError:error];
         }];
     }
 }
@@ -174,7 +176,7 @@ BOOL isPaused = NO;
 }
 
 - (IBAction)stopTimerSwitch:(UISwitch *)sender {
-    isPaused = !isPaused;
+    self.isPaused = !self.isPaused;
 }
 
 - (IBAction)changeColumnsNumber:(UIButton *)sender
@@ -213,11 +215,6 @@ BOOL isPaused = NO;
     return cell;
 }
 
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
-{
-    return 1;
-}
-
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     CGSize size = [[self layoutProvider] getCellSize];
@@ -245,7 +242,7 @@ BOOL isPaused = NO;
         shouldUpdate = YES;
         replacement = [[CNTrimmedJoke alloc] initWithString:currentJoke.toJSONString error:nil];
     }
-    if (shouldUpdate)
+    if (replacement && shouldUpdate)
     {
         [self.jokeList removeObjectAtIndex:indexPath.row];
         [self.jokeList insertObject:replacement atIndex:indexPath.row];
@@ -262,8 +259,7 @@ BOOL isPaused = NO;
 
 - (void)onHideClicked:(ExpandedCell *)cell joke:(CNJoke *)joke {
     NSInteger index = [self.jokeList indexOfObject:joke];
-    CNJoke* colapsedJoke;
-    colapsedJoke = [[CNTrimmedJoke alloc]initWithString:joke.toJSONString error:nil];
+    CNJoke* colapsedJoke = [[CNTrimmedJoke alloc]initWithString:joke.toJSONString error:nil];
 
     [self.jokeList removeObjectAtIndex:index];
     [self.jokeList insertObject:colapsedJoke atIndex:index];
